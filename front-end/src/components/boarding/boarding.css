@@ -1,0 +1,28 @@
+.boarding{
+    height: 35rem;
+    width: 100%;
+    /* background-color: whitesmoke; */
+    background-image: linear-gradient( to bottom,green,white);
+    display: flex;
+    
+}
+.boarding-text{
+width: 50%;
+/* background-color: red; */
+padding-left: 10%;
+padding-top: 100px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 2rem;
+color: white;
+}
+.boarding-image{
+width: 50%;
+/* background-color: blue; */
+}
+.boarding-text p{
+    font-size: 13px;
+    margin: 0px;
+}
+.boarding-text h2{
+    margin: 0px;
+}

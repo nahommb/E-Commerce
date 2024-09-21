@@ -8,10 +8,10 @@ export const Navbar = ()=>{
             <p>SHOPPER</p>
         </div>
         <ul className='nav-menu'>
-            <li>Shop</li>
-            <li>Men</li>
-            <li>Women</li>
-            <li>Kids</li>
+            <p>Shop</p>
+            <p>Men</p>
+            <p>Women</p>
+            <p>Kids</p>
         </ul>
         <div className='nav-login-cart'>
             <button>Login</button>

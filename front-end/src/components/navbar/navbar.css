@@ -1,10 +1,39 @@
+body{
+   margin: 0px; 
+}
 .navbar{
     display:flex;
     justify-content: space-around;
-    padding: 16px;
+    padding: 10px;
+    background-color: green;
+   color: white;
+   font-size: 1;
 }
 .nav-log{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.nav-menu{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+    width: 20rem;
+    align-items: center;
+}
+.nav-menu t{
+    text-decoration: none;
+    /* color: red; */
+}
+.nav-login-cart{
+    display: flex;
+    justify-content: space-around;
+    width: 10rem;
+    align-items: center;
+}
+.nav-login-cart button{
+    width: 4rem;
+    height: 2rem;
+    border: none;
+    border-radius: 8px;
 }

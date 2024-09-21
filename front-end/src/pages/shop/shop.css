@@ -1,0 +1,17 @@
+.popular-women{
+    display: grid;
+    grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr));
+}
+.women-text{
+display: flex;
+justify-content: center;
+}
+.women-text h2{
+    /* text-decoration: underline; */
+    color: green;
+}
+.shop-banner{
+    height: 300px;
+    background-color: yellowgreen;
+    margin: 70px;
+}

@@ -1,0 +1,15 @@
+.item-card{
+    /* height: 18rem; */
+    width: 15rem;
+    background-color: whitesmoke;
+    margin: 10px;
+}
+.item-card-image{
+    /* height: 80%; */
+}
+.item-card-info{
+    padding-left: 20px;
+}
+.item-card-info h5,p{
+    margin: 0px;
+}
