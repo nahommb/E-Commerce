@@ -1,5 +1,8 @@
-import './navbar.css'
 import React from 'react'
+import './navbar.css'
+import { ShoppingCart } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+
 
 export const Navbar = ()=>{
     return <div className='navbar'>
@@ -15,7 +18,9 @@ export const Navbar = ()=>{
         </ul>
         <div className='nav-login-cart'>
             <button>Login</button>
-            <p>cart image</p>
+            <IconButton aria-label="cart">
+              <ShoppingCart sx={{ color: 'white' }}/>
+            </IconButton>
         </div>
     </div>
 }
