@@ -2,6 +2,7 @@ import React from 'react'
 import './navbar.css'
 import { ShoppingCart } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export const Navbar = ()=>{
@@ -11,8 +12,8 @@ export const Navbar = ()=>{
             <p>SHOPPER</p>
         </div>
         <ul className='nav-menu'>
-            <p>Shop</p>
-            <p>Men</p>
+            <Link to={'/'}>Shop</Link>
+            <Link to={'/men'}>Men</Link>
             <p>Women</p>
             <p>Kids</p>
         </ul>

@@ -1,7 +1,9 @@
+import { Navbar } from "../../components/navbar/navbar"
+
 export const Men = ()=>{
 
-    
-    return <div>
 
+    return <div>
+        <Navbar/>
     </div>
 }
