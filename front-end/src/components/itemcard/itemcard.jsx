@@ -1,12 +1,17 @@
+import { useNavigate } from 'react-router-dom'
 import './itemcard.css'
+
 export const ItemCard =(props)=>{
-  return <div className="item-card">
+
+    const navigate = useNavigate()
+
+  return <div className="item-card" onClick={()=>navigate(`/products/${props.index}`)}>
      <div className='item-card-image'>
-     <img style={{height:'300px'}} src={props.image}></img>
+     <img src={props.image}></img>
      </div>
      <div className='item-card-info'>
       
-         <h5>Barcelon away kit 24/25</h5>
+         <h5>{props.index} Barcelona away kit 24/25 </h5>
      <p>$40</p>
      </div>
     

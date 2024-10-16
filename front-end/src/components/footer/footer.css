@@ -1,4 +1,24 @@
 .footer{
-    height: 200px;
-    background-color: yellowgreen;
+    /* height: 200px; */
+    /* background-color: yellowgreen; */
+    padding-bottom: 20px;
+    margin-top: 40px;
+    
+}
+.footer-title{
+    display: flex;
+    justify-content: center;
+}
+.social-media{
+    display: flex;
+    justify-content: center;
+}
+.social-media p{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.footer-cpy{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

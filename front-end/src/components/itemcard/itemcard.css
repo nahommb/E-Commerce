@@ -2,14 +2,25 @@
     /* height: 18rem; */
     width: 15rem;
     background-color: whitesmoke;
-    margin: 10px;
+    margin-bottom: 10px;
+    border: 2px solid greenyellow;
+   
 }
 .item-card-image{
     /* height: 80%; */
+   
+}
+.item-card-image img{
+    height: 300px;
 }
 .item-card-info{
     padding-left: 20px;
 }
 .item-card-info h5,p{
     margin: 0px;
+}
+.item-card :hover{
+    
+    cursor: pointer;
+    
 }

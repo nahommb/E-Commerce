@@ -4,6 +4,9 @@
     /* background-color: whitesmoke; */
     background-image: linear-gradient( to bottom,green,white);
     display: flex;
+    position: relative;
+    top: 60px;
+    z-index: -1;
     
 }
 .boarding-text{

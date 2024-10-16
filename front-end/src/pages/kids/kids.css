@@ -1,10 +1,9 @@
-.men{
+.kids{
     display: grid;
     grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr));
     padding: 40px;
-    
 }
-.men-boarding{
+.kids-boarding{
     height: 15rem;
     /* background-color: red; */
     width: 100%;
@@ -16,8 +15,8 @@
     margin-bottom:120px ;
     z-index: -1;
 }
-.men-boarding .inner-boarding{
-  background-color: green;
+.kids-boarding .inner-boarding{
+  background-color: yellow;
   height: 15rem;
   width: 80%;
   border-radius: 12px;
