@@ -17,7 +17,7 @@ const handleClick = ()=>{
     return <div className='navbar'>
         <div className='nav-log'>
              logo
-            <p>SHOPPER</p>
+            <p>LEE</p>
         </div>
         <ul className='nav-menu'>
             <Link to={'/'} className='links'>Shop</Link>
