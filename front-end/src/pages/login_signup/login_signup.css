@@ -28,6 +28,13 @@ color: white;
 height: 40px;
 border: 2px solid rgb(240, 34, 34);
 width: 72%;
+/* padding-left: 8px; */
 margin-bottom: 5px;
+margin-left: 4px;
+margin-right: 4px;
 cursor: pointer;
+}
+
+input[type='checkbox']{
+margin-right: 7px;
 }

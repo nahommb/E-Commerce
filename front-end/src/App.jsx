@@ -6,7 +6,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { Women } from './pages/women/women';
 import { Kids } from './pages/kids/kids';
 import { Products } from './pages/products/products';
-import { Login } from './pages/login/login';
+import { LoginSignup } from './pages/login_signup/login_signup';
+import { Cart } from './pages/cart/cart';
 
 function App() {
   
@@ -19,10 +20,13 @@ function App() {
         <Route path="/women" element={<Women/>} />
         <Route path="/kids" element={<Kids/>} />
         <Route path="/products/:index" element={<Products/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login_signup" element={<LoginSignup/>} />
+        <Route path="/cart" element={<Cart/>} />
+
       </Routes>   
       </div>
   )
 }
 
 export default App
+

@@ -9,10 +9,7 @@ export const Navbar = ()=>{
 
     const navigate = useNavigate()
 
-const handleClick = ()=>{
-    
-    navigate('/login')
-}
+
 
     return <div className='navbar'>
         <div className='nav-log'>
@@ -26,7 +23,7 @@ const handleClick = ()=>{
             <Link to={'/kids'} className='links'>Kids</Link>
         </ul>
         <div className='nav-login-cart'>
-            <button onClick={()=>navigate('/login')}>Login</button>
+            <button onClick={()=>navigate('/login_signup')}>Login</button>
             <IconButton aria-label="cart">
               <ShoppingCart sx={{ color: 'white' }}/>
             </IconButton>
