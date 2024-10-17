@@ -16,9 +16,13 @@
     z-index: -1;
 }
 .women-boarding .inner-boarding{
-  background-color: pink;
+  background-image: linear-gradient(to right, pink, white);
   height: 15rem;
   width: 80%;
   border-radius: 12px;
+  display: flex;
   
+}
+.women-banner{
+  width: 30%;
 }

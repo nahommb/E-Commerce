@@ -7,7 +7,7 @@
     position: relative;
     top: 50px;
     z-index: -1;
-    
+    margin-bottom: 30px;
 }
 .boarding-text{
 width: 50%;
@@ -18,8 +18,9 @@ font-family: Arial, Helvetica, sans-serif;
 font-size: 2rem;
 color: white;
 }
-.boarding-image{
-width: 50%;
+.boarding-image img{
+width: 100%;
+
 /* background-color: blue; */
 }
 .boarding-text p{
