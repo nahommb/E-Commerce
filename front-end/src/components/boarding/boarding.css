@@ -2,7 +2,7 @@
     height: 40rem;
     width: 100%;
     /* background-color: whitesmoke; */
-    background-image: linear-gradient( to bottom,green,white);
+    background-image: linear-gradient( to bottom,#87A2FF,white);
     display: flex;
     position: relative;
     top: 50px;

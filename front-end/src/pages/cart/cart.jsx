@@ -1,3 +1,4 @@
+import DataTable from "react-data-table-component"
 import { Navbar } from "../../components/navbar/navbar"
 import { CartTable } from "../../components/table/cartTable"
 import './cart.css'
@@ -9,9 +10,6 @@ export const Cart = ()=>{
         <Navbar/>
         <div className="table-container">
             <CartTable></CartTable>  
-        </div>
-        <div className="cart-total">
-            <h3>Cart Totals</h3>
         </div>
            
     </>

@@ -1,15 +1,17 @@
 .table-container{
    /* background-color: aqua; */
-  padding: 60px 60px 0px 60px;
-   height: 500px;
+  padding: 30px 60px 0px 60px;
+  /* height: 500px; */
    /* width: 70%; */
-   color: gray;
+   /* color: gray; */
    position: relative;
    top: 50px;     
+   z-index: -2;
    
 }
 .cart-total{
     padding: 60px;
+    color: #87A2FF;
 }
 
 /* .table-container div::-webkit-scrollbar{
