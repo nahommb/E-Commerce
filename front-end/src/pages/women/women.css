@@ -21,8 +21,15 @@
   width: 80%;
   border-radius: 12px;
   display: flex;
-  
+  padding-left: 10%;
+  justify-content: space-between;
 }
-.women-banner{
+.women-banner-text{
+  padding-top: 30px;
+  color: rgb(149, 147, 147);
+  width: 80%;
+  font-size: 20px;
+}
+.women-banner-image{
   width: 30%;
 }

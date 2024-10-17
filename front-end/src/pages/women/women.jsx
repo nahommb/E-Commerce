@@ -10,10 +10,10 @@ const card = [1,2,3,4,5,6,7,78,8,9,9]
         <div className="women-boarding">
         
           <div className="inner-boarding">
-           <div style={{width:'80%'}}>
-
+           <div  className='women-banner-text'>
+            <h1>Wear your passion, <br/> <span style={{marginLeft:'10%'}}>wear your pride!</span></h1>
            </div>
-           <img className='women-banner' src={womenBanner}></img>
+           <img className='women-banner-image' src={womenBanner}></img>
           </div>
         </div>
         <div className="women">

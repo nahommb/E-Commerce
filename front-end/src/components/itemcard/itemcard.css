@@ -3,7 +3,7 @@
     width: 15rem;
     background-color: whitesmoke;
     margin-bottom: 10px;
-    border: 2px solid greenyellow;
+    /* border: 2px solid greenyellow; */
    
 }
 .item-card-image{
@@ -12,6 +12,7 @@
 }
 .item-card-image img{
     height: 300px;
+    border-radius: 10px;
 }
 .item-card-info{
     padding-left: 20px;

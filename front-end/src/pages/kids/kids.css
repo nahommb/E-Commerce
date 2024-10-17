@@ -16,9 +16,21 @@
     z-index: -1;
 }
 .kids-boarding .inner-boarding{
-  background-color: yellow;
+  background-image: linear-gradient(to right, yellow, white);
   height: 15rem;
   width: 80%;
   border-radius: 12px;
-  
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+}
+.kid-banner-text{
+  padding-top: 30px;
+  color: rgb(80, 233, 38);
+  width: 80%;
+  font-size: 20px;
+}
+.kid-banner-image{
+width: 30%;
+
 }

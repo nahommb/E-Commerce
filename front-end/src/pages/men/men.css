@@ -17,9 +17,22 @@
     z-index: -1;
 }
 .men-boarding .inner-boarding{
-  background-color: green;
+  background-image: linear-gradient(to right, green, white);
   height: 15rem;
   width: 80%;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10%;
+  /* align-items: center; */
+}
+.men-banner-text{
+  padding-top: 30px;
+  color: rgb(233, 233, 38);
+  width: 80%;
+  font-size: 20px;
+}
+.men-banner-image{
+  width: 30%;
   
 }
