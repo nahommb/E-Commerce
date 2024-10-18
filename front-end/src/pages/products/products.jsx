@@ -1,8 +1,10 @@
+import { Navbar } from '../../components/navbar/navbar'
 import './products.css'
 
 export const Products = ()=>{
 
     return <>
+       <Navbar/>
         <div className="products">
             <div className="product-image">
                 <div className='small-image'>
