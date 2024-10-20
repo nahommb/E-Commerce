@@ -1,6 +1,6 @@
 import './sidebar.css'
 import {Button} from '@mui/material'
-import { ShoppingCart, Folder} from '@mui/icons-material';
+import { ShoppingCart, Folder,} from '@mui/icons-material';
 
 
 export const SideBar = ()=>{
@@ -16,6 +16,12 @@ export const SideBar = ()=>{
             <Button style={{color:'white'}}>
                  <Folder style={{paddingRight:'8px'}}/>
                   Product List
+               </Button>
+            </div>
+            <div className="list-of-product">
+            <Button style={{color:'white'}}>
+                 
+                  Statestics
                </Button>
             </div>
         </div>
