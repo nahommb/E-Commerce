@@ -21,7 +21,7 @@ export const SideBar = ()=>{
             <div className="button-cont">
             <Button style={{color:'white'}}>
                  <ShowChart style={{paddingRight:'8px'}}/>
-                  Statestics
+                  Analytics
                </Button> 
             </div>
             <div className="button-cont">

@@ -1,16 +1,31 @@
-.popular-women{
-    /* width: 100%; */
-    /* background-color: brown; */
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr));
+
+.shop{
+
 }
-.women-text{
-display: flex;
+.popular-women{
+   
+    /* background-color: brown; */
+    padding: 2% 8% 2% 8%;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr)); */
+    grid-template-columns: repeat(4, 1fr);
+}
+.featured-text{
+/* display: flex; */
+/* height: 80px; */
+align-content: center;
 justify-content: center;
+background-image: linear-gradient(to right, #FF70EA4F, white);
+margin-left: 5%;
+padding: 0.6%;
+padding-left: 1.5%;
+font-size: 15px;
+border-radius: 5px;
+width: 40%;
 }
 .women-text h2{
     /* text-decoration: underline; */
+
     color: green;
 }
 .shop-banner{

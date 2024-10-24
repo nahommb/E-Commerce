@@ -3,8 +3,10 @@ import { Footer } from "../../components/footer/footer"
 import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
 import neymar from '../../components/assets/neymar.jpg'
+import barca from '../../components/assets/barca_kit.jpg'
 import './shop.css'
 import { useNavigate } from "react-router-dom"
+import { Banner } from "../../components/banner/banner"
 
 
 export const Shop =()=>{
@@ -13,18 +15,18 @@ export const Shop =()=>{
 
     const card = [1,2,3,4,5,6]
 
-    return <>
+    return <div className="shop">
         <Navbar></Navbar>
         <Boarding></Boarding>
-         <div className="women-text" >
-          <h2>Popular in Women</h2>
-          {/* <img src={neymar}></img> */}
+        <Banner bannerText='Featured Sport Kits'></Banner>
+         <div className="featured-text" >
+          <h1>Featured Sports wear</h1>
          </div>
-        
+         
         <div className="popular-women" >
           {card.map((index,item)=>{
       
-            return <ItemCard key={index} image={neymar}  index = {index}></ItemCard>
+            return <ItemCard key={index} image={barca}  index = {index}></ItemCard>
           })
           }
         </div>
@@ -37,10 +39,10 @@ export const Shop =()=>{
          </div>
         <div className="popular-women">
           {card.map((index,item)=>{
-            return <ItemCard key={index}/>
+            return <ItemCard key={index} image={neymar} index={index}/>
           })
           }
         </div>
         <Footer></Footer>
-    </>
+    </div>
 }

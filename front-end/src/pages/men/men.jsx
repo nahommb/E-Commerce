@@ -2,6 +2,7 @@ import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
 import './men.css'
 import menBanner from '../../components/assets/boy_banner.png'
+import { Banner } from "../../components/banner/banner"
 
 export const Men = ()=>{
 
@@ -9,14 +10,7 @@ export const Men = ()=>{
 
     return <div>
         <Navbar/>
-        <div className="men-boarding">
-          <div className="inner-boarding">
-            <div className="men-banner-text" >
-            <h1>Suit up for victory, <br/><span style={{marginLeft:'10%'}}>wear the legend.</span></h1>
-            </div>
-           <img className="men-banner-image" src={menBanner}></img>
-          </div>
-        </div>
+        <Banner bannerText='Suit up for victory,wear the legend.' bannerImage={menBanner}/>
         <div className="men">
         {card.map((index,item)=>{
             return <ItemCard key={index}/>

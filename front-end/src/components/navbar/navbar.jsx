@@ -23,7 +23,7 @@ export const Navbar = ()=>{
             <Link to={'/kids'} className='links'>Kids</Link>
         </ul>
         <div className='nav-login-cart'>
-            <button onClick={()=>navigate('/login_signup')}>Login</button>
+            <button className='button' onClick={()=>navigate('/login_signup')}>Login</button>
             <IconButton aria-label="cart" onClick={()=>navigate('/cart')}>
               <ShoppingCart sx={{ color: 'white' }}/>
             </IconButton>
