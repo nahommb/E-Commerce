@@ -1,14 +1,16 @@
 import './footer.css'
+import { Instagram,Facebook,Telegram } from '@mui/icons-material'
+
 export const Footer = ()=>{
     return <div className="footer">
        <div className='footer-title'>
         <h3>SHOPPER</h3>
        </div>
-          
+          <p>Your Number One Quality Sport Wear Provider</p>
           <div className='social-media'>
-            <p>instagram</p>
-            <p>facebook</p>
-            <p>telegram</p>
+            <Instagram/>
+            <Facebook/>
+            <Telegram/>
           </div>
           <hr/>
           <div className='footer-cpy'>

@@ -4,6 +4,7 @@ import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
 import neymar from '../../components/assets/neymar.jpg'
 import barca from '../../components/assets/barca_kit.jpg'
+import manutd from '../../components/assets/manutd_kit.jpg'
 import './shop.css'
 import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
@@ -33,13 +34,13 @@ export const Shop =()=>{
         <div className="shop-banner">
 
         </div>
-        <div className="women-text">
+        <div className="featured-text">
           <h2>New Collections</h2>
           
          </div>
         <div className="popular-women">
           {card.map((index,item)=>{
-            return <ItemCard key={index} image={neymar} index={index}/>
+            return <ItemCard key={index} image={manutd} index={index}/>
           })
           }
         </div>

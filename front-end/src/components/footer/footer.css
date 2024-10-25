@@ -1,24 +1,27 @@
 .footer{
     /* height: 200px; */
-    /* background-color: yellowgreen; */
-    padding-bottom: 20px;
+    background-color:  #2E2E2E;
     margin-top: 40px;
-    
+    color: white;
+    padding: 20px 0px 40px 10%;
 }
 .footer-title{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+}
+.footer p{
+    font-size: 15px;
+    color: rgb(163, 160, 160);
 }
 .social-media{
+    margin: 20px 0px 40px 0px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    gap: 20px;
 }
-.social-media p{
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
+
 .footer-cpy{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     margin-top: 10px;
 }
