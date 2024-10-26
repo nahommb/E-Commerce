@@ -26,7 +26,8 @@ export const ItemCard =(props)=>{
      {/* <div className='item-card-image'>
      <img src={props.image}></img>
      </div> */}
-     <div className='button-container'>
+     
+     <div className='button-container' onClick={()=>console.log('yesss')}>
       <Button className='item-card-button' variant='contained'   sx={{
       backgroundColor: 'white',
       color: 'red',

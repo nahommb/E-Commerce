@@ -8,6 +8,7 @@ import manutd from '../../components/assets/manutd_kit.jpg'
 import './shop.css'
 import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
+import { Button } from "@mui/material"
 
 
 export const Shop =()=>{
@@ -24,7 +25,7 @@ export const Shop =()=>{
           <h1>Featured Sports wear</h1>
          </div>
          
-        <div className="popular-women" >
+        <div className="featured" >
           {card.map((index,item)=>{
       
             return <ItemCard key={index} image={barca}  index = {index}></ItemCard>
@@ -34,16 +35,22 @@ export const Shop =()=>{
         <div className="shop-banner">
 
         </div>
-        <div className="featured-text">
-          <h2>New Collections</h2>
-          
+        <div className="new-arival">
+        <div className="new-arival-text">
+        <div>
+           <h2>New Collections</h2>
+           <p>New arrival and the hottest and newest collection of the month</p>
+        </div>
          </div>
-        <div className="popular-women">
+        <div className="new-arival-container">
           {card.map((index,item)=>{
             return <ItemCard key={index} image={manutd} index={index}/>
           })
           }
         </div>
+        <Button>Explore more</Button>
+        </div>
+    
         <Footer></Footer>
     </div>
 }
