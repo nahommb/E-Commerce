@@ -68,13 +68,16 @@ const totalDataColumns = [
 
 export const CartTable = ()=>{
     return <>
+    <div style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
     <DataTable
-      title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px'}}>Your Cart</h2>}
+      title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}
       columns={columns}
       data={data}
     //   pagination
     />
-    <div style={{marginTop:'100px', width:'35%',}}>
+    </div>
+
+    <div style={{marginTop:'80px', width:'35%', backgroundColor:'whitesmoke',padding:'20px',borderRadius:'8px'}}>
         <DataTable
         title={<h4>Cart Totals</h4>}
         columns={totalDataColumns}

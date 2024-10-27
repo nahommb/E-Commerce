@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Navbar } from '../../components/navbar/navbar'
 import './login_signup.css'
 import { Footer } from '../../components/footer/footer';
+import { Google } from '@mui/icons-material';
+import { Button } from '@mui/material';
 
 
 export const LoginSignup = ()=>{
@@ -23,7 +25,8 @@ const [isChecked,setChecked] = useState(false);
                     <input type='email' placeholder='Email'/><br/>
                   <label>Password</label><br/>
                     <input type='password' placeholder='Password'/><br/>
-                    <button type='submit'>Continue</button>
+                    <Button type='submit'>Continue</Button>
+                    <Button style={{backgroundColor:'white',color:'black'}}><Google style={{marginRight:'8px'}}/>Continue with Google</Button>
                  </form>
                   <p>Create an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>setLogin(false)}>Click here</span></p>
                </div>:
