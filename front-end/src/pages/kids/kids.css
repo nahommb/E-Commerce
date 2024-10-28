@@ -1,7 +1,7 @@
 .kids{
     display: grid;
-    grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr));
-    padding: 40px;
+    grid-template-columns: repeat(auto-fit ,minmax(20rem,1fr));
+    padding: 2% 8% 2% 8%;
 }
 .kids-boarding{
     height: 15rem;

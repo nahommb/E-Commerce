@@ -10,8 +10,9 @@
     /* background-color: brown; */
     padding: 2% 0px 2% 0px;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit ,minmax(15rem,1fr)); */
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit ,minmax(20rem,1fr));
+    grid-gap: 0.6rem;
+    /* grid-template-columns: repeat(4, 1fr); */
 }
 .featured{
     padding: 2% 8% 2% 8%; 

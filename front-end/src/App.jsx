@@ -8,6 +8,7 @@ import { Kids } from './pages/kids/kids';
 import { Products } from './pages/products/products';
 import { LoginSignup } from './pages/login_signup/login_signup';
 import { Cart } from './pages/cart/cart';
+import { Retro } from './pages/retro/retro';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
         <Route path="/products/:index" element={<Products/>} />
         <Route path="/login_signup" element={<LoginSignup/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/retro" element={<Retro/>} />
 
       </Routes>   
       </div>

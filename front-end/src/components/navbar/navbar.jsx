@@ -21,6 +21,7 @@ export const Navbar = ()=>{
             <Link to={'/men'} className='links'>Men</Link>
             <Link to={'/women'} className='links'>Women</Link>
             <Link to={'/kids'} className='links'>Kids</Link>
+            <Link to={'/retro'} className='links'>Retro</Link>
         </ul>
         <div className='nav-login-cart'>
             <button className='button' onClick={()=>navigate('/login_signup')}>Login</button>

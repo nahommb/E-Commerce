@@ -36,7 +36,7 @@ const [isChecked,setChecked] = useState(false);
                     <input type='email' placeholder='Email'/><br/>
                     <input type='password' placeholder='Password'/><br/>
                     <input type='password' placeholder='Confirm Password'/><br/>
-                    <button type='submit'>Continue</button>
+                    <button type='submit' >Continue</button>
                  </form>
                   <p>Already have an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>setLogin(true)}>Login here</span></p><br/>
                   <input type='checkbox' checked={isChecked} onChange={(e)=>setChecked(e.target.checked)}></input>

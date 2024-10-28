@@ -5,7 +5,7 @@ import { ShoppingCart } from '@mui/icons-material';
 
 export const ItemCard = (props) => {
   const divStyle = {
-    backgroundImage: `url(${props.image})`,
+    backgroundImage: `url(${props.frontImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -26,7 +26,10 @@ export const ItemCard = (props) => {
   };
 
   return (
-    <div className="item-card" style={divStyle} onClick={() => navigate(`/products/${props.index}`)}>
+    <div className="item-card" style={divStyle} 
+         onMouseEnter={(e) => (e.currentTarget.style.backgroundImage = `url(${props.backImage})`)}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundImage = `url(${props.frontImage})`)}
+    onClick={() => navigate(`/products/${props.index}`)}>
       <div className='button-container'>
         <Button
           className='item-card-button'

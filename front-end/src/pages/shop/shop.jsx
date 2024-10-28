@@ -2,18 +2,18 @@ import { Boarding } from "../../components/boarding/boarding"
 import { Footer } from "../../components/footer/footer"
 import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
-import neymar from '../../components/assets/neymar.jpg'
-import barca from '../../components/assets/barca_kit.jpg'
-import manutd from '../../components/assets/manutd_kit.jpg'
+import { barcaImage,manutdImage, ronaldoBack, ronaldoFront } from "../../comman/helper/images"
+
 import './shop.css'
 import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
 import { Button } from "@mui/material"
+import { ArrowRight } from "@mui/icons-material"
 
 
 export const Shop =()=>{
 
-   const navigate = useNavigate()
+  //  const navigate = useNavigate()
 
     const card = [1,2,3,4,5,6]
 
@@ -28,7 +28,7 @@ export const Shop =()=>{
         <div className="featured" >
           {card.map((index,item)=>{
       
-            return <ItemCard key={index} image={barca}  index = {index}></ItemCard>
+            return <ItemCard key={index} frontImage={barcaImage}  index = {index}></ItemCard>
           })
           }
         </div>
@@ -44,11 +44,18 @@ export const Shop =()=>{
          </div>
         <div className="new-arival-container">
           {card.map((index,item)=>{
-            return <ItemCard key={index} image={manutd} index={index}/>
+            return <ItemCard key={index} frontImage={ronaldoFront} backImage={ronaldoBack} index={index}/>
           })
           }
         </div>
-        <Button>Explore more</Button>
+        <Button sx={
+          {
+            backgroundColor:'rgba(213, 67, 242)',
+            color:'#fff',
+            border:'none',
+            borderRadius:'8px'
+          }
+        }>Explore more <ArrowRight/> </Button>
         </div>
     
         <Footer></Footer>
