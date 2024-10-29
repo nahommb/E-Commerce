@@ -5,7 +5,7 @@ export const Boarding = ()=>{
    return <div className="boarding">
            <div className='boarding-text'>
    
-               <h5>Only the latest and greatest <br/> product for you</h5> 
+               <h3>Only the latest and greatest <br/> product for you</h3> 
                <p>Dress up and go get your dreams </p>
            </div>
            <div className='boarding-image'>

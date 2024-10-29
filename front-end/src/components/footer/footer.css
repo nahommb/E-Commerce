@@ -4,6 +4,7 @@
     margin-top: 40px;
     color: white;
     padding: 20px 0px 40px 10%;
+    
 }
 .footer-title{
     display: flex;
@@ -25,3 +26,10 @@
     /* justify-content: center; */
     margin-top: 10px;
 }
+@media (max-width: 480px) {
+    .footer {
+      padding: 20px 0px 40px 5%;
+      width: 460px;
+      
+    }
+  }

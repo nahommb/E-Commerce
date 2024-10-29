@@ -25,9 +25,10 @@ width: 100%;
 /* background-color: blue; */
 }
 .boarding-text p{
-    font-size: 13px;
+    font-size: 20px;
     margin: 0px;
     padding: 8px;
+    line-height: 0px;
 }
 .boarding-text h5{
     margin: 0px;

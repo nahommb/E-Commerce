@@ -15,6 +15,12 @@ const imageChanger = (image)=>{
     setMainImage(image)
 }
 
+const [selectedSize, setSelectedSize] = useState(null);
+
+const handleButtonClick = (size) => {
+  setSelectedSize(size); // Set the selected size
+};
+
     return <>
        <Navbar/>
         <div className="products">
@@ -44,13 +50,24 @@ const imageChanger = (image)=>{
                 <p>Custom printing</p>
                 <input placeholder='Enter Name and Number'/>
                 <p>Select size</p>
-                 <div>
-                    <button>XL</button>
-                    <button>L</button>
-                    <button>M</button>
-                    <button>S</button>
-
-                 </div>
+                <div>
+      {['XL', 'L', 'M', 'S'].map((size) => (
+        <button
+          key={size}
+          onClick={() => handleButtonClick(size)}
+          style={{
+            backgroundColor: selectedSize === size ? 'black' : 'white',
+            color: selectedSize === size ? 'white' : 'black',
+            // padding: '8px 0px',
+            // margin: '5px',
+            border: '1px solid black',
+            borderRadius: '5px',
+          }}
+        >
+          {size}
+        </button>
+      ))}
+    </div>
                 <Button>Add to cart</Button>
             </div>
         </div>

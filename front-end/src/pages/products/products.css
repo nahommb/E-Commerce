@@ -59,11 +59,12 @@
 .product-info div button{
  margin-left: 5px;
  background-color: whitesmoke;
- width: 8rem;
- padding: 3%;
+ width: 5rem;
+ padding: 1%;
  color: black;
  cursor: pointer;
 }
+
 input{
     width:15rem;
     margin: 10px;
@@ -79,3 +80,38 @@ input{
     font-weight: 500;
     color: red;
 }
+@media (max-width: 480px) {
+    .products{
+        padding: 0px;
+    }
+    .product-image{
+
+        /* background-color: aquamarine; */
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit ,minmax(1fr,1fr)); */
+        align-items: center;
+        /* width: 480px; */
+    }
+    .small-image div{
+        height: 7rem;
+        width: 7rem;
+    }
+    .small-image{
+        margin-top: 70px;
+        margin-left: 5px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit ,minmax(7rem,1fr));
+    }
+    .big-image{
+       
+        /* background-color: green; */
+        margin-left: 0px;
+    }
+    .big-image img{
+        width: 100%;
+        height: 100%;
+    }
+    .product-info{
+        /* background-color: blue; */
+    }
+  }
