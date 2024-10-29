@@ -1,3 +1,4 @@
+import { ronaldoFront } from '../../comman/helper/images'
 import { Navbar } from '../../components/navbar/navbar'
 import './products.css'
 
@@ -14,7 +15,7 @@ export const Products = ()=>{
                         <div></div>
                 </div>
                 <div className='big-image'>
-
+                    <img src={ronaldoFront}></img>
                 </div>
             </div>
             <div className="product-info">
