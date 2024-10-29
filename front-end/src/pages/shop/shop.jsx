@@ -2,7 +2,7 @@ import { Boarding } from "../../components/boarding/boarding"
 import { Footer } from "../../components/footer/footer"
 import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
-import { barcaImage,manutdImage, ronaldoBack, ronaldoFront } from "../../comman/helper/images"
+import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
 
 import './shop.css'
 import { useNavigate } from "react-router-dom"
@@ -14,6 +14,15 @@ import { ArrowRight } from "@mui/icons-material"
 export const Shop =()=>{
 
   //  const navigate = useNavigate()
+
+   const imageData = {
+    ronaldoBack,
+      ronaldoFront,
+      ronaldoCeneter,
+      ronaldoLeft,
+      ronaldoRight,
+      barcaImage
+   }
 
     const card = [1,2,3,4,5,6]
 
