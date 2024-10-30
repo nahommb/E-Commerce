@@ -2,8 +2,9 @@
 /* background-image: linear-gradient(to bottom, #87ff93,white); */
 display: flex;
 justify-content: center;
-height: 80vh;
+/* height: 80vh; */
 width: 100%;
+/* background-color: red; */
 }
 .login div{
 margin: auto;   
@@ -13,7 +14,8 @@ width: 40%;
 /* padding: 15%; */
 border-radius: 15px;
 padding: 50px 100px;
-margin-top: 100px;
+margin-top: 30%;
+margin-bottom: 10%;
 box-shadow: 2px 2px 8px 6px rgba(0,0,0,0.1);
 }
 .login div form{
@@ -34,7 +36,7 @@ color: white;
 height: 45px;
 border: none;
 border-radius: 8px;
-width: 72%;
+width: 80%;
 /* padding-left: 8px; */
 margin-bottom: 10px;
 margin-left: 4px;
@@ -55,6 +57,7 @@ input[type='checkbox']{
         padding: 7%;
         align-items: center;
         /* background-color: aquamarine; */
+        margin-top: 50%;
     }
     .login{
         /* background-color: black; */

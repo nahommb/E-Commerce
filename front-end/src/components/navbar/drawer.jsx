@@ -45,6 +45,7 @@ export const MyDrawer = ()=>{
             Retro
           </Button>
           </Link>
+          <Link to={'/login_signup'} className='links'>
           <Button style={{
             backgroundColor:'black',
             color:'white',
@@ -54,6 +55,7 @@ export const MyDrawer = ()=>{
             width:'80%',
             justifyContent:'center',
             }} onClick={()=>navigate('/login_signup')}>Login</Button>
+            </Link>
         </div>
       </Drawer>
     </div>
