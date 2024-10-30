@@ -85,9 +85,10 @@ input{
         padding: 0px;
     }
     .product-image{
-
+     margin-top: 60px;
         /* background-color: aquamarine; */
-        display: grid;
+       display: flex;
+        flex-direction: column-reverse;
         /* grid-template-columns: repeat(auto-fit ,minmax(1fr,1fr)); */
         align-items: center;
         /* width: 480px; */
@@ -97,10 +98,10 @@ input{
         width: 7rem;
     }
     .small-image{
-        margin-top: 70px;
-        margin-left: 5px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit ,minmax(7rem,1fr));
+        margin-top: 10px;
+        display: flex;
+        gap: 0.5rem;
+        /* grid-template-columns: repeat(auto-fit ,minmax(7rem,1fr)); */
     }
     .big-image{
        

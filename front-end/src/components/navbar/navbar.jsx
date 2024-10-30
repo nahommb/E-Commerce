@@ -1,7 +1,7 @@
 import React from 'react'
 import './navbar.css'
-import { ShoppingCart } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Menu, ShoppingCart } from '@mui/icons-material';
+import { Button, IconButton } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -12,6 +12,10 @@ export const Navbar = ()=>{
 
 
     return <div className='navbar'>
+        <div className='mobile-navbar'>
+        <Button><Menu/></Button>
+        <p>LEE</p>
+        </div>
         <div className='nav-log'>
              logo
             <p>LEE</p>

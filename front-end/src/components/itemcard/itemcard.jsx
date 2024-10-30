@@ -14,7 +14,7 @@ export const ItemCard = (props) => {
   const itemCardInfoInline = {
     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))`,
     color: 'white',
-    height: '40%',
+    // height: '40%',
     borderRadius: '10px',
   };
 

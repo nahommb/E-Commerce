@@ -53,3 +53,31 @@ body{
     font-size: 1.1rem;
     color: white;
 }
+.mobile-navbar{
+    display: none;
+}
+@media (max-width: 480px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+    }
+    .nav-log{
+        display: none;
+    }
+    .nav-menu{
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .nav-login-cart{
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .mobile-navbar{
+        display: flex;
+        justify-content: space-between;
+    }
+
+}

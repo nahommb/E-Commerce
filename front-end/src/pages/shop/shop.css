@@ -56,3 +56,35 @@ border-radius: 5px;
     background-color: yellowgreen;
     margin: 70px;
 }
+
+@media (max-width: 480px) {
+    .featured,.new-arival-container{
+    /* display: grid; */
+    width: 100%;
+    grid-template-columns: repeat(2 ,minmax(13rem,1fr));
+    grid-gap: 1rem;
+      /* background-color: aqua; */
+      padding: 7%;
+      margin: 0px;
+      align-items: center;
+    }
+    .new-arival-container{
+        padding: 0% ;
+        margin: 20px 0px;
+        width: 100%;
+        align-items: center;
+        /* background-color: black; */
+    }
+    .new-arival{
+        padding: 7%;
+    }
+    .featured-text{
+        padding: 0.1%;
+        padding-left: 2%;
+        font-size: 0.8rem;
+    }
+    .new-arival-text{
+      font-size: 0.6rem;
+      width: 420px;
+    }
+  }
