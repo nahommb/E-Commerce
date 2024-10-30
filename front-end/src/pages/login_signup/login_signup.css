@@ -3,17 +3,17 @@
 display: flex;
 justify-content: center;
 height: 80vh;
-
+width: 100%;
 }
 .login div{
 margin: auto;   
 background-color: whitesmoke; 
-height: 50%;
+/* height: 50%; */
 width: 40%;
 /* padding: 15%; */
 border-radius: 15px;
-padding: 100px;
-margin-top: 110px;
+padding: 50px 100px;
+margin-top: 100px;
 box-shadow: 2px 2px 8px 6px rgba(0,0,0,0.1);
 }
 .login div form{
@@ -47,4 +47,20 @@ input[type='checkbox']{
     width: 15px;
     height: 15px;
     margin-right:8px;
+}
+@media (max-width: 480px) {
+    .login div{
+        width: 440px;
+        /* height: 470px; */
+        padding: 7%;
+        align-items: center;
+        /* background-color: aquamarine; */
+    }
+    .login{
+        /* background-color: black; */
+        width: 438px;
+        padding: 7%;
+        justify-content: center;
+        height: 100vh;
+    }
 }

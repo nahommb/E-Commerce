@@ -33,8 +33,11 @@ const [isChecked,setChecked] = useState(false);
                <div>
                <h4 style={{color:'green'}}>Signup</h4>                   
                <form>
+               <label>Email</label><br/>
                     <input type='email' placeholder='Email'/><br/>
+                <label>Password</label><br/>
                     <input type='password' placeholder='Password'/><br/>
+                <label>Confirm Password</label><br/>
                     <input type='password' placeholder='Confirm Password'/><br/>
                     <button type='submit' >Continue</button>
                  </form>

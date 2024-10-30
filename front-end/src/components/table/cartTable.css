@@ -1,0 +1,12 @@
+.top-table{
+    
+}
+
+@media (max-width: 480px) {
+    .top-table{
+        width: 420px;
+    }
+    .bottom-table{
+        width: 400px;
+    }
+}

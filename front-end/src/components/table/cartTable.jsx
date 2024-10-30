@@ -2,6 +2,8 @@ import { Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 import DataTable from 'react-data-table-component';
+import './cartTable.css' 
+
 
 const data = [
     { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
@@ -68,16 +70,18 @@ const totalDataColumns = [
 
 export const CartTable = ()=>{
     return <>
-    <div style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
+    <div className='top-table' style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
+    
     <DataTable
       title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}
       columns={columns}
       data={data}
-    //   pagination
+      
+      // pagination
     />
     </div>
 
-    <div style={{marginTop:'80px', width:'35%', backgroundColor:'whitesmoke',padding:'20px',borderRadius:'8px'}}>
+    <div className='bottom-table' style={{marginTop:'80px', width:'300px', backgroundColor:'whitesmoke',padding:'20px',borderRadius:'8px'}}>
         <DataTable
         title={<h4>Cart Totals</h4>}
         columns={totalDataColumns}

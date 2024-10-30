@@ -5,14 +5,27 @@
    /* color: gray; */
    position: relative;
    top: 50px;     
-   z-index: -2;
+   /* z-index: -2; */
+   margin-bottom: 100px;
    
 }
 .cart-total{
     padding: 60px;
     color: #87A2FF;
 }
+@media (max-width: 480px) {
+  .table-container{
+    padding: 0px;
+    /* height: 500px; */
+     /* width: 70%; */
+     /* color: gray; */
 
+  }
+  .cart-total{
+      padding: 0px;
+      color: #87A2FF;
+  }
+}
 /* .table-container div::-webkit-scrollbar{
     width: 0px;
 } */
