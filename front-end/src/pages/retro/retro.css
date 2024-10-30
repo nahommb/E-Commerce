@@ -6,3 +6,15 @@
     /* grid-template-columns: repeat(5, 1fr); */
     padding: 2% 8% 2% 8%;
 }
+@media (max-width: 480px) {
+    .retro{
+        width:430px;
+      grid-template-columns: repeat(2 ,minmax(13rem,1fr));
+      grid-gap: 1rem;
+        /* background-color: aqua; */
+        padding: 6%;
+        /* margin: 0px; */
+        align-items: center;
+        justify-content: center;
+    }
+  }

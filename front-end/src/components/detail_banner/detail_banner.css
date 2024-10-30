@@ -10,5 +10,24 @@
     ;
 }
 .banner-text{
-    
+    display: none;
 }
+@media (max-width: 480px) {
+    
+    .detail-banner{
+      width:425px;
+      height: 100px;
+      /* margin-left: 10px; */
+      background-size: contain;
+      padding-top: 60%;
+      /* display: flex; */
+      /* justify-content:center; */
+      /* align-items: center; */
+    }
+    .banner-text{
+        display: block;
+        font-size: 20px;
+        color: black;
+        padding-left: 8%;
+    }
+  }

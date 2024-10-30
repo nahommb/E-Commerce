@@ -3,6 +3,7 @@ import { Navbar } from "../../components/navbar/navbar"
 import './men.css'
 import menBanner from '../../components/assets/boy_banner.png'
 import { Banner } from "../../components/banner/banner"
+import { Footer } from "../../components/footer/footer"
 
 export const Men = ()=>{
 
@@ -17,6 +18,6 @@ export const Men = ()=>{
           })
           }   
         </div>
-  
+       <Footer/>
     </div>
 }
