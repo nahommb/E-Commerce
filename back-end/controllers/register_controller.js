@@ -1,11 +1,19 @@
-const User = require('../models/user_module');
+const User = require('../models/user_model');
 
-const registerController = async (req, res) => {
+const registerController =  (req, res) => {
   try {
     const { first_name, last_name, email, password } = req.body;
-    const user = User({ first_name, last_name, email, password });
-    await user.save();
-    res.status(201).json({ message: 'User registered successfully' });
+    User.findOne({ email }).then(async existingUser => {
+      if (existingUser) {
+        return res.status(400).json({ message: 'Email already exists' });
+      }
+      else {
+      const user = User({ first_name, last_name, email, password });
+       await user.save();
+        res.status(201).json({ message: 'User registered successfully' });
+      }
+    });
+
   }
   catch (error) {
     console.error(error);
