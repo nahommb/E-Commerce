@@ -20,7 +20,7 @@ const loginController = (req, res) => {
             { new: true }
         );
         res.cookie('refreshToken',token,{
-            httpoOnly:true,
+            httpOnly:true,
             maxAge: 72 * 60 * 60 * 1000,
         })
         res.status(200).json({ message: 'Login successful',updatedUser });
