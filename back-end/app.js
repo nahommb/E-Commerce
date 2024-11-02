@@ -8,6 +8,17 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user_routes');
 const authMiddleware = require('./middleware/auth_middleware')
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+app.use(cors({
+  origin: [
+      'http://localhost:5173',
+  ],
+  methods: 'GET, POST, PUT, DELETE',
+  credentials: true,
+ 
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,14 +32,6 @@ mongoose.connect('mongodb://localhost:27017/sportsWear')
 .then(() => console.log("Connected to MongoDB"))
 .catch((error) => console.error("Could not connect to MongoDB:", error));
 
-
-
-
-
-// Apply middleware to protect routes
-app.get('/protected', authMiddleware, (req, res) => {
-  res.send(`Hello ${req.user.email}, you are authorized.`);
-});
 
 
 

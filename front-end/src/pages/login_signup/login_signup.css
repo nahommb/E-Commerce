@@ -2,8 +2,9 @@
 /* background-image: linear-gradient(to bottom, #87ff93,white); */
 display: flex;
 justify-content: center;
-/* height: 80vh; */
+height: 80vh;
 width: 100%;
+align-items: center;
 /* background-color: red; */
 }
 .login div{
@@ -58,13 +59,14 @@ input[type='checkbox']{
         align-items: center;
         /* background-color: aquamarine; */
         /* margin-top: 30%; */
-        margin-bottom: 0px;
+        /* margin-bottom: 0px; */
     }
     .login{
         /* background-color: black; */
         width: 438px;
         padding: 7%;
         justify-content: center;
-        height: 100vh;
+        height: 110vh;
+        margin-bottom: 0px;
     }
 }
