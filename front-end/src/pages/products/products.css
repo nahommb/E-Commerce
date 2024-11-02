@@ -86,12 +86,14 @@ input{
     }
     .product-image{
      margin-top: 60px;
+   
         /* background-color: aquamarine; */
        display: flex;
         flex-direction: column-reverse;
         /* grid-template-columns: repeat(auto-fit ,minmax(1fr,1fr)); */
         align-items: center;
         /* width: 480px; */
+        
     }
     .small-image div{
         height: 7rem;
@@ -100,13 +102,15 @@ input{
     .small-image{
         margin-top: 10px;
         display: flex;
-        gap: 0.5rem;
+       gap: 0.5rem;
         /* grid-template-columns: repeat(auto-fit ,minmax(7rem,1fr)); */
     }
     .big-image{
        
         /* background-color: green; */
-        margin-left: 0px;
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        
     }
     .big-image img{
         width: 100%;

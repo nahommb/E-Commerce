@@ -15,8 +15,8 @@ export const Navbar = ()=>{
     return <div className='navbar'>
         <MyDrawer/>
         <div className='nav-log'>
-             logo
-            <p>LEE</p>
+             Niya
+            {/* <p>LEE</p> */}
         </div>
         <ul className='nav-menu'>
             <Link to={'/'} className='links'>Shop</Link>

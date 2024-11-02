@@ -3,6 +3,7 @@ const generateToken = require('../helper/generate_token')
 
 const loginController = (req, res) => {
   const { email, password } = req.body;
+  console.log(email,password)
   User.findOne({ email })
     .then(async user => {
       if (!user) {
