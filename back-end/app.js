@@ -4,15 +4,15 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+
 const userRoutes = require('./routes/user_routes');
 const authMiddleware = require('./middleware/auth_middleware')
 const cookieParser = require('cookie-parser');
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(bodyParser.json());
+
 
 
 app.use('/api/user', userRoutes);

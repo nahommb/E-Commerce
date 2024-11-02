@@ -9,19 +9,21 @@ const authMiddleware = async (req, res, next) =>{
     }
   
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+      console.log(decoded);
       if (err) {
         return res.status(401).json({ message: 'Unauthorized' });
       }
-      await User.findById(decoded._id).then((user)=>{
+      await User.findById(decoded.id).then((user)=>{
+        
         if(user){
             req.user = decoded; 
              next();
         }
         else{
-            return res.status(401).json({ message: 'Unauthorized' });
+            return res.status(401).json({ message: 'User not found' });
         }
       })    
-    
+     
     });
   } 
 

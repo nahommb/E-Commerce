@@ -1,9 +1,12 @@
 const User = require('../models/user_model');
 const generateToken = require('../helper/generate_token')
 
+
+
+
 const loginController = (req, res) => {
   const { email, password } = req.body;
-  console.log(email,password)
+  console.log(req.body)
   User.findOne({ email })
     .then(async user => {
       if (!user) {
