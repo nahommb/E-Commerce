@@ -5,6 +5,7 @@ import { Footer } from '../../components/footer/footer';
 import { Google } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import { useEffect } from 'react';
 import { register } from '../../context/redux/authentication-state/authenticationAction';
 import { useDispatch , useSelector } from 'react-redux';
 
@@ -15,7 +16,7 @@ export const LoginSignup = ()=>{
 
 const [isLogin,setLogin] = useState(true);
 const [isChecked,setChecked] = useState(false);
-const [showPopup, setShowPopup] = useState(false);
+
 
 // const loginHandler = () => {
 //   axios.post(
@@ -37,9 +38,11 @@ const [showPopup, setShowPopup] = useState(false);
 //     console.error('Error posting data:', error);
 //   });
 // }
-const isRegistered = useSelector((state) => state.authenticationData?.isRegistered);
+const isRegistered = useSelector((state) => state.authenticationData.isRegistered);
 
-console.log(isRegistered)
+// console.log(isRegistered)
+
+const [showPopup, setShowPopup] = useState(false);
 
 const dispatch = useDispatch();
 
@@ -48,10 +51,18 @@ const signupHandler = () => {
   dispatch(register({
     first_name:'Nahom',
     last_name:'Mb',
-    email: 'nahomj980eh05p@gmail.com',
+    email: 'nahomj9ko5p@gmail.com',
     password: '12097yh56'
   })) 
+ 
+  console.log(isRegistered);
+  setShowPopup(isRegistered);
 }
+useEffect(() => {
+  if (isRegistered) {
+    setShowPopup(true);
+  }
+}, [isRegistered]); 
 
     return <>
           <Navbar/>
@@ -98,7 +109,11 @@ const signupHandler = () => {
                   <div style={styles.popup}>
                     <h3>Registration Successful</h3>
                     <p>You are successfully registered!</p><br/>
-                    <Button onClick={() => setShowPopup(false)}>Close</Button>
+                    <Button onClick={()=>{
+                      setShowPopup(false)
+                        window.location.reload();
+                        }
+                        }>Close</Button>
                   </div>
                 </div>
               )}
