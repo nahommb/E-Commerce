@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   email: {
-    type: String,
+    type: String, 
     required: true,
   },
   password: {
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   created_at:{
     type:Date
   },
-  refreshToken: {
+  refreshToken: { 
     type: String,
   },
 

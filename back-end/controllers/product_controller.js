@@ -20,7 +20,7 @@ const addProduct = (req, res) => {
             // console.log(file.filename);
             images.push(`product_image/${file.filename}`)
           });
-          console.log(images)
+        //   console.log(images)
   
         // Create a new Product instance with the uploaded data
         const newProduct = new Product({

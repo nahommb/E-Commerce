@@ -5,35 +5,47 @@ import { Footer } from '../../components/footer/footer';
 import { Google } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import axios from 'axios';
-
+import { register } from '../../context/redux/authentication-state/authenticationAction';
+import { useDispatch } from 'react-redux';
 
 export const LoginSignup = ()=>{
 
 const [isLogin,setLogin] = useState(true);
 const [isChecked,setChecked] = useState(false);
+const [showPopup, setShowPopup] = useState(true);
 
+// const loginHandler = () => {
+//   axios.post(
+//     'http://localhost:3000/api/user/login', 
+//     { 
+//       email: 'nahomjr17@gmail.com',
+//       password: '123456' // Ensure you're using the correct key name (e.g., 'password')
+//     },
+//     {
+//       withCredentials: true
+//     }
+//   )
+//   .then(response => {
+//     console.log('Data posted:', response.data.updatedUser.email);
+//     localStorage.setItem('token',response.data.updatedUser.refreshToken);
+//     navigate('/securepage')
+//   })
+//   .catch(error => {
+//     console.error('Error posting data:', error);
+//   });
+// }
 
-const loginHandler = () => {
-  axios.post(
-    'http://localhost:3000/api/user/login', 
-    { 
-      email: 'nahomjr17@gmail.com',
-      password: '123456' // Ensure you're using the correct key name (e.g., 'password')
-    },
-    {
-      withCredentials: true
-    }
-  )
-  .then(response => {
-    console.log('Data posted:', response.data.updatedUser.email);
-    localStorage.setItem('token',response.data.updatedUser.refreshToken);
-    navigate('/securepage')
-  })
-  .catch(error => {
-    console.error('Error posting data:', error);
-  });
+const dispatch = useDispatch();
+
+const signupHandler = () => {
+//  e.preventDefault();
+  dispatch(register({
+    first_name:'Nahom',
+    last_name:'Mb',
+    email: 'nahomjr0up@gmail.com',
+    password: '12097yh56'
+  })) 
 }
-
 
     return <>
           <Navbar/>
@@ -51,7 +63,7 @@ const loginHandler = () => {
                     <input type='password' placeholder='Password'/><br/>
                     <Button  onClick={()=>{
                       console.log('login')
-                      loginHandler();
+                      // loginHandler();
                     }}>Continue</Button>
                     <Button style={{backgroundColor:'white',color:'black'}}><Google style={{marginRight:'8px'}}/>Continue with Google</Button>
                  </form>
@@ -66,15 +78,49 @@ const loginHandler = () => {
                     <input type='password' placeholder='Password'/><br/>
                 <label>Confirm Password</label><br/>
                     <input type='password' placeholder='Confirm Password'/><br/>
-                    <button type='submit' >Continue</button>
+                    <Button  onClick={()=>{
+                      signupHandler();
+                    }}>Continue</Button>
                  </form>
                   <p>Already have an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>setLogin(true)}>Login here</span></p><br/>
                   <input type='checkbox' checked={isChecked} onChange={(e)=>setChecked(e.target.checked)}></input>
                   <p style={{display:'inline',alignItems:'center'}}>By continuing I agree terms of use and privecy policy </p>
                </div>
                }
-                
+                {showPopup && (
+                <div style={styles.overlay}>
+                  <div style={styles.popup}>
+                    <h3>Registration Successful</h3>
+                    <p>You are successfully registered!</p>
+                    <button onClick={() => setShowPopup(false)}>Close</button>
+                  </div>
+                </div>
+              )}
           </div>
           <Footer/>
     </>
 }
+const styles = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: '20%',
+    right: '10%',
+    height:'300px',
+    bottom: 0,
+    borderRadius:0,
+    border:'none',
+    boxShadow: 'none',
+    backgroundColor: 'transparent',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  popup: {
+    backgroundColor: 'white',
+    padding: '20px',
+    borderRadius: '8px',
+    textAlign: 'center',
+    width: '300px',
+  }
+};
