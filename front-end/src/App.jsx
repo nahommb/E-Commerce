@@ -9,12 +9,14 @@ import { Products } from './pages/products/products';
 import { LoginSignup } from './pages/login_signup/login_signup';
 import { Cart } from './pages/cart/cart';
 import { Retro } from './pages/retro/retro';
+import { Provider } from 'react-redux';
+import store from './context/redux/store';
 
 function App() {
   
 
   return (
-      <div>
+      <Provider store={store}>
       <Routes>
         <Route path="/" element={<Shop/>} />
         <Route path="/men" element={<Men/>} />
@@ -26,7 +28,7 @@ function App() {
         <Route path="/retro" element={<Retro/>} />
 
       </Routes>   
-      </div>
+      </Provider>
   )
 }
 

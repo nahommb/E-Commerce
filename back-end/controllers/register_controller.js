@@ -19,7 +19,7 @@ const registerController =  (req, res) => {
         }
          );
        await user.save();
-        res.status(201).json({ message: 'User registered successfully',registerd:true });
+        res.status(201).json({ message: 'User registered successfully',registered:true });
       }
     });
 

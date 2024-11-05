@@ -1,16 +1,18 @@
-import { REGISTER } from "../constants";
+import { REGISTER, REGISTERRESPONSE } from "../constants";
 
 const initialState = {
-    register:null
+    isRegistered:false
 }
 
 export const authenticationData = (state = initialState,action)=>{
+    // console.log(action.payload);
     switch(action.type){
-        case REGISTER:
-        return {
-            ...state,
-            register:action.payload.registerd
-        }
+        case REGISTERRESPONSE:
+            console.log(action.payload);
+            return {
+                ...state,
+                isRegistered:action.payload.registered
+            }
         default:
             return state;
     }

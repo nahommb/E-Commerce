@@ -6,13 +6,16 @@ import { Google } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { register } from '../../context/redux/authentication-state/authenticationAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
+
+
+
 
 export const LoginSignup = ()=>{
 
 const [isLogin,setLogin] = useState(true);
 const [isChecked,setChecked] = useState(false);
-const [showPopup, setShowPopup] = useState(true);
+const [showPopup, setShowPopup] = useState(false);
 
 // const loginHandler = () => {
 //   axios.post(
@@ -34,6 +37,9 @@ const [showPopup, setShowPopup] = useState(true);
 //     console.error('Error posting data:', error);
 //   });
 // }
+const isRegistered = useSelector((state) => state.authenticationData?.isRegistered);
+
+console.log(isRegistered)
 
 const dispatch = useDispatch();
 
@@ -42,7 +48,7 @@ const signupHandler = () => {
   dispatch(register({
     first_name:'Nahom',
     last_name:'Mb',
-    email: 'nahomjr0up@gmail.com',
+    email: 'nahomj980eh05p@gmail.com',
     password: '12097yh56'
   })) 
 }
@@ -91,8 +97,8 @@ const signupHandler = () => {
                 <div style={styles.overlay}>
                   <div style={styles.popup}>
                     <h3>Registration Successful</h3>
-                    <p>You are successfully registered!</p>
-                    <button onClick={() => setShowPopup(false)}>Close</button>
+                    <p>You are successfully registered!</p><br/>
+                    <Button onClick={() => setShowPopup(false)}>Close</Button>
                   </div>
                 </div>
               )}
