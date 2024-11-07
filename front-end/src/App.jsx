@@ -12,11 +12,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import store from './context/redux/store';
 
+
 function App() {
   return (
     <Provider store={store}>
+      
       <BrowserRouter>
-        {/* <Navbar /> Navbar will display on all pages */}
+        <Navbar /> Navbar will display on all pages
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route path="/men" element={<Men />} />

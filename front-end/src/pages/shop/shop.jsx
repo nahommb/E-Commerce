@@ -27,7 +27,7 @@ export const Shop =()=>{
     const card = [1,2,3,4,5,6]
 
     return <div className="shop">
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         <Boarding></Boarding>
         <Banner bannerText='Featured Sport Kits'></Banner>
          <div className="featured-text" >

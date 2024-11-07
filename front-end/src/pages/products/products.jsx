@@ -22,7 +22,7 @@ const handleButtonClick = (size) => {
 };
 
     return <>
-       <Navbar/>
+       {/* <Navbar/> */}
         <div className="products">
             <div className="product-image">
                 <div className='small-image'>

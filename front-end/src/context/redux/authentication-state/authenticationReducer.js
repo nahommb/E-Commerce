@@ -1,7 +1,9 @@
-import { REGISTER, REGISTERRESPONSE } from "../constants";
+import { LOGINRESPONSE, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
 
 const initialState = {
-    isRegistered:false
+    isRegistered:false,
+    user:null,
+    valideToken:false,
 }
 
 export const authenticationData = (state = initialState,action)=>{
@@ -13,6 +15,20 @@ export const authenticationData = (state = initialState,action)=>{
                 ...state,
                 isRegistered:action.payload.registered
             }
+        case LOGINRESPONSE:
+            // console.log(action.payload.updatedUser);
+            localStorage.setItem('token',action.payload.updatedUser.refreshToken);
+            return {
+                ...state,
+                user:action.payload.updatedUser
+            }
+        case VALIDATETOKENRESPONSE:
+            console.log(action.payload.valideToken);
+            return {
+                ...state,
+                 valideToken:action.payload.valideToken
+            }
+
         default:
             return state;
     }

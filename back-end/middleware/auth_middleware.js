@@ -18,6 +18,7 @@ const authMiddleware = async (req, res, next) =>{
         
         if(user){
             req.user = decoded; 
+          
              next();
         }
         else{

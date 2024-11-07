@@ -8,7 +8,7 @@ import { Footer } from "../../components/footer/footer"
 export const Cart = ()=>{
   
     return <>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className="table-container">
             <CartTable></CartTable>  
         </div>

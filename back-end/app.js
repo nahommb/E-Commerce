@@ -5,7 +5,6 @@ const app = express();
 const path = require('path');
 const port = process.env.PORT || 4000;
 const mongoose = require('mongoose');
-const multer = require('multer');
 const userRoutes = require('./routes/user_routes');
 const authMiddleware = require('./middleware/auth_middleware')
 const cookieParser = require('cookie-parser');
@@ -34,7 +33,7 @@ app.use(cookieParser());
 app.use('/product_image', express.static(path.join(__dirname, 'uploads/product_image')));
 
 app.use('/api/user', userRoutes);
-app.use('/api/product', productRoutes);
+app.use('/api/product',authMiddleware , productRoutes);
 
 mongoose.connect('mongodb://localhost:27017/sportsWear')
 .then(() => console.log("Connected to MongoDB"))

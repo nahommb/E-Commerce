@@ -7,7 +7,7 @@ import { Footer } from '../../components/footer/footer'
 export const Women=()=>{
 const card = [1,2,3,4,5,6,7,78,8,9,9]
     return <div>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className="women-boarding">
         
           <div className="inner-boarding">

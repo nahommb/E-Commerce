@@ -10,7 +10,7 @@ export const Men = ()=>{
     const card = [1,2,3,4,5,6]
 
     return <div>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Banner bannerText='Suit up for victory,wear the legend.' bannerImage={menBanner}/>
         <div className="men">
         {card.map((index,item)=>{

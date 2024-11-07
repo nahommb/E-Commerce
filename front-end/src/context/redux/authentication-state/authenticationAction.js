@@ -1,4 +1,6 @@
-import { REGISTER, REGISTERRESPONSE } from "../constants";
+import { LOGIN, REGISTER,
+     REGISTERRESPONSE ,
+     LOGINRESPONSE,VALIDATETOKEN} from "../constants";
 
 export const register = (data)=>{
     console.log(data);
@@ -11,6 +13,29 @@ export const registerResponse = (data)=>{
     console.log(data);
     return {
         type:REGISTERRESPONSE,
+        payload:data
+    }
+}
+export const login = (data)=>{
+    
+    return {
+        type:LOGIN,
+        payload:data
+    }
+}
+
+export const loginResponse = (data)=>{
+    
+    return {
+        type:LOGINRESPONSE,
+        payload:data
+    }
+}
+
+export const valideteToken = (data)=>{
+
+    return {
+        type:VALIDATETOKEN,
         payload:data
     }
 }

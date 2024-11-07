@@ -26,7 +26,11 @@ const addProduct = (req, res) => {
         const newProduct = new Product({
             product_name: req.body.product_name, // Use filename directly from req.file
             product_description: req.body.product_description,
-            product_images: images, // Use filename directly from req.file
+            product_images: images, 
+            product_size:req.body.product_size,
+            product_category:req.body.product_category,
+            product_price:req.body.product_price,
+            created_at:Date.now(),
         });
   
         newProduct.save()

@@ -9,7 +9,7 @@ export const Retro = ()=>{
     const card = [1,2,3,4,5,6,7,8,9,0,9,8,7,6,5,]
 
     return <>
-        <Navbar/>
+        {/* <Navbar/> */}
         <DetailBanner/>
         <div className="retro">
         {card.map((index,item)=>{

@@ -18,16 +18,20 @@ const loginController = (req, res) => {
       else{
         const token = generateToken(user);
         
-        const updatedUser = await User.findByIdAndUpdate(
+        await User.findByIdAndUpdate(
             user._id,
             { refreshToken: token},
             { new: true }
         );
+
+       // Remove the password field
+         const updatedUser = await User.findById(user._id).select('-password');
+
         res.cookie('refreshToken',token,{
             httpOnly:true,
             maxAge: 72 * 60 * 60 * 1000,
         })
-        res.status(200).json({ message: 'Login successful',updatedUser });
+        res.status(200).json({ message: 'Login successful',updatedUser:updatedUser });
       }
       
     })
@@ -36,5 +40,6 @@ const loginController = (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     });
 };
+
 
 module.exports = loginController;

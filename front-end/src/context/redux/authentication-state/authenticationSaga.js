@@ -1,6 +1,6 @@
-import { REGISTER, REGISTERRESPONSE } from "../constants";
+import { REGISTER, REGISTERRESPONSE,LOGIN,LOGINRESPONSE, VALIDATETOKEN, VALIDATETOKENRESPONSE } from "../constants";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { registerRequest } from "./api";
+import { loginRequest, registerRequest, validetTokenRequest } from "./api";
 
 function* register(action){
     try{
@@ -13,7 +13,39 @@ function* register(action){
     }
 }
 
+
+function* login(action){
+    try{
+        let response = yield call(loginRequest, action.payload);
+        console.log(action.payload);
+        console.log(response.data);
+        yield put({type:LOGINRESPONSE,payload:response.data})
+    }catch(error){
+        console.log(error);
+    }
+}
+
+function* validetToken(action){
+    try{
+        let response = yield call(validetTokenRequest, action.payload);
+        // console.log(action.payload);
+        console.log(response.data);
+        yield put({type:VALIDATETOKENRESPONSE,payload:response.data})
+    }catch(error){
+        console.log(error);
+    }
+}
+ 
 export function* registerSaga(){
     yield takeLatest(REGISTER,register)
  
+ }
+
+ export function* loginSaga(){
+    yield takeLatest(LOGIN,login)
+
+ }
+
+ export function* validetTokenSaga(){
+    yield takeLatest(VALIDATETOKEN,validetToken)
  }
