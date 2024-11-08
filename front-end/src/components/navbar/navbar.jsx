@@ -49,9 +49,11 @@ export const Navbar = ()=>{
         </ul>
         <div className='nav-login-cart'>
             <button className='button' onClick={()=>navigate('/login_signup')}>{isLoggedIn?'Log out':'Login'}</button>
-            <IconButton aria-label="cart" onClick={()=>navigate('/cart')}>
+            {isLoggedIn? <IconButton aria-label="cart" onClick={()=>navigate('/cart')}>
               <ShoppingCart sx={{ color: 'white' }}/>
-            </IconButton>
+            </IconButton>:
+            <></>
+            } 
         </div>
     </div>
 }

@@ -3,7 +3,7 @@ dotEnv.config();
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user_routes');
 const authMiddleware = require('./middleware/auth_middleware')
@@ -16,10 +16,10 @@ app.use(cors({
       'http://localhost:5173',
   ],
   methods: 'GET, POST, PUT, DELETE',
-  credentials: true,
+  credentials: true, 
  
-}));
-
+}));  
+  
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,9 +41,9 @@ mongoose.connect('mongodb://localhost:27017/sportsWear')
 
 
 
-
+ 
 
 
 app.listen(port, () => {
   console.log('Server is running on port '+port);
-});
+}); 
