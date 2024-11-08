@@ -4,6 +4,7 @@ import { useDispatch , useSelector } from 'react-redux';
 import { useEffect,useState } from 'react';
 import { register } from '../../context/redux/authentication-state/authenticationAction';
 import { Button } from '@mui/material';
+import { OverlayCard } from '../../components/overlay_card/overlay_card';
 
 export const Signup = ()=>{
 
@@ -17,7 +18,7 @@ const signupHandler = () => {
           dispatch(register({
             first_name:'Biruk',
             last_name:'Elias',
-            email: 'nahop665p@gmail.com',
+            email: 'nahop665pl@gmail.com',
             password: '12097yh56'
           })) 
          
@@ -32,6 +33,11 @@ const isRegistered = useSelector((state) => state.authenticationData.isRegistere
           }
         }, [isRegistered]); 
 
+const overlayOnClick = () => {
+  setShowPopup(false);
+    window.location.reload();
+}
+        
     return <>
            <div>
                <h4 style={{color:'green'}}>Signup</h4>                   
@@ -56,41 +62,10 @@ const isRegistered = useSelector((state) => state.authenticationData.isRegistere
                   <p style={{display:'inline',alignItems:'center'}}>By continuing I agree terms of use and privecy policy </p>
                </div>
                {showPopup && (
-                <div style={styles.overlay}>
-                  <div style={styles.popup}>
-                    <h3>Registration Successful</h3>
-                    <p>You are successfully registered!</p><br/>
-                    <Button onClick={()=>{
-                      setShowPopup(false)
-                        window.location.reload();
-                        }
-                        }>Close</Button>
-                  </div>
-                </div>
+                <OverlayCard title="Signup Successful" message="Your account has been created successfully." 
+                button_text="Close"
+                  onClick = {overlayOnClick}
+                />
               )}
     </>
 }
-const styles = {
-    overlay: {
-      position: 'fixed',
-      top: 0,
-      left: '20%',
-      right: '10%',
-      height:'300px',
-      bottom: 0,
-      borderRadius:0,
-      border:'none',
-      boxShadow: 'none',
-      backgroundColor: 'transparent',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    popup: {
-      backgroundColor: 'white',
-      padding: '20px',
-      borderRadius: '8px',
-      textAlign: 'center',
-      width: '300px',
-    }
-  };

@@ -7,13 +7,14 @@ import { MyDrawer } from './drawer';
 import { useState, } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import { valideteToken } from '../../context/redux/authentication-state/authenticationAction';
+import { OverlayCard } from '../overlay_card/overlay_card';
 
 export const Navbar = ()=>{
 
     const [isLoggedIn,setLoggedIn] = useState(false);
 
     const accessToken = localStorage.getItem('token');
-
+    const [showPopup, setShowPopup] = useState(false);
     
     
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
@@ -32,6 +33,10 @@ export const Navbar = ()=>{
 
     const navigate = useNavigate()
 
+    const overlayOnClick = () => {
+        setShowPopup(false);
+          window.location.reload();
+      }
    
 
     return <div className='navbar'>
@@ -40,6 +45,13 @@ export const Navbar = ()=>{
              Niya
             {/* <p>LEE</p> */}
         </div>
+        {showPopup?<OverlayCard showPopup={showPopup}
+         title='Log out' 
+         message = 'Are You Sure Want To Log out'
+          button_text='Yes'
+         onClick={overlayOnClick}
+          />
+        :<></>}
         <ul className='nav-menu'>
             <Link to={'/'} className='links'>Shop</Link>
             <Link to={'/men'} className='links'>Men</Link>
@@ -48,7 +60,10 @@ export const Navbar = ()=>{
             <Link to={'/retro'} className='links'>Retro</Link>
         </ul>
         <div className='nav-login-cart'>
-            <button className='button' onClick={()=>navigate('/login_signup')}>{isLoggedIn?'Log out':'Login'}</button>
+            
+            {isLoggedIn?
+            <button className='button' onClick={()=>setShowPopup(true)}>Log out</button>
+            :<button className='button' onClick={()=>navigate('/login_signup')}>Login</button>}    
             {isLoggedIn? <IconButton aria-label="cart" onClick={()=>navigate('/cart')}>
               <ShoppingCart sx={{ color: 'white' }}/>
             </IconButton>:
