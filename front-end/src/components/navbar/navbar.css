@@ -23,7 +23,9 @@ body{
     display: flex;
     justify-content: space-between;
     /* background-color: yellow; */
-    width: 20rem;
+    width: 25rem;
+    flex-wrap: wrap; /* Allows wrapping to the next line */
+    gap: 10px;
     align-items: center;
 }
 .nav-menu t{

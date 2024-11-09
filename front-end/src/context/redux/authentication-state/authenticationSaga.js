@@ -1,6 +1,6 @@
-import { REGISTER, REGISTERRESPONSE,LOGIN,LOGINRESPONSE, VALIDATETOKEN, VALIDATETOKENRESPONSE } from "../constants";
+import { REGISTER, REGISTERRESPONSE,LOGIN,LOGINRESPONSE, VALIDATETOKEN, VALIDATETOKENRESPONSE, LOGOUT } from "../constants";
 import { call, put, takeLatest } from "redux-saga/effects";
-import { loginRequest, registerRequest, validetTokenRequest } from "./api";
+import { loginRequest, registerRequest, validetTokenRequest, logoutRequest} from "./api";
 
 function* register(action){
     try{
@@ -35,7 +35,18 @@ function* validetToken(action){
         console.log(error);
     }
 }
- 
+
+function* logout(action){
+    try{
+        let response = yield call(logoutRequest, action.payload);
+        // console.log(action.payload);
+        console.log(response.data);
+        yield put({type:LOGOUT,payload:response.data})
+    }catch(error){
+        console.log(error);
+    }
+}
+
 export function* registerSaga(){
     yield takeLatest(REGISTER,register)
  
@@ -48,4 +59,7 @@ export function* registerSaga(){
 
  export function* validetTokenSaga(){
     yield takeLatest(VALIDATETOKEN,validetToken)
+ }
+ export function* logoutSaga(){
+    yield takeLatest(LOGOUT,logout)
  }

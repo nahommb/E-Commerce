@@ -44,6 +44,7 @@ const loginHandler = () => {
                   <p>Dress up and got your dreams</p>
                  <form onSubmit={(e)=>{
                   e.preventDefault()
+                  console.log('login')
                   loginHandler();
                   
                  }}>

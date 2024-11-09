@@ -6,8 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MyDrawer } from './drawer';
 import { useState, } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
-import { valideteToken } from '../../context/redux/authentication-state/authenticationAction';
+import { logout, valideteToken } from '../../context/redux/authentication-state/authenticationAction';
 import { OverlayCard } from '../overlay_card/overlay_card';
+import Cookies from 'js-cookie';
 
 export const Navbar = ()=>{
 
@@ -18,14 +19,15 @@ export const Navbar = ()=>{
     
     
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
-
+    console.log(valideToken)
     const dispatch = useDispatch()
-    useEffect(() => {
-        if (accessToken) {
+    useEffect(() => { 
+
+        // if (accessToken) {
             console.log('checked correctly');
             dispatch(valideteToken());
-        }
-    }, [accessToken, dispatch]); 
+        // }
+    }, [ dispatch]); 
 
     useEffect(() => {
         setLoggedIn(valideToken);
@@ -34,7 +36,10 @@ export const Navbar = ()=>{
     const navigate = useNavigate()
 
     const overlayOnClick = () => {
-        setShowPopup(false);
+        
+          Cookies.remove('refreshToken', { path: '/' })
+          dispatch(logout())
+          console.log('Refresh token removed');
           window.location.reload();
       }
    
@@ -54,8 +59,8 @@ export const Navbar = ()=>{
         :<></>}
         <ul className='nav-menu'>
             <Link to={'/'} className='links'>Shop</Link>
-            <Link to={'/men'} className='links'>Men</Link>
-            <Link to={'/women'} className='links'>Women</Link>
+            <Link to={'/men'} className='links'>International</Link>
+            <Link to={'/women'} className='links'>Others</Link>
             <Link to={'/kids'} className='links'>Kids</Link>
             <Link to={'/retro'} className='links'>Retro</Link>
         </ul>

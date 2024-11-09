@@ -4,13 +4,15 @@ const User = require('../models/user_model');
 const authMiddleware = async (req, res, next) =>{
 
   try{
-    const token = req.headers['authorization']?.split(' ')[1];
-  
+    const token = req.cookies.refreshToken;
+    //  console.log(token)
     if (!token) {
+      
       return res.status(403).json({ message: 'No token provided' });
     }
   
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+      //  console.log(decoded)
       if (err) {
         return res.status(401).json({ message: 'Unauthorized' });
       }

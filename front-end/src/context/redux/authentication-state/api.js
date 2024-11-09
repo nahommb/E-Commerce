@@ -9,7 +9,7 @@ export const registerRequest = (payload)=>{
   }
 
   export const loginRequest = (payload)=>{
-   consol.log(baseUrl)
+  
     axios.defaults.withCredentials = true;
      const response = axios.post(`${baseUrl}user/login`,payload)
   
@@ -21,3 +21,10 @@ export const registerRequest = (payload)=>{
   
      return response
   }
+
+  export const logoutRequest = (payload)=>{
+   axios.defaults.withCredentials = true;
+    const response = axios.post(`${baseUrl}user/logout`,payload)
+ 
+    return response
+ }

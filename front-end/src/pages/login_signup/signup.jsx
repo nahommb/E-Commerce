@@ -57,7 +57,7 @@ const overlayOnClick = () => {
                     <input type='password' required= {true} placeholder='Confirm Password'/><br/>
                     <Button type='submit'>Continue</Button>
                  </form>
-                  <p>Already have an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>setLogin(true)}>Login here</span></p><br/>
+                  <p>Already have an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>{window.location.reload();}}>Login here</span></p><br/>
                   <input type='checkbox' checked={isChecked} onChange={(e)=>setChecked(e.target.checked)}></input>
                   <p style={{display:'inline',alignItems:'center'}}>By continuing I agree terms of use and privecy policy </p>
                </div>

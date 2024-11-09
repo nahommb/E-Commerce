@@ -16,8 +16,7 @@ export const authenticationData = (state = initialState,action)=>{
                 isRegistered:action.payload.registered
             }
         case LOGINRESPONSE:
-            // console.log(action.payload.updatedUser);
-            localStorage.setItem('token',action.payload.updatedUser.refreshToken);
+            
             return {
                 ...state,
                 user:action.payload.updatedUser
@@ -28,7 +27,7 @@ export const authenticationData = (state = initialState,action)=>{
                 ...state,
                  valideToken:action.payload.valideToken
             }
-
+        
         default:
             return state;
     }
