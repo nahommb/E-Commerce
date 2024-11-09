@@ -42,6 +42,40 @@ const addProduct = (req, res) => {
     });
   };
   
+
+const getProducts = async (req, res) => {
+
+   const page = parseInt(req.query.page) || 1;
+   const limit =  parseInt(req.query.limit) || 10;
+
+   const skip = (page - 1) * limit; //0 3
+   const lastIndex = page * limit; //3 6
+
+   const products = await Product.find().skip(skip).limit(limit);
+   const totalItems = await Product.countDocuments();
+    let nextPage = null;
+    let prevPage = null;
+
+  if(lastIndex > totalItems){
+   nextPage = page + 1;
+  }
+  if(skip > 0){
+    prevPage = page - 1;
+  }
+
+   res.json({
+    current_page: page,
+    total_pages: Math.ceil(totalItems / limit),
+    next_page: nextPage,
+    prev_page: prevPage,
+    total_items:totalItems,
+    products,
+});
+ 
+}
+
+ 
   module.exports = {
     addProduct,
+    getProducts,
   };
