@@ -3,6 +3,9 @@ import { Navbar } from "../../components/navbar/navbar";
 import { ItemCard } from "../../components/itemcard/itemcard";
 import './retro.css'
 import { Footer } from "../../components/footer/footer";
+import ReactPaginate from 'react-paginate';
+import { Paginate } from "../../components/paginate/paginate";
+
 
 export const Retro = ()=>{
 
@@ -17,6 +20,7 @@ export const Retro = ()=>{
           })
           }   
         </div>
+        <Paginate/>
         <Footer/>
     </>
 }
