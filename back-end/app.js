@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use('/product_image', express.static(path.join(__dirname, 'uploads/product_image')));
 
 app.use('/api/user', userRoutes);
-app.use('/api/product', productRoutes);
+app.use('/api/products', productRoutes);
 
 mongoose.connect('mongodb://localhost:27017/sportsWear')
 .then(() => console.log("Connected to MongoDB"))

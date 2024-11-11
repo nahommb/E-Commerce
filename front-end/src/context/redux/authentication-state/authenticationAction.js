@@ -1,6 +1,6 @@
 import { LOGIN, REGISTER,
      REGISTERRESPONSE ,
-     LOGINRESPONSE,VALIDATETOKEN, LOGOUT} from "../constants";
+     LOGINRESPONSE,VALIDATETOKEN, LOGOUT, GETPRODUCTS} from "../constants";
 
 export const register = (data)=>{
     console.log(data);
@@ -46,3 +46,6 @@ export const logout= (data)=>{
         payload:data
     }
 }
+
+// for testing
+

@@ -4,4 +4,6 @@ export const LOGIN = 'login';
 export const LOGINRESPONSE = 'login_response';
 export const VALIDATETOKEN = 'validate_token';
 export const VALIDATETOKENRESPONSE = 'validate_token_response';
-export const LOGOUT = 'logout'
+export const LOGOUT = 'logout';
+export const GETPRODUCTS = 'get_products'
+export const GETPRODUCTSRESPONSE = 'get_products_response'

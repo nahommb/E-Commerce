@@ -9,6 +9,10 @@ import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
 import { Button } from "@mui/material"
 import { ArrowRight } from "@mui/icons-material"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { getProducts } from "../../context/redux/product-state/product_action"
+import { Paginate } from "../../components/paginate/paginate"
 
 
 export const Shop =()=>{
@@ -23,6 +27,24 @@ export const Shop =()=>{
       ronaldoRight,
       barcaImage
    }
+
+const onPageChange = (e)=>{
+  console.log(e.selected+1)
+  dispatch(getProducts({
+    category:'retro',
+    page:e.selected+1,
+    limit:3
+   }))
+}
+
+const dispatch = useDispatch()
+  useEffect(()=>{
+  dispatch(getProducts({
+   category:'retro',
+   page:1,
+   limit:3
+  }))
+  },[])
 
     const card = [1,2,3,4,5,6]
 
@@ -66,7 +88,7 @@ export const Shop =()=>{
           }
         }>Explore more <ArrowRight/> </Button>
         </div>
-    
+        <Paginate pageCount={13} onPageChange={onPageChange}/>
         <Footer></Footer>
     </div>
 }

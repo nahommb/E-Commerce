@@ -5,6 +5,7 @@
     padding: 0;
     justify-content: center;
     margin: 20px 0;
+    /* background-color: red; */
   }
   
   /* Individual page items */
@@ -15,7 +16,7 @@
   
   /* Styling for page links */
   .pagination li a {
-    padding: 8px 12px;
+    padding: 4px 5px;
     text-decoration: none;
     color: #333;
     border: 1px solid #ddd;
@@ -30,7 +31,7 @@
   
   /* Active page styling */
   .pagination li.selected a {
-    background-color: #007bff;
+    background-color: #050505;
     color: white;
     border-color: #007bff;
   }
@@ -40,4 +41,9 @@
     color: #ccc;
     cursor: not-allowed;
   }
-  
+  @media (max-width: 480px) {
+  .pagination{
+    width: 475px;
+    
+  }
+}
