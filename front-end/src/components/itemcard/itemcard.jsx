@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import './itemcard.css';
 import { Button } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { OverlayCard } from '../overlay_card/overlay_card';
+import { addToCart } from '../../context/redux/cart-state/cart_action';
 
 export const ItemCard = (props) => {
   const divStyle = {
@@ -31,11 +32,18 @@ export const ItemCard = (props) => {
   }, [valideToken]);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleButtonClick = (event) => {
     event.stopPropagation(); 
      if(!isLoggedIn) {
       setShowPopup(true);
+    }
+    else{
+      dispatch(addToCart({
+        id: props.items._id,
+        name: props.items.product_name,
+      }))
     }
     // Prevent navigation when button is clicked
     console.log('yesss');
@@ -80,7 +88,7 @@ export const ItemCard = (props) => {
       </div>
 
       <div className='item-card-info' style={itemCardInfoInline}>
-        <h4>{props.index} Barcelona away kit 24/25 </h4>
+        <h4>{props.items.product_name} </h4>
         <p>⭐⭐⭐⭐⭐ 5</p>
       </div>
     </div>

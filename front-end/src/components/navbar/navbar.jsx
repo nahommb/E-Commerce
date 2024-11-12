@@ -19,10 +19,12 @@ export const Navbar = ()=>{
     
     
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
-    console.log(valideToken)
+    const cart = useSelector((state) => state.cartReducer.cart);
+    console.log(cart.length)
+    // console.log(valideToken)
     const dispatch = useDispatch()
     useEffect(() => { 
-
+  
         // if (accessToken) {
             console.log('checked correctly');
             dispatch(valideteToken());
@@ -71,6 +73,7 @@ export const Navbar = ()=>{
             :<button className='button' onClick={()=>navigate('/login_signup')}>Login</button>}    
             {isLoggedIn? <IconButton aria-label="cart" onClick={()=>navigate('/cart')}>
               <ShoppingCart sx={{ color: 'white' }}/>
+               <span className='cart-number'>{cart.length!==0?cart.length:null}</span>
             </IconButton>:
             <></>
             } 

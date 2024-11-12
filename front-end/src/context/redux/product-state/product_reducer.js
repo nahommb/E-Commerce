@@ -9,6 +9,7 @@ export const productData = (state = initialState, action) => {
     switch (action.type) {
         case GETPRODUCTSRESPONSE:
             console.log(action.payload);
+            // console.log(products);
             return {
                 ...state,
                 products: action.payload,

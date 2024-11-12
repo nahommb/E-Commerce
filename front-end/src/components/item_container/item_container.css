@@ -1,0 +1,20 @@
+.item-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit ,minmax(20rem,1fr));
+    padding: 2% 0% 2% 0%;
+    /* background-color: aqua; */
+}
+
+@media (max-width: 480px) {
+  .item-container{
+    width:430px;
+    grid-template-columns: repeat(2 ,minmax(13rem,1fr));
+    grid-gap: 1rem;
+      /* background-color: aqua; */
+      padding: 6%;
+      /* margin: 0px; */
+      align-items: center;
+      justify-content: center;
+  }
+}
+

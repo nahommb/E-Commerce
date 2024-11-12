@@ -24,7 +24,7 @@ export const authenticationData = (state = initialState,action)=>{
         case VALIDATETOKENRESPONSE:
             console.log(action.payload.valideToken);
             return {
-                ...state,
+                ...state, 
                  valideToken:action.payload.valideToken
             }
         

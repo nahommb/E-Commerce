@@ -7,13 +7,14 @@ import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronald
 import './shop.css'
 import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
-import { Button } from "@mui/material"
+import { Button,Box } from "@mui/material"
 import { ArrowRight } from "@mui/icons-material"
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect,useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { getProducts } from "../../context/redux/product-state/product_action"
 import { Paginate } from "../../components/paginate/paginate"
-
+import CircularProgress from '@mui/material/CircularProgress';
+import { ItemContainer } from "../../components/item_container/item_container"
 
 export const Shop =()=>{
 
@@ -28,6 +29,9 @@ export const Shop =()=>{
       barcaImage
    }
 
+
+
+
 const onPageChange = (e)=>{
   console.log(e.selected+1)
   dispatch(getProducts({
@@ -36,15 +40,26 @@ const onPageChange = (e)=>{
     limit:3
    }))
 }
+ const products = useSelector((state)=>state.productData.products)
+const [isLoading,setIsLoading] = useState(true)
 
 const dispatch = useDispatch()
+
   useEffect(()=>{
   dispatch(getProducts({
    category:'retro',
    page:1,
-   limit:3
-  }))
-  },[])
+   limit:3 
+  })) 
+
+  },[dispatch])
+
+  useEffect(()=>{
+    setIsLoading(false)
+  },[products])
+  
+  
+   console.log(products)
 
     const card = [1,2,3,4,5,6]
 
@@ -55,14 +70,18 @@ const dispatch = useDispatch()
          <div className="featured-text" >
           <h1>Featured Sports wear</h1>
          </div>
-         
-        <div className="featured" >
-          {card.map((index,item)=>{
+         {/* {isLoading?<Box display="flex" justifyContent="center" alignItems="center" height="50vh">
+            <CircularProgress />
+        </Box>: <div className="featured" >
+          {products.products?.map((item)=>{
       
-            return <ItemCard key={index} frontImage={barcaImage}  index = {index}></ItemCard>
-          })
+            return <ItemCard key={item._id} frontImage={barcaImage}  index = {item._id} items={item}></ItemCard>
+          })    
           }
         </div>
+        } */}
+         
+         <ItemContainer/>
         <div className="shop-banner">
 
         </div>
@@ -74,8 +93,8 @@ const dispatch = useDispatch()
         </div>
          </div>
         <div className="new-arival-container">
-          {card.map((index,item)=>{
-            return <ItemCard key={index} frontImage={ronaldoFront} backImage={ronaldoBack} index={index}/>
+          {products.products?.map((item)=>{
+            return <ItemCard key={item._id} frontImage={ronaldoFront} backImage={ronaldoBack} items={item}/>
           })
           }
         </div>

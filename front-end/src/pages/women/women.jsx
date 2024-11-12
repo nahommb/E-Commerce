@@ -3,9 +3,18 @@ import {ItemCard} from '../../components/itemcard/itemcard'
 import { Navbar } from '../../components/navbar/navbar'
 import womenBanner from '../../components/assets/women_banner.png'
 import { Footer } from '../../components/footer/footer'
+import { useDispatch,useSelector } from "react-redux";
+import { useState,useEffect } from "react";
+import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
+import { getProducts } from "../../context/redux/product-state/product_action";
+import { Box } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
+import { Paginate } from "../../components/paginate/paginate"
+import { ItemContainer } from '../../components/item_container/item_container'
+
 
 export const Women=()=>{
-const card = [1,2,3,4,5,6,7,78,8,9,9]
+
     return <div>
         {/* <Navbar/> */}
         <div className="women-boarding">
@@ -17,12 +26,8 @@ const card = [1,2,3,4,5,6,7,78,8,9,9]
            <img className='women-banner-image' src={womenBanner}></img>
           </div>
         </div>
-        <div className="women">
-        {card.map((index,item)=>{
-            return <ItemCard key={index}/>
-          })
-          }   
-        </div> 
+
+        <ItemContainer/>
         <Footer/>
     </div>
 }
