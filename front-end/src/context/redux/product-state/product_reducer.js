@@ -1,9 +1,10 @@
-import { GETPRODUCTS, GETPRODUCTSRESPONSE } from "../constants";
+import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE } from "../constants";
 
 const initialState = {
     products: [],
     loading: false,
     error: null,
+    findedProduct:[]
 };
 export const productData = (state = initialState, action) => {
     switch (action.type) {
@@ -16,6 +17,14 @@ export const productData = (state = initialState, action) => {
                 loading: false,
                 error: null,
             };
+        case FINDPRODUCTRESPONSE:
+            // console.log(action.payload);
+            // console.log(state.findedProduct);
+            return {
+                ...state,
+                findedProduct: action.payload,        
+            };
+
         default:
             return state;
     }

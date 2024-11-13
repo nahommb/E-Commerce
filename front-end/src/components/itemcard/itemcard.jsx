@@ -6,10 +6,17 @@ import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { OverlayCard } from '../overlay_card/overlay_card';
 import { addToCart } from '../../context/redux/cart-state/cart_action';
+import { imageUrl } from '../../context/helper/base_url';
 
 export const ItemCard = (props) => {
+ 
+  const frontImage = imageUrl+props.items.product_images[0]
+  const backImage = imageUrl+props.items.product_images[1]
+  console.log('tesssss')
+  console.log(backImage) 
+
   const divStyle = {
-    backgroundImage: `url(${props.frontImage})`,
+    backgroundImage: `url(${frontImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -42,7 +49,8 @@ export const ItemCard = (props) => {
     else{
       props.items.quantity = 1;
       props.items.total = props.items.price;
-      console.log(props.items);
+      props.items.date = Date.now();
+      // console.log(props.items);
       dispatch(addToCart(props.items))
     }
     // Prevent navigation when button is clicked
@@ -55,7 +63,7 @@ export const ItemCard = (props) => {
       // window.location.reload();
   }
 
-
+//  console.log(imageUrl+props.items.product_images[0]);
   return (
     <> {showPopup?<OverlayCard  
         title="You Need to login first" 
@@ -63,9 +71,9 @@ export const ItemCard = (props) => {
         onClick={overlayOnClick}
         />:<></>}
        <div className="item-card" style={divStyle} 
-         onMouseEnter={(e) => (e.currentTarget.style.backgroundImage = `url(${props.backImage})`)}
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundImage = `url(${props.frontImage})`)}
-    onClick={() => navigate(`/products/${props.index}`)}>
+         onMouseEnter={(e) => (e.currentTarget.style.backgroundImage = `url(${backImage})`)}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundImage = `url(${frontImage})`)}
+    onClick={() => navigate(`/products/${props.items._id}`)}>
       <div className='button-container'>
         <Button
           className='item-card-button'
@@ -75,14 +83,14 @@ export const ItemCard = (props) => {
             backgroundColor: 'white',
             color: 'red',
             borderRadius: '25px',
-            width: '110px',
+            width: '120px',
             '&:hover': {
               backgroundColor: '#f5f5f5', // Change on hover
             },
           }}
         > 
           <ShoppingCart />
-          $50
+          {props.items.price} ETB
         </Button>
        
       </div>

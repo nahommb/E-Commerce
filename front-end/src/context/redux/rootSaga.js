@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
 import { loginSaga, logoutSaga, registerSaga, validetTokenSaga } from "./authentication-state/authenticationSaga";
-import { getProductSaga } from "./product-state/product_saga";
+import { findProductSaga, getProductSaga } from "./product-state/product_saga";
 
 export default function* rootSaga() {
     yield all([
@@ -9,5 +9,6 @@ export default function* rootSaga() {
         validetTokenSaga(),
         logoutSaga(),
         getProductSaga(),
+        findProductSaga()
     ]);
 }

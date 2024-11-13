@@ -37,7 +37,7 @@ const onPageChange = (e)=>{
   dispatch(getProducts({
     category:'retro',
     page:e.selected+1,
-    limit:3
+    limit:5
    }))
 }
  const products = useSelector((state)=>state.productData.products)
@@ -49,7 +49,7 @@ const dispatch = useDispatch()
   dispatch(getProducts({
    category:'retro',
    page:1,
-   limit:3 
+   limit:5
   })) 
 
   },[dispatch])

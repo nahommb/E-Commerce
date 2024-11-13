@@ -8,3 +8,11 @@ export const getProductRequest = (payload)=>{
   
      return response
   }
+
+  export const findProductRequest = (payload)=>{
+    console.log(payload);
+    axios.defaults.withCredentials = true;
+     const response = axios.get(`${baseUrl}products/find_product/${payload._id}`,)
+  
+     return response
+  }

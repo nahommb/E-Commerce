@@ -20,7 +20,7 @@ export const Navbar = ()=>{
     
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
     const cart = useSelector((state) => state.cartReducer.cart);
-    console.log(cart.length)
+    // console.log(cart.length)
     // console.log(valideToken)
     const dispatch = useDispatch()
     useEffect(() => { 

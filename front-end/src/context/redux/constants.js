@@ -9,3 +9,5 @@ export const GETPRODUCTS = 'get_products'
 export const GETPRODUCTSRESPONSE = 'get_products_response';
 export const ADDTOCART = 'add_to_cart';
 export const REMOVEFROMCART = 'remove_from_cart';
+export const FINDPRODUCT = 'find_product';
+export const FINDPRODUCTRESPONSE = 'find_product_response';

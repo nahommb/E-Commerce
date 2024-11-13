@@ -3,8 +3,21 @@ const multer = require('multer');
 const Storage = multer.diskStorage({
     destination:'uploads/product_image',
     filename:(req,file,cb)=>{
-        
-        cb(null,file.originalname)
+        const originalName = file.originalname;
+
+        // Replace spaces with underscores
+        const fileNameWithoutSpaces = originalName.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '_');
+
+        // Limit to 30 characters
+        const shortName = fileNameWithoutSpaces.substring(0, 30);
+
+        // Get the file extension
+        const fileExtension = originalName.substring(originalName.lastIndexOf('.'));
+
+        // Create the new filename with Date.now()
+        const newFileName = `${shortName}_${Date.now()}${fileExtension}`;
+
+        cb(null, newFileName);
     },
 });
 const upload = multer({

@@ -26,10 +26,10 @@ const addProduct = (req, res) => {
         const newProduct = new Product({
             product_name: req.body.product_name, // Use filename directly from req.file
             product_description: req.body.product_description,
-            product_images: images, 
-            product_size:req.body.product_size,
+            product_images: images.reverse(), 
+            // product_size:req.body.product_size,
             product_category:req.body.product_category,
-            product_price:req.body.product_price,
+            price:req.body.price,
             created_at:Date.now(),
         });
   
@@ -78,7 +78,29 @@ const getProducts = async (req, res) => {
 }
 
  
+const findProduct = async(req,res)=>{
+
+  const id = req.params.id
+
+  console.log(id)
+try{
+
+  await Product.findById(id).exec().then((product)=>{
+    if(product){
+      res.status(200).json(product)
+    }
+    else{
+      res.status(404).json({message:'Product not found'})
+    }
+  })
+}
+catch(err){
+  console.log(err)
+}
+}
+
   module.exports = {
     addProduct,
     getProducts,
+    findProduct,
   };

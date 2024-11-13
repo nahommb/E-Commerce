@@ -18,7 +18,7 @@ export const ItemContainer=(props)=>{
         dispatch(getProducts({
           category:props.category||'retro',
           page:e.selected+1,
-          limit:3
+          limit:5
          }))
       }
        const products = useSelector((state)=>state.productData.products)
@@ -29,7 +29,7 @@ export const ItemContainer=(props)=>{
         dispatch(getProducts({
          category:props.category||'retro',
          page:1,
-         limit:3
+         limit:5
         })) 
       
         },[dispatch])
@@ -46,7 +46,7 @@ return <>
         </Box>: <div className="featured" >
           {products.products?.map((item)=>{
       
-            return <ItemCard key={item._id} frontImage={barcaImage}  index = {item._id} items={item}></ItemCard>
+            return <ItemCard key={item._id} frontImage={barcaImage} items={item}></ItemCard>
           })    
           }
         </div>

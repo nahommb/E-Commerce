@@ -47,7 +47,7 @@ export const CartTable = ()=>{
       {
         name: 'Remove',
         cell:row=>(
-            <Button onClick={()=>dispatch(removeFromCart({_id:row._id}))}>
+            <Button onClick={()=>dispatch(removeFromCart({_id:row._id,quantity:row.quantity,date:row.date}))}>
                 <CloseIcon style={{color:'red'}}></CloseIcon>
             </Button>
         )

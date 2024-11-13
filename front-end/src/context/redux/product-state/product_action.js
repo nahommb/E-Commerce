@@ -1,4 +1,4 @@
-import { GETPRODUCTS,} from "../constants";
+import { FINDPRODUCT, GETPRODUCTS,} from "../constants";
 
 export const getProducts= (data)=>{
     console.log(data);
@@ -7,3 +7,11 @@ export const getProducts= (data)=>{
         payload:data
     }
 } 
+
+export const findProduct = (data)=>{
+    console.log(data)
+    return {
+        type:FINDPRODUCT,
+        payload:data
+    }
+}
