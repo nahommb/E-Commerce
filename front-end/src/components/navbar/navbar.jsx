@@ -48,7 +48,7 @@ export const Navbar = ()=>{
 
     return <div className='navbar'>
         <MyDrawer/>
-        <div className='nav-log'>
+        <div className='nav-log' onClick={()=>navigate('/')}>
              Niya
             {/* <p>LEE</p> */}
         </div>

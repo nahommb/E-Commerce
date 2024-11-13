@@ -40,10 +40,7 @@ export const ItemCard = (props) => {
       setShowPopup(true);
     }
     else{
-      dispatch(addToCart({
-        id: props.items._id,
-        name: props.items.product_name,
-      }))
+      dispatch(addToCart(props.items))
     }
     // Prevent navigation when button is clicked
     console.log('yesss');

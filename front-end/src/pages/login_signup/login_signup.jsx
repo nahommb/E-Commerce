@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navbar } from '../../components/navbar/navbar'
 import './login_signup.css'
 import { Footer } from '../../components/footer/footer';
 import { Google } from '@mui/icons-material';
 import { Button } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
 import { useDispatch , useSelector } from 'react-redux';
 import { Signup } from './signup';
 import { login } from '../../context/redux/authentication-state/authenticationAction';
@@ -15,23 +15,31 @@ export const LoginSignup = ()=>{
 
 const [isLogin,setLogin] = useState(true);
  
-
-
+const user = useSelector((state) => state.authenticationData.user);
+console.log(user)
+const navigate = useNavigate();
 const dispatch = useDispatch()
 
-const loginHandler = () => {
-  
-  dispatch(
-    login({
-      email :'nahomjr17@gmail.com',
-      password:'123456'
-    })
-  )
-  
-}
 
 
 
+  useEffect(() => {
+    if (user) {     
+      navigate('/')
+      window.location.reload();
+    }
+  }, [user]);
+
+  const loginHandler = () => {
+    
+    dispatch(
+      login({
+        email :'nahomjr17@gmail.com',
+        password:'123456'
+      }) 
+    )
+
+  }  
 
     return <>
           {/* <Navbar/> */}

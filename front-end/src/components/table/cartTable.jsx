@@ -3,9 +3,18 @@ import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 import DataTable from 'react-data-table-component';
 import './cartTable.css' 
+import { useSelector } from 'react-redux';
 
 
-const data = [
+
+
+export const CartTable = ()=>{
+
+
+ const cart  = useSelector((state) => state.cartReducer.cart);
+ console.log(cart)
+
+  const data = [
     { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
     { products: 2, title: 'Real Madrid Home Kit 2024/25', price: '$6' ,quantitty:2,total:'$40'},
     { products: 3, title: 'Manchester united 3rd kit 2024/25', price: '$13',quantitty:2, total:'$40'}
@@ -68,7 +77,8 @@ const totalDataColumns = [
     
 ]
 
-export const CartTable = ()=>{
+
+
     return <>
     <div className='top-table' style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
     
