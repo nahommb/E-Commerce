@@ -8,3 +8,4 @@ export const LOGOUT = 'logout';
 export const GETPRODUCTS = 'get_products'
 export const GETPRODUCTSRESPONSE = 'get_products_response';
 export const ADDTOCART = 'add_to_cart';
+export const REMOVEFROMCART = 'remove_from_cart';

@@ -40,6 +40,9 @@ export const ItemCard = (props) => {
       setShowPopup(true);
     }
     else{
+      props.items.quantity = 1;
+      props.items.total = props.items.price;
+      console.log(props.items);
       dispatch(addToCart(props.items))
     }
     // Prevent navigation when button is clicked

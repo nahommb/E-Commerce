@@ -3,14 +3,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 import DataTable from 'react-data-table-component';
 import './cartTable.css' 
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { removeFromCart } from '../../context/redux/cart-state/cart_action';
 
 
 
 
 export const CartTable = ()=>{
 
-
+ const dispatch = useDispatch();
  const cart  = useSelector((state) => state.cartReducer.cart);
  console.log(cart)
 
@@ -23,12 +24,12 @@ export const CartTable = ()=>{
   const columns = [
     {
       name: 'Products',
-      selector: row => row.products,
+      selector: row => row.product_name,
       sortable: true
     },
     {
       name: 'Title',
-      selector: row => row.title,
+      selector: row => row.product_description,
       sortable: true
     },
     {
@@ -37,7 +38,7 @@ export const CartTable = ()=>{
     },
     {
         name: 'Quantity',
-        selector: row => row.quantitty
+        selector: row => row.quantity
       },
       {
         name: 'Total',
@@ -46,7 +47,7 @@ export const CartTable = ()=>{
       {
         name: 'Remove',
         cell:row=>(
-            <Button>
+            <Button onClick={()=>dispatch(removeFromCart({_id:row._id}))}>
                 <CloseIcon style={{color:'red'}}></CloseIcon>
             </Button>
         )
@@ -85,7 +86,7 @@ const totalDataColumns = [
     <DataTable
       title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}
       columns={columns}
-      data={data}
+      data={cart}
       
       // pagination
     />
