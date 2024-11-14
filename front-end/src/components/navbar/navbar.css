@@ -24,11 +24,12 @@ body{
 .nav-menu{
     display: flex;
     justify-content: space-between;
-    /* background-color: yellow; */
+    /* background-color:blueviolet; */
     width: 25rem;
     flex-wrap: wrap; /* Allows wrapping to the next line */
     gap: 10px;
     align-items: center;
+    
 }
 .nav-menu t{
     text-decoration: none;
@@ -75,6 +76,7 @@ left: -2px;
         flex-direction: column;
         height: 50px;
         width: 480px;
+        align-items: normal;
     }
     .nav-log{
         display: none;
