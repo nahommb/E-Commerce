@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .input-field {
+        @apply border border-light-purple h-10 w-72 rounded-lg;
+
+        /* background-color:red; */
+    }
+}

@@ -13,13 +13,19 @@ export const CartTable = ()=>{
 
  const dispatch = useDispatch();
  const cart  = useSelector((state) => state.cartReducer.cart);
+ let subTotal = 0
+ const shippingFee = 200
+ let i = 0
+ for (i; i<cart.length;i++){
+    subTotal+= parseInt(cart[i].price)
+ }
  console.log(cart)
 
-  const data = [
-    { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
-    { products: 2, title: 'Real Madrid Home Kit 2024/25', price: '$6' ,quantitty:2,total:'$40'},
-    { products: 3, title: 'Manchester united 3rd kit 2024/25', price: '$13',quantitty:2, total:'$40'}
-  ];
+  // const data = [
+  //   { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
+  //   { products: 2, title: 'Real Madrid Home Kit 2024/25', price: '$6' ,quantitty:2,total:'$40'},
+  //   { products: 3, title: 'Manchester united 3rd kit 2024/25', price: '$13',quantitty:2, total:'$40'}
+  // ];
   
   const columns = [
     {
@@ -56,13 +62,13 @@ export const CartTable = ()=>{
   ];
 const tottalData = [
     {
-    name:'Subtotal',value:'$50'
+    name:'Subtotal',value:subTotal+' ETB'
    },
    {
-    name:'Shipping fee',value:'$10'
+    name:'Shipping fee',value:shippingFee +" ETB"
    },
    {
-    name:'Total', value:'$100'
+    name:'Total', value:subTotal+shippingFee
    }
 ]
 const totalDataColumns = [

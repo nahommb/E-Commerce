@@ -1,13 +1,14 @@
 .navbar{
     height: 80px;
     /* width: 100%; */
-    background-color: gray;
+    background-color: #292727;
     color: white;
     display: flex;
     padding: 0px 40px 0px 100px;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid white;
+    /* border-bottom: 2px solid white; */
+    
 }
 .logo{
     
