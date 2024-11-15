@@ -39,7 +39,12 @@ export const AddProducts = ()=>{
     <label htmlFor="product-name" className="block text-lg text-light-purple">
         Category
       </label>
-      <input type="text" className="input-field "/>
+    <select className="p-2 w-52 border border-light-purple rounded-lg text-light-purple">
+        <option>Club</option>
+        <option>International</option>
+        <option>Retro</option>
+        <option>Others</option>
+    </select>
     </div>
     <div>
     <label htmlFor="product-name" className="block text-lg text-light-purple">
