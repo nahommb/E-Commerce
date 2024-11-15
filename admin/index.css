@@ -13,4 +13,17 @@
 
         /* background-color:red; */
     }
+    .custom-table-row{
+        @apply p-2 
+        flex 
+        /* justify-between  */
+        items-center
+        h-14 
+        mb-2
+        justify-between
+        rounded-lg 
+        border 
+        border-gray-200 
+        text-light-purple
+    }
 }
