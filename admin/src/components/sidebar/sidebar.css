@@ -20,6 +20,7 @@ padding: 40px 30px 0px 30px;
     color:#8E05C2;
 }
 
+
 @media (max-width: 1400px) {
     .side-bar{
         width: 100px;
@@ -28,6 +29,9 @@ padding: 40px 30px 0px 30px;
         display: none;
     }
     .button-cont{
-        padding:10px 15px;
+        padding:13px 15px;
+    }
+    button .button-icon{
+        font-size: 33px;
     }
 }

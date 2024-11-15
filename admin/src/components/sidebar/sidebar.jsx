@@ -8,44 +8,44 @@ export const SideBar = (props)=>{
         <div className='side-bar'>
         <div className="button-cont">
             <Button onClick={()=>{props.onButtonClick(0)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <Receipt style={{paddingRight:'8px'}}/>
+                 <Receipt className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Orders</p>
                </Button> 
             </div>
             
             <div className="button-cont">
                <Button onClick={()=>{props.onButtonClick(1)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <ShoppingCart style={{paddingRight:'8px'}}/>
+                 <ShoppingCart className='button-icon' style={{paddingRight:'8px'}}/>
                  <p> Add products</p>
                </Button>
             </div> 
             <div onClick={()=>{props.onButtonClick(2)}} className="button-cont">
             <Button className='sidebar-button' style={{color:'#8E05C2'}} >
-                 <Folder style={{paddingRight:'8px'}}/>
+                 <Folder className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Product List</p>
                </Button>
             </div>
             <div className="button-cont">
             <Button onClick={()=>{props.onButtonClick(3)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <Edit style={{paddingRight:'8px'}}/>
+                 <Edit className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Edit Products</p>
                </Button> 
             </div>
             <div className="button-cont">
             <Button onClick={()=>{props.onButtonClick(4)}} className='sidebar-button' style={{color:'#8E05C2'}} >
-                 <ShowChart style={{paddingRight:'8px'}}/>
+                 <ShowChart className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Analytics</p>
                </Button> 
             </div> 
           <div className="button-cont">
             <Button onClick={()=>{props.onButtonClick(6)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <Person style={{paddingRight:'8px'}}/>
+                 <Person className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Profile</p>
                </Button> 
             </div>
             <div className="button-cont">
             <Button onClick={()=>{props.onButtonClick(5)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <Logout  style={{paddingRight:'8px'}}/>
+                 <Logout className='button-icon' style={{paddingRight:'8px'}}/>
                   <p>Logout</p>
                </Button> 
             </div>
