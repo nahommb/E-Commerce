@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import { MdAttachFile } from 'react-icons/md';
 import { MdUpload } from 'react-icons/md';
+import {Button} from '@mui/material'
+
+
 export const AddProducts = ()=>{
 
     const fileInputRef = useRef(null);
@@ -49,20 +52,31 @@ export const AddProducts = ()=>{
     </select>
     </div>
     </div> 
-  
-      <div className="flex justify-center">
-           <div className="grid-rows-1  mt-40 h-60 w-6/12 border rounded-lg items-center">
-        <input type="file" ref={fileInputRef} onChange={handleFileChange} className="block" style={{display:'none'}}/>
-        <button className='bg-light-purple' onClick={handleFileSelect} style={buttonStyle}>
-        <MdUpload/>
-       
-      </button>
-          <div>
-         <p>You can Only Upload 4 images Front ,Back ,Right and Left Respectively</p>
-      </div>
+    <div className="flex justify-center">
+    <div className="flex flex-col mt-20 h-60 w-6/12 border rounded-lg items-center pt-20 p-3">
+        <input 
+            type="file" 
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            className="block" 
+            style={{ display: 'none' }} 
+        />
+        <button 
+            className='bg-light-purple mb-2'  // Add bottom margin for spacing
+            onClick={handleFileSelect} 
+            style={buttonStyle}
+        >
+            <MdUpload />
+        </button>
+        <p className="text-center text-light-purple">  {/* Center the text */}
+            You can Only Upload 4 images: Front, Back, Right, and Left Respectively.
+        </p>
     </div>
-      </div>
-   
+</div>
+   <div className='flex justify-center mt-20'>
+    <Button>Submit</Button>
+   </div>
+    
      </form>
      
   </div>

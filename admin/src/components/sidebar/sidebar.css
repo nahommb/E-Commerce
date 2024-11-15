@@ -16,5 +16,18 @@ padding: 40px 30px 0px 30px;
 
 }
 .sidebar-button{
+    
     color:#8E05C2;
+}
+
+@media (max-width: 1400px) {
+    .side-bar{
+        width: 100px;
+    }
+    button p{
+        display: none;
+    }
+    .button-cont{
+        padding:10px 15px;
+    }
 }
