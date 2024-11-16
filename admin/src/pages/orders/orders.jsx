@@ -1,15 +1,16 @@
 import { Button } from "@mui/material"
 import { MyDataTable } from "../../components/table/data_table"
 import './order.css'
+import { Paginate } from "../../components/paginate/paginate"
 
 
 export const Orders = ()=>{
 
 
-const data = [1,2,3,4,5,6,7.8,9,12,3,4,56,78]
+const data = [1,2,3,4,5,6]
 
 
-    return <div className="p-12  w-full">
+    return <div className="p-8 w-full">
       <div className="custom-table-row  ml-10 mr-10 bg-light-purple text-white">
         <p >Product Name</p>
         <p>Ordered By</p>
@@ -34,10 +35,11 @@ const data = [1,2,3,4,5,6,7.8,9,12,3,4,56,78]
      </div>
      })}
      </div>
+     <Paginate pageCount={10} onPageChange={()=>{}}/>
    
      <h1 className="text-light-purple mt-10">Assigned For Delivery</h1>
      <div className= "p-4">
-       <div className="p-4 border">
+       <div className="p-4 border table-container">
         
      {data.map((index,data)=>{
         return <div className="custom-table-row">
@@ -54,6 +56,7 @@ const data = [1,2,3,4,5,6,7.8,9,12,3,4,56,78]
      </div>
      })}
        </div>
+       <Paginate pageCount={10} onPageChange={()=>{}}/>
      </div>
      {/* <MyDataTable/> */}
     </div>

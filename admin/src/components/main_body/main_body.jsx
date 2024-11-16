@@ -4,13 +4,16 @@ import { SideBar } from "../sidebar/sidebar"
 import './main_body.css'
 import { AddProducts } from "../../pages/add_products/add_products";
 import { Orders } from "../../pages/orders/orders";
+import { EditProducts } from "../../pages/edit_products/edit_products";
 export const MainBody = ()=>{
 
    const [bodyIndex , setBodyIndex] = useState(0);
 
     const elements = [
     <Orders/>,
-    <AddProducts/>
+    <AddProducts/>,
+    <></>,
+    <EditProducts/>
     ]
  
 const onButtonClick = (index)=>{
@@ -21,8 +24,11 @@ const onButtonClick = (index)=>{
 return <>
     <div className="main-body">
        <SideBar onButtonClick = {onButtonClick}></SideBar> 
+       <div className="body-element-container" >
+          {elements[bodyIndex]}
+       </div>
        {/* <div style={{height:'500px',width:'700px',backgroundColor:'red'}}></div> */}
-       {elements[bodyIndex]}
+      
     </div>
 </>
 }

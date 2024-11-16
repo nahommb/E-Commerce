@@ -17,7 +17,7 @@ export const AddProducts = ()=>{
         // You can update the state here if you want to display the file name
       };
 
-    return  <div className="p-12  w-full">
+    return  <div className="p-8 w-full">
     <form>
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
    

@@ -1,11 +1,11 @@
 .table-container{
     padding: 8px;
-    overflow: scroll;
-    height: 400px;
+    /* overflow-y: scroll; */
+    /* height: 400px; */
     border-radius: 8px;
     box-shadow: 3px 3px 8px 0px  purple;
 }
 ::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
     /* * Hide scrollbar */ 
   }

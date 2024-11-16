@@ -1,8 +1,10 @@
 .side-bar{
     width: 300px;
     background-color: #1E1E1E;
-    height: 1000px;
+    height: 100vh;
+    position: fixed;
     margin-top: 20px;
+   
     /* height: 93vh; */
     /* border-top-right-radius: 20px; */
 
