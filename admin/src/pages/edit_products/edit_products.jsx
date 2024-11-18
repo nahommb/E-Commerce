@@ -1,5 +1,7 @@
 import { Button } from "@mui/material"
 import { Search } from "@mui/icons-material"
+import { Paginate } from "../../components/paginate/paginate"
+
 
 export const EditProducts = ()=>{
 
@@ -22,6 +24,12 @@ export const EditProducts = ()=>{
         <Button style={{color:'black'}}>select</Button>
         </div>
       })}
-        
+        <Paginate pageCount={10}/>
+
+    <div className="flex justify-end pr-5">
+        <Button style={{color:'purple'}}>Edit</Button>
+        <Button style={{backgroundColor:'red',color:'white',marginLeft:'10px'}}>Delete</Button>
+    </div>
+  
     </div>
 }

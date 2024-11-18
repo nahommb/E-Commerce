@@ -28,7 +28,7 @@ app.use(cookieParser());
 // app.use((req, res, next) => {
 //   console.log(`Request URL: ${req.url}`);
 //   next();
-// });
+// }); 
 
 app.use('/product_image', express.static(path.join(__dirname, 'uploads/product_image')));
 

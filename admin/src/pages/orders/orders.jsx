@@ -11,7 +11,7 @@ const data = [1,2,3,4,5,6]
 
 
     return <div className="p-8 w-full">
-      <div className="custom-table-row  ml-10 mr-10 bg-light-purple text-white">
+      <div className="custom-table-row mb-4 ml-10 mr-10 bg-light-purple text-white">
         <p >Product Name</p>
         <p>Ordered By</p>
         <p>Phone</p>
