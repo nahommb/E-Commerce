@@ -60,11 +60,12 @@ export const AddProducts = ()=>{
     <div className="flex justify-center">
     <div className="flex flex-col mt-20 h-60 w-6/12 border rounded-lg items-center pt-20 p-3">
         <input 
-            type="file" 
+            type="file"
+            multiple
             ref={fileInputRef} 
             onChange={handleFileChange} 
             className="block" 
-            style={{ display: 'none' }} 
+            style={{ display: 'none' }}      
         />
         <button 
             className='bg-light-purple mb-2'  // Add bottom margin for spacing

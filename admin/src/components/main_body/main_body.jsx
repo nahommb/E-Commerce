@@ -6,6 +6,7 @@ import { AddProducts } from "../../pages/add_products/add_products";
 import { Orders } from "../../pages/orders/orders";
 import { EditProducts } from "../../pages/edit_products/edit_products";
 import { Analytics } from "../../pages/analytics/analytics";
+import { Profile } from "../../pages/profile/profile";
 export const MainBody = ()=>{
 
    const [bodyIndex , setBodyIndex] = useState(0);
@@ -14,7 +15,8 @@ export const MainBody = ()=>{
     <Orders/>,
     <AddProducts/>,
     <EditProducts/>,
-    <Analytics/>
+    <Analytics/>,
+    <Profile/>
     ]
  
 const onButtonClick = (index)=>{
