@@ -13,15 +13,17 @@ export const Popup = ({isOpen,onClose,content})=>{
                 content.title==='Change Email'?<div>
                 <input className="input-field m-2" placeholder="Email"/><br/>
                 <input className="input-field m-2" placeholder="Verfication Code"/><br/>
+                {/* <button className="m-3" onClick={onClose}>Save</button> */}
                 </div>:(
                     content.title==='Change Password'?<div>
                     <input className="input-field m-2" placeholder="Current Password"/><br/>
                     <input className="input-field m-2" placeholder="New Password"/><br/>
+                    {/* <button className="m-3" onClick={onClose}>Save</button> */}
                     </div>:null
                 )
             )}
          
-            <button onClick={onClose}>Save</button>
+            {content.title !== 'Change Email' || content.title !== 'Change Name' || content.title==='Change Password'?<button className="mt-3" onClick={onClose}>Save</button>:<button className="m-3" onClick={onClose}>Ok</button>}
           </div>
         </div>
       )}

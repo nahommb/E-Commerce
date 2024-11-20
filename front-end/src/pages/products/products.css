@@ -17,7 +17,7 @@
 }
 .big-image{
     height: 525px;
-    /* width: 20rem; */
+    min-width: 25rem;
     /* background-color: green; */
     margin-left: 20px;
 }

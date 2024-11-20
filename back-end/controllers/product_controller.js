@@ -28,6 +28,7 @@ const addProduct = (req, res) => {
             product_description: req.body.product_description,
             product_images: images.reverse(), 
             // product_size:req.body.product_size,
+            custom_print:req.body.custom_print,
             product_category:req.body.product_category,
             price:req.body.price,
             created_at:Date.now(),
