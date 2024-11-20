@@ -1,33 +1,27 @@
-import React, { useRef, useState } from 'react';
-import { MdAttachFile, MdUpload } from 'react-icons/md';
+import React, { useRef, useState, useEffect } from 'react';
+import { MdUpload } from 'react-icons/md';
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts } from '../../context/redux/products/productsAction';
 import { Popup } from '../../components/popup/popup';
+import { PreviewCard } from '../../components/preview_card/preview_card';
 
 export const AddProducts = () => {
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: 'Successfuly uploaded' });
-
+  const [modalContent, setModalContent] = useState({ title: 'Successfully uploaded' });
+  const [selectedImages, setSelectedImages] = useState([]);
   const isUploaded = useSelector((state) => state.productsReducer.isUploaded);
-  console.log(isUploaded);
-  // const handleOpenModal = (title) => {
-  //     setModalContent({ title });
-  //     setIsModalOpen(true);
-  // };
-
+  
   const handleCloseModal = () => {
-      setIsModalOpen(false);
-      dispatch({
-        type: 'ADDPRODUCTSRESPONSE',
-        payload: { message: 'Some error occurred' }
-      });
+    setIsModalOpen(false);
+    dispatch({
+      type: 'ADDPRODUCTSRESPONSE',
+      payload: { message: 'Some error occurred' }
+    });
   };
 
-  // Local state for handling form inputs
   const [productName, setProductName] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('Club');
@@ -43,12 +37,22 @@ export const AddProducts = () => {
     const selectedFiles = event.target.files;
     const fileArray = Array.from(selectedFiles);
     setFiles(fileArray); // Store files in local state
-    // console.log(fileArray);
+    
+    // Create image URLs based on the latest selected files
+    const imageUrls = fileArray.map(file => URL.createObjectURL(file));
+    setSelectedImages(imageUrls);
+    console.log(imageUrls); // Log the selected images to the console
   };
+
+  useEffect(() => {
+    // Revoke the object URLs to avoid memory leaks
+    return () => {
+      selectedImages.forEach(url => URL.revokeObjectURL(url));
+    };
+  }, [selectedImages]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const formData = new FormData();
     files.forEach(file => {
       formData.append('images', file); // Append each file to the formData
@@ -125,6 +129,8 @@ export const AddProducts = () => {
           </div>
         </div>
 
+        <PreviewCard images={selectedImages} />
+
         <div className="flex justify-center">
           <div className="flex flex-col mt-20 h-60 w-6/12 border rounded-lg items-center pt-20 p-3">
             <input 
@@ -147,9 +153,13 @@ export const AddProducts = () => {
             </p>
           </div>
         </div>
+
         <div>
-          {/* <Button onClick={() => handleOpenModal('Change Password')}>Change Password</Button> */}
-         {isUploaded?<Popup isOpen={isModalOpen} onClose={handleCloseModal} content={modalContent} />:<Popup isOpen={isModalOpen} onClose={handleCloseModal} content={{title: 'Some Error Occured Please Try Again'}} />}
+          {isUploaded ? 
+            <Popup isOpen={isModalOpen} onClose={handleCloseModal} content={modalContent} /> 
+            : 
+            <Popup isOpen={isModalOpen} onClose={handleCloseModal} content={{ title: 'Some Error Occurred Please Try Again' }} />
+          }
         </div>
     
         <div className='flex justify-center mt-20'>
