@@ -20,7 +20,7 @@ function* getProduct(action){
     try{
         let response = yield call(getProductRequest, action.payload);
 
-        console.log(response.data);
+        // console.log(response.data);
         yield put({type:GETALLPRODUCTSRESPONSE,payload:response.data})
     }
     catch(err){

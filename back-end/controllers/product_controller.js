@@ -143,9 +143,16 @@ const searchProducts = async (req, res) => {
 };
  
 const getAllProducts =  async (req, res) => {
+  const skip = parseInt(req.query.page) || 1;
+  const limit =  parseInt(req.query.limit) || 5
+  ;
   try {
-      const products = await Product.find();
-      res.json(products);
+    const products = await Product.find().skip(skip).limit(limit);
+    const totalItems = await Product.countDocuments();
+      res.json({
+        products: products,
+        totalItems: totalItems,
+      });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Internal server error' });

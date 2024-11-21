@@ -11,7 +11,7 @@ export const addProductRequest = (payload)=>{
 
 export const getProductRequest = (payload)=>{
     axios.defaults.withCredentials = true;
-     const response = axios.get(`${baseUrl}products/get_all_products`)
+     const response = axios.get(`${baseUrl}products/get_all_products?page=${payload.page}&limit=${payload.limit}`)
 
      return response
   }

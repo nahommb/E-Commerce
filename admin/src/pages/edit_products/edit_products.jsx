@@ -1,21 +1,43 @@
 import { Button } from "@mui/material"
 import { Search } from "@mui/icons-material"
 import { Paginate } from "../../components/paginate/paginate"
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect,useState } from "react"
+import { useDispatch,useSelector } from "react-redux"
 import { getProducts } from "../../context/redux/products/productsAction"
 
 export const EditProducts = ()=>{
 
- const data = [1,2,3,4,5,6,7,8,]
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
+  const handleSelect = (productId) => {
+    // Toggle selection
+    if (selectedProductId === productId) {
+        setSelectedProductId(null); // Deselect if already selected
+    } else {
+        setSelectedProductId(productId); // Select new product
+    }
+};
+
+ const products = useSelector(state=>state.productsReducer.products)
+
+//  console.log(products)
  const dispatch = useDispatch()
 
  
 useEffect(()=>{
-  dispatch(getProducts())
+  dispatch(getProducts({
+    page: 1,
+    limit: 8
+  }))
 },[])
  
+const onPageChange = (e)=>{
+ console.log(e.selected+1)
+ dispatch(getProducts({
+  page: e.selected+1,
+   limit: 8
+ }))
+}
 
     return <div className="p-8 w-full">
     
@@ -25,16 +47,21 @@ useEffect(()=>{
         <input className="input-field border-white bg-light-purple"></input>
         <Button style={{color:'white'}}>
             <Search/>
-        </Button> 
+        </Button>   
         </div>
         </div>
-      {data.map((index,data)=>{
-        return <div className="custom-table-row">
-        <p>Barcelona Away kit 24/25</p>
-        <Button style={{color:'black'}}>select</Button>
+      {products.products?.map((product)=>{
+        return <div key={product._id} className="custom-table-row">
+        <p>{product.product_name}</p>
+        <Button style={{
+          color:selectedProductId === product._id ? 'white' : 'black',
+          backgroundColor: selectedProductId === product._id ? 'purple' : 'transparent',
+        }} onClick={()=>handleSelect(product._id)}>
+        select
+        </Button>
         </div>
       })}
-        <Paginate pageCount={10}/>
+        <Paginate pageCount={products?.totalItems} onPageChange={onPageChange}/>
 
     <div className="flex justify-end pr-5">
         <Button style={{color:'purple'}}>Edit</Button>
