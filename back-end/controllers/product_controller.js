@@ -124,9 +124,27 @@ catch(err){
   console.log(err)
 }
 }
+const searchProducts = async (req, res) => {
+  const search = req.query.search;  // Optional chaining to avoid errors if query is undefined
+  console.log("Search query:", search);
 
+  if (!search) {
+      return res.status(400).json({ message: 'Search term is required.' });
+  }
+
+  try {
+      const products = await Product.find({ product_name: { $regex: search, $options: 'i' } });
+      res.json(products);
+      console.log(products);
+  } catch (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).json({ message: 'Internal server error.' });
+  }
+};
+ 
   module.exports = {
     addProduct,
     getProducts,
     findProduct,
+    searchProducts,
   };
