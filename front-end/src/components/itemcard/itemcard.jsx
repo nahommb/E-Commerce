@@ -28,7 +28,7 @@ export const ItemCard = (props) => {
     // height: '40%',
     borderRadius: '10px',
   };
-
+  console.log(props.pageNumber)
   const [isLoggedIn,setLoggedIn] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -97,7 +97,7 @@ export const ItemCard = (props) => {
 
       <div className='item-card-info' style={itemCardInfoInline}>
         <h4>{props.items.product_name} </h4>
-        <p>⭐⭐⭐⭐⭐ 5</p>
+        {/* <p>⭐⭐⭐⭐⭐ 5</p> */}
       </div>
     </div>
     </>

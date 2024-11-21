@@ -38,13 +38,15 @@
 @media  (max-width: 480px) {
     .item-card {
       width: 13rem;
-      height: 100%;
+      height: 16rem;
+      /* margin-bottom: 20px; */
       background-color: brown;
     }
     .item-card-info{
         padding-left: 20px;
         padding-bottom: 10px;
         align-content: end;
-        height: 30%;
+        height: 5rem;
+        /* margin-bottom: 40px; */
     }
   }

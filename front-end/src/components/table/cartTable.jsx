@@ -17,7 +17,7 @@ export const CartTable = ()=>{
  const shippingFee = 200
  let i = 0
  for (i; i<cart.length;i++){
-    subTotal+= parseInt(cart[i].price)
+    subTotal+= parseInt(cart[i].total)
  }
  console.log(cart)
 

@@ -15,6 +15,25 @@ import { ItemContainer } from '../../components/item_container/item_container'
 
 export const Women=()=>{
 
+  const products = useSelector((state)=>state.productData.products)
+  const pageNumber = useSelector((state)=>state.productData.othersPageNumber)
+  console.log(pageNumber)
+  
+  const dispatch = useDispatch()
+
+  const onPageChange = (e)=>{
+      console.log(e.selected+1)
+     
+      dispatch(getProducts({
+        category:props.category||'all',
+        page:e.selected+1,
+        limit:5
+       }))
+       const NewPageNumber= e.selected+1
+        dispatch({type:'OTHERSPAGENUMBER',payload:NewPageNumber})
+      //  setPageNumber(e.selected+1)
+    }
+
     return <div>
         {/* <Navbar/> */}
         <div className="women-boarding">
@@ -27,7 +46,9 @@ export const Women=()=>{
           </div>
         </div>
 
-        <ItemContainer/>
+        <ItemContainer category = 'Others' pageNumber = {pageNumber}/>
+        <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
+
         <Footer/>
     </div>
 }

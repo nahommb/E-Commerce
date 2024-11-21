@@ -162,7 +162,7 @@ export const AddProducts = () => {
           }
         </div>
     
-        <div className='flex justify-center mt-20'>
+        <div className='flex justify-center mt-5'>
           <Button type="submit">Submit</Button>
         </div>
       </form>

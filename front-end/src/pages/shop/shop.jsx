@@ -20,45 +20,51 @@ export const Shop =()=>{
 
   //  const navigate = useNavigate()
 
-   const imageData = {
-    ronaldoBack,
-      ronaldoFront,
-      ronaldoCeneter,
-      ronaldoLeft,
-      ronaldoRight,
-      barcaImage
-   }
 
-
-
-
-const onPageChange = (e)=>{
-  console.log(e.selected+1)
-  dispatch(getProducts({
-    category:'retro',
-    page:e.selected+1,
-    limit:5
-   }))
-}
+// const onPageChange = (e)=>{
+//   console.log(e.selected+1)
+//   dispatch(getProducts({
+//     category:'retro',
+//     page:e.selected+1,
+//     limit:5
+//    }))
+// }
  const products = useSelector((state)=>state.productData.products)
 const [isLoading,setIsLoading] = useState(true)
 
 const dispatch = useDispatch()
 
-  useEffect(()=>{
-  dispatch(getProducts({
-   category:'retro',
-   page:1,
-   limit:5
-  })) 
+  // useEffect(()=>{
+  // dispatch(getProducts({
+  //  category:'retro',
+  //  page:1,
+  //  limit:5
+  // })) 
 
-  },[dispatch])
+  // },[dispatch])
 
-  useEffect(()=>{
-    setIsLoading(false)
-  },[products])
+  // useEffect(()=>{
+  //   setIsLoading(false)
+  // },[products])
+  // const products = useSelector((state)=>state.productData.products)
+  const pageNumber = useSelector((state)=>state.productData.shopPageNumber)
+  console.log(pageNumber)
   
+  const onPageChange = (e)=>{
+    console.log(e.selected+1)
+   
+    dispatch(getProducts({
+      category:'all'||'all',
+      page:e.selected+1,
+      limit:5
+     }))
+     const NewPageNumber= e.selected+1
+      dispatch({type:'SHOPPAGENUMBER',payload:NewPageNumber})
+    //  setPageNumber(e.selected+1)
+  }
   
+
+
    console.log(products)
 
     const card = [1,2,3,4,5,6]
@@ -70,18 +76,10 @@ const dispatch = useDispatch()
          <div className="featured-text" >
           <h1>Featured Sports wear</h1>
          </div>
-         {/* {isLoading?<Box display="flex" justifyContent="center" alignItems="center" height="50vh">
-            <CircularProgress />
-        </Box>: <div className="featured" >
-          {products.products?.map((item)=>{
-      
-            return <ItemCard key={item._id} frontImage={barcaImage}  index = {item._id} items={item}></ItemCard>
-          })    
-          }
-        </div>
-        } */}
          
-         <ItemContainer/>
+         <ItemContainer category='all' pageNumber={pageNumber}/>
+         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
+
         <div className="shop-banner">
 
         </div>
@@ -92,12 +90,13 @@ const dispatch = useDispatch()
            <p>New arrival and the hottest and newest collection of the month</p>
         </div>
          </div>
-        <div className="new-arival-container">
+         {/* <ItemContainer category='all'/> */}
+        {/* <div className="new-arival-container">
           {products.products?.map((item)=>{
             return <ItemCard key={item._id} frontImage={ronaldoFront} backImage={ronaldoBack} items={item}/>
           })
           }
-        </div>
+        </div> */}
         <Button sx={
           {
             backgroundColor:'rgba(213, 67, 242)',
@@ -107,7 +106,7 @@ const dispatch = useDispatch()
           }
         }>Explore more <ArrowRight/> </Button>
         </div>
-        <Paginate pageCount={13} onPageChange={onPageChange}/>
+        {/* <Paginate pageCount={13} onPageChange={onPageChange}/> */}
         <Footer></Footer>
     </div>
 }

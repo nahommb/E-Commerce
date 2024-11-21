@@ -11,24 +11,32 @@ export const ItemContainer=(props)=>{
 
 
     const dispatch = useDispatch()
-
-
-    const onPageChange = (e)=>{
-        console.log(e.selected+1)
-        dispatch(getProducts({
-          category:props.category||'retro',
-          page:e.selected+1,
-          limit:5
-         }))
-      }
+    // const [pageNumber , setPageNumber] = useState()
+    // console.log(props.category)
+    console.log(props.pageNumber)
+    const pageNumber = props.pageNumber
+    // const pageNumber = useSelector((state)=>state.productData.currentPageNumber)
+    // console.log(pageNumber)
+    // const onPageChange = (e)=>{
+    //     console.log(e.selected+1)
+       
+    //     dispatch(getProducts({
+    //       category:props.category||'all',
+    //       page:e.selected+1,
+    //       limit:5
+    //      }))
+    //      const pageNumber= e.selected+1
+    //       dispatch({type:'PAGENUMBER',payload:pageNumber})
+    //     //  setPageNumber(e.selected+1)
+    //   }
        const products = useSelector((state)=>state.productData.products)
        console.log(products)
       const [isLoading,setIsLoading] = useState(true)
        
         useEffect(()=>{
         dispatch(getProducts({
-         category:props.category||'retro',
-         page:1,
+         category:props.category||'all', 
+         page:pageNumber,
          limit:5
         })) 
       
@@ -46,12 +54,12 @@ return <>
         </Box>: <div className="featured" >
           {products.products?.map((item)=>{
       
-            return <ItemCard key={item._id} frontImage={barcaImage} items={item}></ItemCard>
+            return <ItemCard key={item._id} frontImage={barcaImage} items={item} ></ItemCard>
           })    
           }
         </div>
         }
         </div>
-        <Paginate pageCount={products.total_pages} onPageChange={onPageChange}/>
+        {/* <Paginate pageCount={products.total_pages} onPageChange={onPageChange}/> */}
 </>
 }
