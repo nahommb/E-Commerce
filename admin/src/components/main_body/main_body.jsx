@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { SideBar } from "../sidebar/sidebar"
 
 import './main_body.css'
@@ -7,6 +7,8 @@ import { Orders } from "../../pages/orders/orders";
 import { EditProducts } from "../../pages/edit_products/edit_products";
 import { Analytics } from "../../pages/analytics/analytics";
 import { Profile } from "../../pages/profile/profile";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../../context/redux/products/productsAction";
 export const MainBody = ()=>{
 
    const [bodyIndex , setBodyIndex] = useState(0);
@@ -18,7 +20,12 @@ export const MainBody = ()=>{
     <Analytics/>,
     <Profile/>
     ]
- 
+ const dispatch = useDispatch()
+
+useEffect(()=>{
+    dispatch(getProducts())
+},[])
+
 const onButtonClick = (index)=>{
   setBodyIndex(index)
   console.log(index)

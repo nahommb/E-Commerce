@@ -142,9 +142,19 @@ const searchProducts = async (req, res) => {
   }
 };
  
+const getAllProducts =  async (req, res) => {
+  try {
+      const products = await Product.find();
+      res.json(products);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+}
   module.exports = {
     addProduct,
     getProducts,
     findProduct,
     searchProducts,
+    getAllProducts,
   };

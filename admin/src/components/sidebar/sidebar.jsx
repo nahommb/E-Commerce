@@ -1,6 +1,6 @@
 import './sidebar.css'
 import {Button} from '@mui/material'
-import { ShoppingCart, Folder, ShowChart,Logout ,Receipt,Edit, Person} from '@mui/icons-material';
+import { ShoppingCart,Add ,Folder, ShowChart,Logout ,Receipt,Edit, Person} from '@mui/icons-material';
 
 
 export const SideBar = (props)=>{
@@ -15,7 +15,7 @@ export const SideBar = (props)=>{
             
             <div className="button-cont">
                <Button onClick={()=>{props.onButtonClick(1)}} className='sidebar-button' style={{color:'#8E05C2'}}>
-                 <ShoppingCart className='button-icon' style={{paddingRight:'8px'}}/>
+                 <Add className='button-icon' style={{paddingRight:'8px'}}/>
                  <p> Add products</p>
                </Button>
             </div> 

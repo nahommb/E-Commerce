@@ -8,3 +8,10 @@ export const addProductRequest = (payload)=>{
   
      return response
   }
+
+export const getProductRequest = (payload)=>{
+    axios.defaults.withCredentials = true;
+     const response = axios.get(`${baseUrl}products/get_all_products`)
+
+     return response
+  }

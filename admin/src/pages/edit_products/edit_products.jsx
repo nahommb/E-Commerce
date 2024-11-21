@@ -1,11 +1,21 @@
 import { Button } from "@mui/material"
 import { Search } from "@mui/icons-material"
 import { Paginate } from "../../components/paginate/paginate"
-
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { getProducts } from "../../context/redux/products/productsAction"
 
 export const EditProducts = ()=>{
 
  const data = [1,2,3,4,5,6,7,8,]
+
+ const dispatch = useDispatch()
+
+ 
+useEffect(()=>{
+  dispatch(getProducts())
+},[])
+ 
 
     return <div className="p-8 w-full">
     
