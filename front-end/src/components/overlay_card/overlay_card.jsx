@@ -7,9 +7,22 @@ export const OverlayCard = (props)=>{
 
     return <div style={styles.overlay}>
     <div style={styles.popup}>
+      {props.title === 'Order'?<div>
       <h3 style={{color:'black'}}>{props.title}</h3>
+       <form>
+        <input type='text' required placeholder='Enter your name'/><br/>
+        <input type='text'  required placeholder='Enter your address'/><br/>
+        <input type='text'  required  placeholder='Enter your phone number'/><br/>
+        <Button style={{color:'green'}} type='submit' onClick={props.onClick} >{props.button_text}</Button>
+        <Button style={{color:'red'}} onClick={props.onClick} >Cancel</Button>
+       </form>
+     
+      </div>: 
+      <div><h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
-      <Button onClick={props.onClick}>{props.button_text}</Button>
+      <Button onClick={props.onClick}>{props.button_text}</Button></div>
+      }
+     
     </div>
   </div>
 }
@@ -17,7 +30,7 @@ export const OverlayCard = (props)=>{
 const styles = {
     overlay: {
       position: 'fixed',
-      top: 0,
+      top: 100,
       left: '20%',
       right: '10%',
       height:'300px',
@@ -29,10 +42,10 @@ const styles = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-     
+      zIndex: 9999,
     },
     popup: {
-      backgroundColor: 'white',
+      backgroundColor: 'whitesmoke',
       padding: '20px',
       borderRadius: '8px',
       textAlign: 'center',

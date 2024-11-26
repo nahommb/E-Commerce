@@ -5,11 +5,21 @@ import DataTable from 'react-data-table-component';
 import './cartTable.css' 
 import { useSelector,useDispatch } from 'react-redux';
 import { removeFromCart } from '../../context/redux/cart-state/cart_action';
-
-
+import { useState } from "react"
+import { OverlayCard } from "../../components/overlay_card/overlay_card"
 
 
 export const CartTable = ()=>{
+
+
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const overlayOnClick = () => {
+      setShowPopup(false);
+       // window.location.reload();
+    }
+
 
  const dispatch = useDispatch();
  const cart  = useSelector((state) => state.cartReducer.cart);
@@ -88,7 +98,11 @@ const totalDataColumns = [
 
     return <>
     <div className='top-table' style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
-    
+    {showPopup?<OverlayCard  
+        title="Order" 
+        button_text="Order Now" 
+        onClick={overlayOnClick}
+        />:<></>}
     <DataTable
       title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}
       columns={columns}
@@ -105,7 +119,7 @@ const totalDataColumns = [
         data={tottalData}
     />
     <br/>
-    <Button style={{color:'red'}}>Proceed to Payment</Button>
+    <Button style={{color:'red'}} onClick={()=>setShowPopup(true)}>Proceed to Payment</Button>
     </div>
 
     </>
