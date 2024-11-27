@@ -6,8 +6,10 @@ import 'react-data-table-component'
 import { Footer } from "../../components/footer/footer"
 import { useState } from "react"
 import { OverlayCard } from "../../components/overlay_card/overlay_card"
+import {useSelector } from "react-redux"
 
 export const Cart = ()=>{
+
 
     return <>
         {/* <Navbar/> */}

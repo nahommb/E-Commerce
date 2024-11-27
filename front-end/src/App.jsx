@@ -11,7 +11,7 @@ import { Retro } from './pages/retro/retro';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import store from './context/redux/store';
-
+import ProtectedRoute from './components/protected_route/protected_route';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/kids" element={<Kids />} />
           <Route path="/products/:id" element={<Products />} />
           <Route path="/login_signup" element={<LoginSignup />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
           <Route path="/retro" element={<Retro />} />
         </Routes>
       </BrowserRouter>

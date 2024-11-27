@@ -67,7 +67,7 @@ const dispatch = useDispatch()
 
    console.log(products)
 
-    const card = [1,2,3,4,5,6]
+    
 
     return <div className="shop">
         {/* <Navbar></Navbar> */}
