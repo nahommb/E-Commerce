@@ -11,3 +11,4 @@ export const ADDTOCART = 'add_to_cart';
 export const REMOVEFROMCART = 'remove_from_cart';
 export const FINDPRODUCT = 'find_product';
 export const FINDPRODUCTRESPONSE = 'find_product_response';
+export const CREATEORDER = 'create_order';

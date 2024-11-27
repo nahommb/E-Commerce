@@ -7,21 +7,22 @@ import { useSelector,useDispatch } from 'react-redux';
 import { removeFromCart } from '../../context/redux/cart-state/cart_action';
 import { useState } from "react"
 import { OverlayCard } from "../../components/overlay_card/overlay_card"
+import { createOrder } from '../../context/redux/order-state/orderAction';
 
 
 export const CartTable = ()=>{
 
-
+const dispatch = useDispatch();
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const overlayOnClick = () => {
-      setShowPopup(false);
-       // window.location.reload();
-    }
 
 
- const dispatch = useDispatch();
+  const orderHandler = ()=>{
+    setShowPopup(true)
+  }
+
+ 
  const cart  = useSelector((state) => state.cartReducer.cart);
  let subTotal = 0
  const shippingFee = 200
@@ -29,7 +30,26 @@ export const CartTable = ()=>{
  for (i; i<cart.length;i++){
     subTotal+= parseInt(cart[i].total)
  }
- console.log(cart)
+//  console.log(cart)
+
+  const overlayOnClick = () => {
+       const order = cart.map((item) => ({
+        product_name: item.product_name,
+        product_id: item._id,
+        price: item.price,
+        quantity: item.quantity,
+        total: item.total,
+      }));
+      order.order_by = 'name',
+      order.phone = '0958981657',
+      order.address = 'Addis Ababa , saris',
+      console.log(order)
+      //  dispatch(createOrder({
+        
+      //  }))
+      setShowPopup(false);
+       // window.location.reload();
+    }
 
   // const data = [
   //   { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
@@ -94,8 +114,6 @@ const totalDataColumns = [
     
 ]
 
-
-
     return <>
     <div className='top-table' style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
     {showPopup?<OverlayCard  
@@ -119,7 +137,7 @@ const totalDataColumns = [
         data={tottalData}
     />
     <br/>
-    <Button style={{color:'red'}} onClick={()=>setShowPopup(true)}>Proceed to Payment</Button>
+    <Button style={{color:'red'}} onClick={orderHandler}>Proceed to order</Button>
     </div>
 
     </>
