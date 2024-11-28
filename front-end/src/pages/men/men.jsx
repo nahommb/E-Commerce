@@ -13,7 +13,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Paginate } from "../../components/paginate/paginate"
 import { ItemContainer } from "../../components/item_container/item_container"
 
-export const Men = ()=>{
+
+
+ const Men = ()=>{
 
     const products = useSelector((state)=>state.productData.products)
     const pageNumber = useSelector((state)=>state.productData.internationalPageNumber)
@@ -42,3 +44,5 @@ export const Men = ()=>{
        <Footer/>
     </div>
 }
+
+export {Men}

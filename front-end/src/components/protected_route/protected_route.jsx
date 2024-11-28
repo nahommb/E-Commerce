@@ -29,7 +29,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     }
 
     return (
-        valideToken ? <Component {...rest} /> : <Navigate to="/login_signup" />
+        valideToken ? <Component {...rest} /> : <Navigate to="/" />
     );
 };
 

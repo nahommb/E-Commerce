@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { OverlayCard } from '../overlay_card/overlay_card';
 import { addToCart } from '../../context/redux/cart-state/cart_action';
 import { imageUrl } from '../../context/helper/base_url';
+import {motion } from 'framer-motion';
+
 
 export const ItemCard = (props) => {
  
@@ -70,10 +72,13 @@ export const ItemCard = (props) => {
         button_text="ok" 
         onClick={overlayOnClick}
         />:<></>}
-       <div className="item-card" style={divStyle} 
+       <motion.div className="item-card" style={divStyle} 
          onMouseEnter={(e) => (e.currentTarget.style.backgroundImage = `url(${backImage})`)}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundImage = `url(${frontImage})`)}
-    onClick={() => navigate(`/products/${props.items._id}`)}>
+    onClick={() => navigate(`/products/${props.items._id}`)}
+    >
+
+ 
       <div className='button-container'>
         <Button
           className='item-card-button'
@@ -99,7 +104,7 @@ export const ItemCard = (props) => {
         <h4>{props.items.product_name} </h4>
         {/* <p>⭐⭐⭐⭐⭐ 5</p> */}
       </div>
-    </div>
+    </motion.div>
     </>
    
   );

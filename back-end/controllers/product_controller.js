@@ -158,10 +158,53 @@ const getAllProducts =  async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
 }
+
+const findRecentProducts = async (req, res) => {
+  try {
+    
+
+    const page = parseInt(req.query.page) || 1;
+    const limit =  parseInt(req.query.limit)
+
+    const skip = (page - 1) * limit; //0 3
+   const lastIndex = page * limit;
+
+    const twoWeeksAgo = new Date();
+    twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 10);
+
+    const recentProducts = await Product.find({created_at:{ $gte: twoWeeksAgo }}).skip(skip).limit(limit);
+    const totalItems = await Product.countDocuments({created_at:{ $gte: twoWeeksAgo }});
+
+    let nextPage = 1;
+    let prevPage = totalItems;
+
+    if(lastIndex < totalItems){
+      nextPage = page + 1;
+     }
+     if(skip > 0){
+       prevPage = page - 1;
+       prevPage = totalItems;
+     }
+   
+      res.json({
+       current_page: page,
+       total_pages: Math.ceil(totalItems / limit),
+       next_page: nextPage,
+       prev_page: prevPage,
+       total_items:totalItems,
+       recentProducts,
+   });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
   module.exports = {
     addProduct,
     getProducts,
     findProduct,
     searchProducts,
     getAllProducts,
+    findRecentProducts,
   };

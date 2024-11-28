@@ -20,7 +20,8 @@ console.log(user)
 const navigate = useNavigate();
 const dispatch = useDispatch()
 
-
+const [email,setEmail] = useState('');
+const [password,setPassword] = useState('');
 
 
   useEffect(() => {
@@ -31,13 +32,14 @@ const dispatch = useDispatch()
   }, [user]);
 
   const loginHandler = () => {
-    
+    console.log(email,password)
     dispatch(
       login({
-        email :'nahomjr17@gmail.com',
-        password:'123456'
+        email :email,
+        password:password
       }) 
     )
+    
 
   }  
 
@@ -57,9 +59,9 @@ const dispatch = useDispatch()
                   
                  }}>
                   <label>Email</label><br/>
-                    <input type='email' placeholder='Email'/><br/>
+                    <input type='email' placeholder='Email' required onChange={(e)=>setEmail(e.target.value)}/><br/>
                   <label>Password</label><br/>
-                    <input type='password' placeholder='Password'/><br/>
+                    <input type='password' placeholder='Password' required onChange={(e)=>setPassword(e.target.value)}/><br/>
                     <Button type='submit'>Continue</Button>
                     <Button  style={{backgroundColor:'white',color:'black'}}><Google style={{marginRight:'8px'}}/>Continue with Google</Button>
                  </form>

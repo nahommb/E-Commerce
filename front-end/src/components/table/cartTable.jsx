@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import React from 'react';
+import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import './cartTable.css' 
 import { useSelector,useDispatch } from 'react-redux';
@@ -12,9 +12,15 @@ import { createOrder } from '../../context/redux/order-state/orderAction';
 
 export const CartTable = ()=>{
 
+
 const dispatch = useDispatch();
 
+const orderSuccess = useSelector((state)=>state.orderData.order_success);
+const orderSuccessMessage = useSelector((state)=>state.orderData.order.message);
+console.log(orderSuccess)
+
   const [showPopup, setShowPopup] = useState(false);
+  const [orderSuccessPopup, setOrderSuccessPopup] = useState(false);
 
 
 
@@ -52,8 +58,12 @@ const dispatch = useDispatch();
     }
   const cancelClick = ()=>{
     setShowPopup(false)
+   
   }
-
+ const orderSuccessHandler = ()=>{
+   setOrderSuccessPopup(false)
+   window.location.reload();
+ }
   // const data = [
   //   { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
   //   { products: 2, title: 'Real Madrid Home Kit 2024/25', price: '$6' ,quantitty:2,total:'$40'},
@@ -117,6 +127,7 @@ const totalDataColumns = [
     
 ]
 
+
     return <>
     <div className='top-table' style={{backgroundColor:'whitesmoke',padding:'30px',borderRadius:'8px'}}>
     {showPopup?<OverlayCard  
@@ -124,6 +135,12 @@ const totalDataColumns = [
         button_text="Order Now" 
         onClick={overlayOnClick}
         onCancel={cancelClick}
+        />:<></>}
+      {orderSuccess?<OverlayCard  
+        title="Order Response" 
+        button_text="Ok" 
+        message={orderSuccessMessage}
+        onClick={orderSuccessHandler}
         />:<></>}
     <DataTable
       title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}

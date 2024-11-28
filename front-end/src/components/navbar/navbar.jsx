@@ -39,10 +39,10 @@ export const Navbar = ()=>{
 
     const overlayOnClick = () => {
         
-          Cookies.remove('refreshToken', { path: '/' })
+        //   Cookies.remove('refreshToken')
           dispatch(logout())
           console.log('Refresh token removed');
-          window.location.reload();
+          //window.location.reload();
       }
    
 

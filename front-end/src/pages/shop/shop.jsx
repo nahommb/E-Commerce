@@ -11,7 +11,7 @@ import { Button,Box } from "@mui/material"
 import { ArrowRight } from "@mui/icons-material"
 import { useEffect,useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getProducts } from "../../context/redux/product-state/product_action"
+import { getProducts, getRecentProducts } from "../../context/redux/product-state/product_action"
 import { Paginate } from "../../components/paginate/paginate"
 import CircularProgress from '@mui/material/CircularProgress';
 import { ItemContainer } from "../../components/item_container/item_container"
@@ -30,33 +30,29 @@ export const Shop =()=>{
 //    }))
 // }
  const products = useSelector((state)=>state.productData.products)
+ const recentProducts = useSelector((state)=>state.productData.recentProducts)
+console.log(recentProducts.recentProducts)
 const [isLoading,setIsLoading] = useState(true)
 
 const dispatch = useDispatch()
 
-  // useEffect(()=>{
-  // dispatch(getProducts({
-  //  category:'retro',
-  //  page:1,
-  //  limit:5
-  // })) 
-
-  // },[dispatch])
-
-  // useEffect(()=>{
-  //   setIsLoading(false)
-  // },[products])
-  // const products = useSelector((state)=>state.productData.products)
   const pageNumber = useSelector((state)=>state.productData.shopPageNumber)
   console.log(pageNumber)
   
+  useEffect(()=>{
+    dispatch(getRecentProducts({
+      page:1,
+      limit:8
+    }))
+  },[dispatch])
+
   const onPageChange = (e)=>{
     console.log(e.selected+1)
    
     dispatch(getProducts({
       category:'all'||'all',
       page:e.selected+1,
-      limit:5
+      limit:12
      }))
      const NewPageNumber= e.selected+1
       dispatch({type:'SHOPPAGENUMBER',payload:NewPageNumber})
@@ -90,13 +86,13 @@ const dispatch = useDispatch()
            <p>New arrival and the hottest and newest collection of the month</p>
         </div>
          </div>
-         {/* <ItemContainer category='all'/> */}
-        {/* <div className="new-arival-container">
-          {products.products?.map((item)=>{
-            return <ItemCard key={item._id} frontImage={ronaldoFront} backImage={ronaldoBack} items={item}/>
+         {/* <ItemContainer category='recent'/> */}
+        <div className="new-arival-container">
+          {recentProducts.recentProducts?.map((item)=>{
+            return <ItemCard key={item._id} items={item}/>
           })
           }
-        </div> */}
+        </div>
         <Button sx={
           {
             backgroundColor:'rgba(213, 67, 242)',

@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { CREATEORDER } from "../constants";
+import { CREATEORDER, CREATEORDERRESPONSE } from "../constants";
 import { createOrderRequest } from "./api";
 
 
@@ -8,7 +8,7 @@ function* order(action){
         let response = yield call(createOrderRequest, action.payload);
         console.log(action.payload);
         console.log(response.data);
-        yield put({type:REGISTERRESPONSE,payload:response.data})
+        yield put({type:CREATEORDERRESPONSE ,payload:response.data})
     }catch(error){
         console.log(error);
     }

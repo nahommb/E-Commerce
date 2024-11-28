@@ -42,7 +42,7 @@ const createOrder = async (req,res)=>{
         status:'pending', 
       })
       order.save()
-        res.status(201).json({message:'Succssefuly Ordered You will recieve call from Our Oprators for further information'}); 
+        res.status(201).json({message:'Your order has been successfully placed. You will receive a call from our operators for further information.',success:true}); 
     } catch (error) {
         res.status(500).json({error:error.message});
     } 

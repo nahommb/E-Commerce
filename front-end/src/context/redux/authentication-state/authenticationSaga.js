@@ -41,7 +41,7 @@ function* logout(action){
         let response = yield call(logoutRequest, action.payload);
         // console.log(action.payload);
         console.log(response.data);
-        yield put({type:LOGOUT,payload:response.data})
+        // yield put({type:'',payload:response.data})
     }catch(error){
         console.log(error);
     }

@@ -12,3 +12,6 @@ export const REMOVEFROMCART = 'remove_from_cart';
 export const FINDPRODUCT = 'find_product';
 export const FINDPRODUCTRESPONSE = 'find_product_response';
 export const CREATEORDER = 'create_order';
+export const CREATEORDERRESPONSE = 'create_order_response';
+export const GETRECENTPRODUCTS = 'get_recent_products';
+export const GETRECENTPRODUCTSRESPONSE = 'get_recent_products_response';

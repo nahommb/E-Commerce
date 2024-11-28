@@ -16,3 +16,11 @@ export const getProductRequest = (payload)=>{
   
      return response
   }
+
+  export const getRecentProductRequest = (payload)=>{
+    console.log(payload);
+    axios.defaults.withCredentials = true;
+    const response = axios.get(`${baseUrl}products/get_recent_products?page=${payload.page}&limit=${payload.limit}`,)
+
+    return response
+  }

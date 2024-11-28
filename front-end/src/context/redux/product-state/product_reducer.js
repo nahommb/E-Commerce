@@ -1,7 +1,8 @@
-import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE } from "../constants";
+import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE, GETRECENTPRODUCTSRESPONSE } from "../constants";
 
 const initialState = {
     products: [],
+    recentProducts:[],
     loading: false,
     error: null,
     findedProduct:[],
@@ -29,6 +30,12 @@ export const productData = (state = initialState, action) => {
             return {
                 ...state,
                 findedProduct: action.payload,        
+            };
+        case GETRECENTPRODUCTSRESPONSE:
+            console.log(action.payload);
+            return {
+                ...state,
+                recentProducts: action.payload,
             };
         case 'PAGENUMBER':
             console.log(action.payload)
