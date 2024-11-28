@@ -25,7 +25,7 @@ const dispatch = useDispatch();
  
  const cart  = useSelector((state) => state.cartReducer.cart);
  let subTotal = 0
- const shippingFee = 200
+ const shippingFee = 300
  let i = 0
  for (i; i<cart.length;i++){
     subTotal+= parseInt(cart[i].total)
@@ -40,16 +40,19 @@ const dispatch = useDispatch();
         quantity: item.quantity,
         total: item.total,
       }));
-      order.order_by = 'name',
-      order.phone = '0958981657',
-      order.address = 'Addis Ababa , saris',
       console.log(order)
-      //  dispatch(createOrder({
-        
-      //  }))
+       dispatch(createOrder({
+        ordered_by:"Neymar",
+        ordered_items:order,
+        phone:'09787890',
+        address:'Addis Ababa, Saris',
+       }))
       setShowPopup(false);
        // window.location.reload();
     }
+  const cancelClick = ()=>{
+    setShowPopup(false)
+  }
 
   // const data = [
   //   { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},
@@ -120,6 +123,7 @@ const totalDataColumns = [
         title="Order" 
         button_text="Order Now" 
         onClick={overlayOnClick}
+        onCancel={cancelClick}
         />:<></>}
     <DataTable
       title={<h2 style={{color:'white',textAlign: 'center',backgroundColor:'#C4D7FF',padding:'20px',}}>Your Cart</h2>}
@@ -129,8 +133,7 @@ const totalDataColumns = [
       // pagination
     />
     </div>
-
-    <div className='bottom-table' style={{marginTop:'80px', width:'300px', backgroundColor:'whitesmoke',padding:'20px',borderRadius:'8px'}}>
+    {cart.length>0?<div className='bottom-table' style={{marginTop:'80px', width:'300px', backgroundColor:'whitesmoke',padding:'20px',borderRadius:'8px'}}>
         <DataTable
         title={<h4>Cart Totals</h4>}
         columns={totalDataColumns}
@@ -138,7 +141,9 @@ const totalDataColumns = [
     />
     <br/>
     <Button style={{color:'red'}} onClick={orderHandler}>Proceed to order</Button>
-    </div>
+    </div>:<div style={{height:'300px'}}></div>
+    }
+  
 
     </>
 }

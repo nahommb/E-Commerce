@@ -14,7 +14,7 @@ export const OverlayCard = (props)=>{
         <input type='text'  required placeholder='Enter your address'/><br/>
         <input type='text'  required  placeholder='Enter your phone number'/><br/>
         <Button style={{color:'green'}} type='submit' onClick={props.onClick} >{props.button_text}</Button>
-        <Button style={{color:'red'}} onClick={props.onClick} >Cancel</Button>
+        <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
        </form>
      
       </div>: 
