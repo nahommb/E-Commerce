@@ -2,8 +2,7 @@ import { Boarding } from "../../components/boarding/boarding"
 import { Footer } from "../../components/footer/footer"
 import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
-import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
-
+import {Barcelona_logo,Manutd_logo,Intermilan_logo,Chelsea_logo,RealMadrid_logo,Liverpool_logo,Juventus_logo,Arsenal_logo,Dortmund_logo,Benfica_logo,PSG_logo} from '../../comman/helper/images'
 import './shop.css'
 import { useNavigate } from "react-router-dom"
 import { Banner } from "../../components/banner/banner"
@@ -74,14 +73,20 @@ const onRecentProductsPageChange = (e)=>{
  //  setPageNumber(e.selected+1)
 }
 
-   console.log(products)
-   console.log(recentProducts.total_pages)
+  //  console.log(products)
+  //  console.log(recentProducts.total_pages)
     
+  const logo = [
+    Manutd_logo,Arsenal_logo,,RealMadrid_logo,Juventus_logo,
+    Dortmund_logo,Benfica_logo,PSG_logo,Liverpool_logo,Chelsea_logo,
+    Benfica_logo,Intermilan_logo,Barcelona_logo,Manutd_logo,
+  ]
+
 
     return <div className="shop">
         {/* <Navbar></Navbar> */}
         <Boarding></Boarding>
-        <Banner bannerText='Featured Sport Kits'></Banner>
+        <Banner bannerText='Featured Sport Kits' images={logo}></Banner>
          <div className="featured-text" >
           <h1>Featured Sports wear</h1>
          </div>

@@ -7,7 +7,7 @@ import ReactPaginate from 'react-paginate';
 
 import { useDispatch,useSelector } from "react-redux";
 import { useState,useEffect } from "react";
-import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
+// import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
 import { getProducts } from "../../context/redux/product-state/product_action";
 import { Box } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
