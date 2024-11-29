@@ -172,7 +172,11 @@ const findRecentProducts = async (req, res) => {
     const twoWeeksAgo = new Date();
     twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 10);
 
-    const recentProducts = await Product.find({created_at:{ $gte: twoWeeksAgo }}).skip(skip).limit(limit);
+    const recentProducts = await Product.find({ created_at: { $gte: twoWeeksAgo } })
+    .sort({ created_at: -1 }) // Sort by created_at field in descending order
+    .skip(skip) // Apply pagination (skip)
+    .limit(limit); 
+    
     const totalItems = await Product.countDocuments({created_at:{ $gte: twoWeeksAgo }});
 
     let nextPage = 1;

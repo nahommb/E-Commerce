@@ -32,11 +32,14 @@ export const Shop =()=>{
  const products = useSelector((state)=>state.productData.products)
  const recentProducts = useSelector((state)=>state.productData.recentProducts)
 console.log(recentProducts.recentProducts)
+
 const [isLoading,setIsLoading] = useState(true)
 
 const dispatch = useDispatch()
 
   const pageNumber = useSelector((state)=>state.productData.shopPageNumber)
+  const recentProductsPageNumber = useSelector((state)=>state.productData.recentProductsPageNumber)
+  console.log(recentProductsPageNumber)
   console.log(pageNumber)
   
   useEffect(()=>{
@@ -59,10 +62,20 @@ const dispatch = useDispatch()
     //  setPageNumber(e.selected+1)
   }
   
+const onRecentProductsPageChange = (e)=>{
+  console.log(e.selected+1)
 
+  dispatch(getRecentProducts({
+    page:e.selected+1,
+    limit:8
+  }))
+  const NewPageNumber= e.selected+1
+   dispatch({type:'RECENTPRODUCTSPAGENUMBER',payload:NewPageNumber})
+ //  setPageNumber(e.selected+1)
+}
 
    console.log(products)
-
+   console.log(recentProducts.total_pages)
     
 
     return <div className="shop">
@@ -77,7 +90,7 @@ const dispatch = useDispatch()
          <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
 
         <div className="shop-banner">
-
+           
         </div>
         <div className="new-arival">
         <div className="new-arival-text">
@@ -93,14 +106,15 @@ const dispatch = useDispatch()
           })
           }
         </div>
-        <Button sx={
+        <Paginate pageCount={recentProducts.total_pages} onPageChange={onRecentProductsPageChange} pageNumber = {recentProductsPageNumber}/>
+        {/* <Button sx={
           {
             backgroundColor:'rgba(213, 67, 242)',
             color:'#fff',
             border:'none',
             borderRadius:'8px'
           }
-        }>Explore more <ArrowRight/> </Button>
+        }>Explore more <ArrowRight/> </Button> */}
         </div>
         {/* <Paginate pageCount={13} onPageChange={onPageChange}/> */}
         <Footer></Footer>

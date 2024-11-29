@@ -12,6 +12,7 @@ const initialState = {
     internationalPageNumber:1,
     othersPageNumber:1,
     kidsPageNumber:1,
+    recentProductsPageNumber:1,
 };
 export const productData = (state = initialState, action) => {
     switch (action.type) {
@@ -73,6 +74,11 @@ export const productData = (state = initialState, action) => {
                     ...state,
                     kidsPageNumber:action.payload
                 }
+        case 'RECENTPRODUCTSPAGENUMBER':
+            return {
+                ...state,
+                recentProductsPageNumber:action.payload
+            }
         default:
             return state;
     }

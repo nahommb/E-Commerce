@@ -4,7 +4,7 @@ import { Instagram,Facebook,Telegram } from '@mui/icons-material'
 export const Footer = ()=>{
     return <div className="footer">
        <div className='footer-title'>
-        <h3>SHOPPER</h3>
+        <h3>NIYA SPORT WEAR</h3>
        </div>
           <p>Your Number One Quality Sport Wear Provider</p>
           <div className='social-media'>
