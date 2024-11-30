@@ -1,4 +1,4 @@
-import { REGISTER, REGISTERRESPONSE,LOGIN,LOGINRESPONSE, VALIDATETOKEN, VALIDATETOKENRESPONSE, LOGOUT } from "../constants";
+import { REGISTER, REGISTERRESPONSE,LOGIN,LOGINRESPONSE, VALIDATETOKEN, VALIDATETOKENRESPONSE, LOGOUT, LOGINERROR } from "../constants";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { loginRequest, registerRequest, validetTokenRequest, logoutRequest} from "./api";
 
@@ -22,6 +22,8 @@ function* login(action){
         yield put({type:LOGINRESPONSE,payload:response.data})
     }catch(error){
         console.log(error);
+        console.log(error.response.data.message);
+        yield put({type:LOGINERROR,payload:error.response.data})
     }
 }
 

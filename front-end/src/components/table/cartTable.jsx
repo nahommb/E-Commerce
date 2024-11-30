@@ -45,6 +45,7 @@ console.log(orderSuccess)
         price: item.price,
         quantity: item.quantity,
         total: item.total,
+        
       }));
       console.log(order)
        dispatch(createOrder({
@@ -52,6 +53,7 @@ console.log(orderSuccess)
         ordered_items:order,
         phone:'09787890',
         address:'Addis Ababa, Saris',
+        custome_print:''
        }))
       setShowPopup(false);
        // window.location.reload();
@@ -77,8 +79,8 @@ console.log(orderSuccess)
       sortable: true
     },
     {
-      name: 'Title',
-      selector: row => row.product_description,
+      name: 'Custome Print',
+      selector: row => row.custome_print,
       sortable: true
     },
     {

@@ -20,7 +20,7 @@ export const EditProducts = ()=>{
 
  const products = useSelector(state=>state.productsReducer.products)
 
-//  console.log(products)
+ console.log(products)
  const dispatch = useDispatch()
 
  
@@ -61,7 +61,7 @@ const onPageChange = (e)=>{
         </Button>
         </div>
       })}
-        <Paginate pageCount={products?.totalItems} onPageChange={onPageChange}/>
+        <Paginate pageCount={products?.total_pages} onPageChange={onPageChange}/>
 
     <div className="flex justify-end pr-5">
         <Button style={{color:'purple'}}>Edit</Button>

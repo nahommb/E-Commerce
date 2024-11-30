@@ -143,15 +143,23 @@ const searchProducts = async (req, res) => {
 };
  
 const getAllProducts =  async (req, res) => {
-  const skip = parseInt(req.query.page) || 1;
-  const limit =  parseInt(req.query.limit) || 5
-  ;
+
+  const page = parseInt(req.query.page) || 1;
+  const limit =  parseInt(req.query.limit) || 10;
+ 
+
+
+  const skip = (page - 1) * limit; //0 3
+  const lastIndex = page * limit; //3 6
+
   try {
-    const products = await Product.find().skip(skip).limit(limit);
+
+    const products = await Product.find({}).skip(skip).limit(lastIndex);
     const totalItems = await Product.countDocuments();
+    // console.log(products);
       res.json({
         products: products,
-        totalItems: totalItems,
+        total_pages: Math.ceil(totalItems / limit),
       });
     } catch (err) {
       console.error(err);

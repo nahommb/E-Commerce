@@ -17,6 +17,7 @@ export const Products = () => {
     const [imageList, setImageList] = useState({});
     const [selectedSize, setSelectedSize] = useState(null);
     const [quantity, setQuantity] = useState(1)
+    const [customePrint,setCustomePrint] = useState('')
     // Fetch product when component mounts
     useEffect(() => {
         dispatch(findProduct({_id: id}));
@@ -52,6 +53,7 @@ export const Products = () => {
           ...product,         // Copy existing product details
           quantity: quantity, // Use the updated quantity
           total: quantity * parseInt(product.price),
+          custome_print: customePrint,
           date:Date.now() 
       };
   
@@ -85,7 +87,7 @@ export const Products = () => {
                     <h1>{product.product_name}</h1>
                     <p className='price-text'>{product.price} ETB</p>
                     <p>Custom printing</p>
-                    <input placeholder='Enter Name and Number' />
+                    <input placeholder='Enter Name and Number' onChange={(e)=>setCustomePrint(e.target.value)}/>
                     <p>Quantity</p>
                     <input type='number' placeholder='1' onChange={(e)=>setQuantity(e.target.value)}/>
                     <p>Select size</p>

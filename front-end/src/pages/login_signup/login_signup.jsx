@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch , useSelector } from 'react-redux';
 import { Signup } from './signup';
 import { login } from '../../context/redux/authentication-state/authenticationAction';
+import { OverlayCard } from '../../components/overlay_card/overlay_card';
 
 
 
@@ -20,8 +21,17 @@ console.log(user)
 const navigate = useNavigate();
 const dispatch = useDispatch()
 
+const login_error = useSelector((state) => state.authenticationData.loginError);
+console.log(login_error!==null)
+
 const [email,setEmail] = useState('');
 const [password,setPassword] = useState('');
+const [showPopup, setShowPopup] = useState(false);
+
+const overlayOnClick = () => {
+  setShowPopup(false);
+    window.location.reload();
+}
 
 
   useEffect(() => {
@@ -45,8 +55,10 @@ const [password,setPassword] = useState('');
 
     return <>
           {/* <Navbar/> */}
+        
+         <div className='login'>     
+     
           
-          <div className='login'>
                {
                  isLogin? <div>
           
@@ -66,6 +78,12 @@ const [password,setPassword] = useState('');
                     <Button  style={{backgroundColor:'white',color:'black'}}><Google style={{marginRight:'8px'}}/>Continue with Google</Button>
                  </form>
                   <p>Create an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>setLogin(false)}>Click here</span></p>
+
+                  {
+                    login_error!==null?
+                    <OverlayCard showPopup={showPopup} title='Login Error' button_text='Close' onClick={overlayOnClick} />
+                  :<></>
+                  }
                </div>:
                 <Signup/>
                }

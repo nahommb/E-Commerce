@@ -29,16 +29,19 @@ const createOrder = async (req,res)=>{
                 listOfProductIds.push(product._id);
                 totalPrice += parseFloat(req.body.ordered_items[i].total);
                 
-                console.log(product) // Only store the ObjectId
+                // console.log(product) // Only store the ObjectId
             } else {
                 return res.status(404).json({ message: `Product not found for ID: ${req.body.ordered_items[i]}` });
             }
         }
       const order = new Order({
         ordered_by:req.body.ordered_by,
+        phone:req.body.phone,
+        address:req.body.address,
         ordered_at:Date.now(),
         ordered_items:listOfProductIds,
         total_price:totalPrice,
+        custome_print:req.body.custom_print,
         status:'pending', 
       })
       order.save()
@@ -48,4 +51,34 @@ const createOrder = async (req,res)=>{
     } 
 }
 
-module.exports = [createOrder];
+const getOrders = async (req,res)=>{
+
+    try{
+
+
+    const page = req.query.page;
+    const limit = req.query.limit;
+    
+   
+
+    const skip = (page - 1) * limit; //0 3
+    const lastIndex = page * limit; //3 6
+
+  const order = await Order.find({}).skip(skip).limit(lastIndex)
+ 
+  const total_items = await Order.countDocuments()
+
+  res.json({
+    total_pages:Math.ceil(total_items / limit),
+    orders: order
+  })
+    }
+
+    catch(err){
+     res.status(500).json({error:err.message});
+    }
+
+
+}
+
+module.exports = {createOrder,getOrders};
