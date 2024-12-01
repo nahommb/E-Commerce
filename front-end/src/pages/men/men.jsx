@@ -12,7 +12,7 @@ import { Box } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 import { Paginate } from "../../components/paginate/paginate"
 import { ItemContainer } from "../../components/item_container/item_container"
-
+import { Brazil_logo,Spain_logo,Germany_logo,Italy_logo,Argentina_logo,Crotia_logo,England_logo,France_logo,Egypt_logo,Senegal_logo,Nezerlands_logo,Portugal_logo } from "../../comman/helper/images"
 
 
  const Men = ()=>{
@@ -36,9 +36,11 @@ import { ItemContainer } from "../../components/item_container/item_container"
         //  setPageNumber(e.selected+1)
       }
 
+    const images = [Brazil_logo,Spain_logo,Germany_logo,Portugal_logo,Italy_logo,Argentina_logo,Crotia_logo,England_logo,Egypt_logo,Senegal_logo,Nezerlands_logo,France_logo]
+
     return <div>
         {/* <Navbar/> */}
-        <Banner bannerText='Suit up for victory,wear the legend.' bannerImage={menBanner}/>
+        <Banner images={images}/>
         <ItemContainer category='International' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
        <Footer/>
