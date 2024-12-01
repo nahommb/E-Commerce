@@ -9,6 +9,7 @@ import { Analytics } from "../../pages/analytics/analytics";
 import { Profile } from "../../pages/profile/profile";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../../context/redux/products/productsAction";
+import { NavBar } from "../navbar/navbar";
 export const MainBody = ()=>{
 
    const [bodyIndex , setBodyIndex] = useState(0);
@@ -32,6 +33,7 @@ const onButtonClick = (index)=>{
 }
 
 return <>
+    <NavBar/>
     <div className="main-body">
        <SideBar onButtonClick = {onButtonClick}></SideBar> 
        <div className="body-element-container" >

@@ -4,14 +4,25 @@ import '../index.css'
 import { NavBar } from "./components/navbar/navbar"
 import { Provider } from "react-redux"
 import store from './context/redux/store';
+import { Login } from "./pages/login/login"
+import {BrowserRouter, Router,Routes,Route} from 'react-router-dom'
+
 
 function App() {
   
 
   return (
     <Provider store={store}>
-      <NavBar/>
-      <MainBody></MainBody>
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login/>}/>
+        <Route path="/dashboard" element={<MainBody/>}/>
+      </Routes>
+         {/* <NavBar/>
+      <Login/>
+      <MainBody></MainBody> */}
+     </BrowserRouter>
+   
     </Provider>
   )
 }
