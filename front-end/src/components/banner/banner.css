@@ -10,7 +10,7 @@
 
 .banner-boarding .inner-boarding {
   border-radius: 12px;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   background-position: center;
   background-repeat: no-repeat;

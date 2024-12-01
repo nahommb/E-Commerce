@@ -86,7 +86,9 @@ const onRecentProductsPageChange = (e)=>{
     return <div className="shop">
         {/* <Navbar></Navbar> */}
         <Boarding></Boarding>
+        <div className="shop-banner-container">
         <Banner bannerText='Featured Sport Kits' images={logo}></Banner>
+        </div>
          <div className="featured-text" >
           <h1>Featured Sports wear</h1>
          </div>
@@ -94,8 +96,10 @@ const onRecentProductsPageChange = (e)=>{
          <ItemContainer category='all' pageNumber={pageNumber}/>
          <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
 
-        <div className="shop-banner">
-           
+        <div className="shop-banner-container">
+          <div className="shop-banner">
+
+          </div>
         </div>
         <div className="new-arival">
         <div className="new-arival-text">

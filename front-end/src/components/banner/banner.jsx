@@ -8,7 +8,7 @@ export const Banner = (props)=>{
         <div className="banner-boarding">
           <div className="inner-boarding">
             <div className="banner-text" >
-            <h1>{props.bannerText} <br/><span style={{marginLeft:'10%'}}></span></h1>
+            {/* <h1>{props.bannerText} <br/><span style={{marginLeft:'10%'}}></span></h1> */}
             </div>
             <div className="logo-container">
               {

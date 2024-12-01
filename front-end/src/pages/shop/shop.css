@@ -74,6 +74,22 @@ border-radius: 5px;
       margin: 0px;
       align-items: center;
     }
+    .shop-banner{
+        height: 120px;
+        width: 100%;
+        margin: 10px;
+        margin-left: 30px;
+        background-size: contain;
+        ;
+        
+    }
+    .shop-banner-container{
+        width: 480px;
+        /* height: 100px; */
+        display: flex;
+        justify-content: center;
+        /* background-color: aqua; */
+    }
     .new-arival-container{
         padding: 0% ;
         margin: 20px 0px;
