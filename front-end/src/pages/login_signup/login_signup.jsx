@@ -81,7 +81,7 @@ const overlayOnClick = () => {
 
                   {
                     login_error!==null?
-                    <OverlayCard showPopup={showPopup} title='Login Error' button_text='Close' onClick={overlayOnClick} />
+                    <OverlayCard showPopup={showPopup} title='Login Error'message={login_error.message} button_text='Close' onClick={overlayOnClick} />
                   :<></>
                   }
                </div>:

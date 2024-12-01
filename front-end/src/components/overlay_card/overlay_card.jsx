@@ -7,7 +7,7 @@ export const OverlayCard = (props)=>{
 
     return <div style={styles.overlay}>
     <div style={styles.popup}>
-      {props.title === 'Order'?<div>
+      {props.title === 'Order'?<>
       <h3 style={{color:'black'}}>{props.title}</h3>
        <form>
         <input type='text' required placeholder='Enter your name'/><br/>
@@ -17,10 +17,10 @@ export const OverlayCard = (props)=>{
         <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
        </form>
      
-      </div>: 
-      <div><h3 style={{color:'black'}}>{props.title}</h3>
+      </>: 
+      <><h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
-      <Button onClick={props.onClick}>{props.button_text}</Button></div>
+      <Button onClick={props.onClick}>{props.button_text}</Button></>
       }
      
     </div>
