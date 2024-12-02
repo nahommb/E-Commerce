@@ -6,6 +6,7 @@ import { Provider } from "react-redux"
 import store from './context/redux/store';
 import { Login } from "./pages/login/login"
 import {BrowserRouter, Router,Routes,Route} from 'react-router-dom'
+import { ProtectedRoute } from "./components/protected_route/protected_route"
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>}/>
-        <Route path="/dashboard" element={<MainBody/>}/>
+        <Route path="/dashboard" element={<ProtectedRoute children={<MainBody/>}/>}/>
       </Routes>
          {/* <NavBar/>
       <Login/>

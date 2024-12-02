@@ -35,5 +35,23 @@ const authMiddleware = async (req, res, next) =>{
   }
    
   } 
+const isAdmin = async (req, res, next) => {
+  //console.log(req.body)
+  try {
+    await User.findOne({email:req.body.email}).then((user)=>{
+      if(user.role === 'admin'){
+        console.log(user)
+        next();
+      }
+      else{
+        return res.status(403).json({ message: 'Unauthorized' });
+      }
+    })
+  }
+  catch (error) {
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+}
 
-  module.exports = authMiddleware;
+
+  module.exports = {authMiddleware,isAdmin};

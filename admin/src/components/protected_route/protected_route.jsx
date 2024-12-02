@@ -1,8 +1,10 @@
+import {Navigate} from "react-router-dom";
 
+export const ProtectedRoute = ({ children }) => {
 
-const ProtectedRoute = ({ children }) => {
-    
-  const { isAuthenticated } = useSelector((state) => state.authReducer);
-  const location = useLocation();
+  const  isAuthenticated = false;
+  console.log(isAuthenticated)
+  return isAuthenticated ? children : <Navigate to="/" />;
 
-}
+} 
+

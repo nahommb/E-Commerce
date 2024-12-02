@@ -13,7 +13,8 @@ const registerController =  (req, res) => {
         { 
         first_name:first_name,
         last_name: last_name, 
-        email: email, 
+        email: email,
+        role:req.body.role, 
          password: password ,
          created_at:Date.now()
         }
