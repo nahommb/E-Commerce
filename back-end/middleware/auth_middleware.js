@@ -40,7 +40,7 @@ const isAdmin = async (req, res, next) => {
   try {
     await User.findOne({email:req.body.email}).then((user)=>{
       if(user.role === 'admin'){
-        console.log(user)
+        // console.log(user)
         next();
       }
       else{
