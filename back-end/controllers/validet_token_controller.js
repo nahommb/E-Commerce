@@ -2,7 +2,7 @@ const User = require("../models/user_model");
 
 const valideteTokenController = (req, res) => {
 
-   // console.log(req.user)
+    // console.log(req.user)
     User.findById(req.user.id).then((user) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });

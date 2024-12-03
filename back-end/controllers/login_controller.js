@@ -5,7 +5,7 @@ const generateToken = require('../helper/generate_token')
 const loginController = (req, res) => {
   
   const { email, password } = req.body;
-  console.log('check'+req.body)
+ // console.log('check'+req.body.email)
   
   User.findOne({ email })
     .then(async user => {
@@ -26,11 +26,22 @@ const loginController = (req, res) => {
 
        // Remove the password field
          const updatedUser = await User.findById(user._id).select('-password');
-
-        res.cookie('refreshToken',token,{
+        //  console.log(updatedUser)
+         if(updatedUser.role==='admin'){
+          // console.log('admin')
+          res.cookie('adminRefreshToken',token,{
+            httpOnly:true,
+            maxAge: 72 * 60 * 60 * 1000,
+        }) 
+         } 
+         else{
+            res.cookie('refreshToken',token,{
             httpOnly:true,
             maxAge: 72 * 60 * 60 * 1000,
         })
+         }
+      
+       // console.log(updatedUser)
         res.status(200).json({ message: 'Login successful',updatedUser:updatedUser });
       }
       
