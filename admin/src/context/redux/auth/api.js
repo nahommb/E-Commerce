@@ -11,7 +11,7 @@ export const loginRequest = (payload)=>{
 
   export const validetTokenRequest = (payload)=>{
     axios.defaults.withCredentials = true;
-     const response = axios.post(`${baseUrl}user/validate_token`,payload)
+     const response = axios.post(`${baseUrl}user/validate_admin_token`,payload)
   
      return response
   }

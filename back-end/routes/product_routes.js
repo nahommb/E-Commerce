@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { addProduct,getProducts, findProduct, searchProducts, getAllProducts,findRecentProducts } = require('../controllers/product_controller');
+const { isAdmin, authMiddleware } = require('../middleware/auth_middleware');
 
 
-router.post('/add_products', addProduct);
+router.post('/add_products',authMiddleware,isAdmin,addProduct);
 router.get('/get_products/:category',getProducts);
 router.get('/find_product/:id',findProduct)
 router.post('/search_products',searchProducts);

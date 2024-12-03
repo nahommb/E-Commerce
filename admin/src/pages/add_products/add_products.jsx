@@ -7,6 +7,10 @@ import { Popup } from '../../components/popup/popup';
 import { PreviewCard } from '../../components/preview_card/preview_card';
 
 export const AddProducts = () => {
+
+const user = useSelector((state) => state.authReducer.user);
+
+console.log(user);
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,6 +65,7 @@ export const AddProducts = () => {
     formData.append('price', price);
     formData.append('product_category', category);
     formData.append('custom_print', customPrint);
+    // formData.append('email', user.email);
     console.log(formData.getAll('images')); // Log the formData to check if files are being sent
     dispatch(addProducts(formData));
     setProductName('');

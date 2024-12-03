@@ -14,7 +14,7 @@ export const Login = () => {
     const [password,setPassword] = useState('')
 
     const user  = useSelector(state => state.authReducer)
-  
+   console.log(user)
    
     useEffect(()=>{
         dispatch(validateToken())
@@ -27,7 +27,7 @@ export const Login = () => {
             navigate('/dashboard')      
         }
         else{}
-    },[user])
+    },[user]) 
 
     const loginHandler =(e)=>{
         e.preventDefault()
@@ -35,6 +35,7 @@ export const Login = () => {
             email:email,
             password:password
         }))
+        console.log('test')
         window.location.reload();
     }
   return <>

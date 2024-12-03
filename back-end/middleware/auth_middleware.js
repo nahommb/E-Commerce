@@ -36,7 +36,11 @@ const authMiddleware = async (req, res, next) =>{
    
   } 
 const isAdmin = async (req, res, next) => {
-  //console.log(req.body)
+  console.log(req.body)
+
+  
+
+  console.log(email)
   try {
     await User.findOne({email:req.body.email}).then((user)=>{
       if(user.role === 'admin'){
