@@ -3,19 +3,24 @@ import { Drawer, List, ListItem, ListItemText, Button } from '@mui/material';
 import { BedroomBaby, BedroomChild, Boy, Girl, Menu, Shop } from '@mui/icons-material';
 import './navbar.css'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const MyDrawer = ()=>{
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = (open) => () => {
     setIsOpen(open);
   };
 
+  const user = useSelector((state) => state.authenticationData.user);
+  console.log(user)
+
   return (
     <div className='mobile-navbar'>
       <Button style={{color:'white'}} onClick={toggleDrawer(true)}><Menu/></Button>
       <p>Lee Sports Wear</p>
-      <p>test</p>
+      <p>{user?.first_name}</p>
       <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
         
         <div className='drawer-button-container'>
@@ -25,14 +30,14 @@ export const MyDrawer = ()=>{
             Shop
           </Button>
          </Link>
-          <Link to={'/men'} className='links'>
+          <Link to={'/international'} className='links'>
             <Button>
-            Men
+            International
           </Button>
           </Link>
-          <Link to={'/women'} className='links'>
+          <Link to={'/others'} className='links'>
             <Button>
-           Women
+           Others
           </Button>
           </Link>
           <Link to={'/kids'} className='links'>

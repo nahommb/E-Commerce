@@ -3,18 +3,18 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 export const NewUsersChart = () => {
   const data = [
-    { week: 'Sep', users: 120 },
-    { week: 'Oct', users: 200 },
-    { week: 'Nov', users: 300 },
-    { week: 'Dec', users: 250 },
-    { week: 'Jan', users: 400 },
+    { month: 'Sep', users: 120 },
+    { month: 'Oct', users: 200 },
+    { month: 'Nov', users: 700 },
+    { month: 'Dec', users: 250 },
+    { month: 'Jan', users: 400 },
   ];
 
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="week" />
+        <XAxis dataKey="month" />
         <YAxis />
         <Tooltip />
         <Legend />

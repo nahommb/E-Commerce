@@ -1,9 +1,9 @@
 // App.js
 import './App.css';
 import { Navbar } from './components/navbar/navbar';
-import { Men } from './pages/men/men';
+import { International } from './pages/international/international';
 import { Shop } from './pages/shop/shop';
-import { Women } from './pages/women/women';
+import { Others } from './pages/others/others';
 import { Kids } from './pages/kids/kids';
 import { Products } from './pages/products/products';
 import { LoginSignup } from './pages/login_signup/login_signup';
@@ -28,14 +28,14 @@ const AnimatedRoutes = () => {
             <Shop />
           </PageTranstion>
         } />
-        <Route path="/men" element={
+        <Route path="/international" element={
           <PageTranstion>
-            <Men />
+            <International />
           </PageTranstion>
         } />
-        <Route path="/women" element={
+        <Route path="/others" element={
           <PageTranstion>
-            <Women />
+            <Others />
           </PageTranstion>
         } />
         <Route path="/kids" element={

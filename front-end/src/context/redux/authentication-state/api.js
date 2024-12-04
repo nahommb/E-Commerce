@@ -24,7 +24,7 @@ export const registerRequest = (payload)=>{
 
   export const logoutRequest = (payload)=>{
    axios.defaults.withCredentials = true;
-    const response = axios.post(`${baseUrl}user/logout`,payload)
+    const response = axios.post(`${baseUrl}user/logout`)
  
     return response
  }

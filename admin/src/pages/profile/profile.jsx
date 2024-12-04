@@ -2,10 +2,15 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import './profile.css';
 import { Popup } from "../../components/popup/popup";
+import { useSelector } from "react-redux";
 
 export const Profile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ title: '' });
+
+
+    const user = useSelector((state)=>state.authReducer.user)
+    console.log(user)
 
     const handleOpenModal = (title) => {
         setModalContent({ title });
@@ -20,13 +25,13 @@ export const Profile = () => {
         <div className="p-8 w-full justify-between items-center">
             <div>
                 <p className="text-lg font-bold">Full Name</p>
-                <p className="text-light-purple">Nahom Melese</p>
+                <p className="text-light-purple">{user.first_name} {user.last_name}</p>
                 <Button onClick={() => handleOpenModal('Change Name')}>Change</Button>
             </div>
             
             <div>
                 <p className="text-lg font-bold">Email</p>
-                <p className="text-light-purple">nahomjr17@gmail.com</p>
+                <p className="text-light-purple">{user.email}</p>
                 <Button onClick={() => handleOpenModal('Change Email')}>Change</Button>
             </div>
             <div>
@@ -36,7 +41,7 @@ export const Profile = () => {
             </div>
             <div>
                 <p className="text-lg font-bold">Role</p>
-                <p className="text-light-purple">Admin</p>
+                <p className="text-light-purple">{user.role}</p>
             </div>
 
             <div>

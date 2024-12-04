@@ -1,6 +1,6 @@
 import { ItemCard } from "../../components/itemcard/itemcard"
 import { Navbar } from "../../components/navbar/navbar"
-import './men.css'
+import './international.css'
 import menBanner from '../../components/assets/boy_banner.png'
 import { Banner } from "../../components/banner/banner"
 import { Footer } from "../../components/footer/footer"
@@ -15,7 +15,7 @@ import { ItemContainer } from "../../components/item_container/item_container"
 import { Brazil_logo,Spain_logo,Germany_logo,Italy_logo,Argentina_logo,Crotia_logo,England_logo,France_logo,Egypt_logo,Senegal_logo,Nezerlands_logo,Portugal_logo } from "../../comman/helper/images"
 
 
- const Men = ()=>{
+ export const International = ()=>{
 
     const products = useSelector((state)=>state.productData.products)
     const pageNumber = useSelector((state)=>state.productData.internationalPageNumber)
@@ -47,4 +47,3 @@ import { Brazil_logo,Spain_logo,Germany_logo,Italy_logo,Argentina_logo,Crotia_lo
     </div>
 }
 
-export {Men}

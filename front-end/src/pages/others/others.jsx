@@ -1,4 +1,4 @@
-import './women.css'
+import './others.css'
 import {ItemCard} from '../../components/itemcard/itemcard'
 import { Navbar } from '../../components/navbar/navbar'
 import womenBanner from '../../components/assets/women_banner.png'
@@ -13,7 +13,7 @@ import { Paginate } from "../../components/paginate/paginate"
 import { ItemContainer } from '../../components/item_container/item_container'
 
 
-export const Women=()=>{
+export const Others=()=>{
 
   const products = useSelector((state)=>state.productData.products)
   const pageNumber = useSelector((state)=>state.productData.othersPageNumber)

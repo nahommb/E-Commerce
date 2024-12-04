@@ -38,11 +38,8 @@ export const Navbar = ()=>{
     const navigate = useNavigate()
 
     const overlayOnClick = () => {
-        
-        //   Cookies.remove('refreshToken')
-          dispatch(logout())
-          console.log('Refresh token removed');
-          //window.location.reload();
+           dispatch(logout())      
+          window.location.reload();
       }
    
 
@@ -61,8 +58,8 @@ export const Navbar = ()=>{
         :<></>}
         <ul className='nav-menu'>
             <Link to={'/'} className='links'>Shop</Link>
-            <Link to={'/men'} className='links'>International</Link>
-            <Link to={'/women'} className='links'>Others</Link>
+            <Link to={'/international'} className='links'>International</Link>
+            <Link to={'/others'} className='links'>Others</Link>
             <Link to={'/kids'} className='links'>Kids</Link>
             <Link to={'/retro'} className='links'>Retro</Link>
         </ul>

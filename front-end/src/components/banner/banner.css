@@ -6,6 +6,7 @@
   top: 90px;
   margin-bottom: 120px;
   z-index: -1;
+  /* background-color: blue; */
 }
 
 .banner-boarding .inner-boarding {
@@ -32,7 +33,8 @@
   position: relative;
   align-items: center;
   justify-content: center; 
-  /* background-color: aqua; */
+  background-color: rgb(230, 255, 255);
+  
 }
 
 .logo { 
