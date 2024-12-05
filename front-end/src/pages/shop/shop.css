@@ -80,11 +80,11 @@ border-radius: 5px;
         margin: 10px;
         margin-left: 30px;
         background-size: contain;
-        ;
+       
         
     }
     .shop-banner-container{
-        width: 480px;
+        width: 495px;
         /* height: 100px; */
         display: flex;
         justify-content: center;

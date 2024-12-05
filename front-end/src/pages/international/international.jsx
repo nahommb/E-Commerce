@@ -40,7 +40,10 @@ import { Brazil_logo,Spain_logo,Germany_logo,Italy_logo,Argentina_logo,Crotia_lo
 
     return <div>
         {/* <Navbar/> */}
-        <Banner images={images}/>
+         <div className="international-banner">
+            <Banner images={images}/>
+         </div>
+        
         <ItemContainer category='International' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
        <Footer/>

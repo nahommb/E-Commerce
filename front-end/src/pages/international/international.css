@@ -1,50 +1,16 @@
-.men{
-    display: grid;
-    grid-template-columns: repeat(auto-fit ,minmax(20rem,1fr));
-    padding: 2% 0% 2% 0%;
-    /* background-color: aqua; */
-}
-.men-boarding{
-    height: 15rem;
-    /* background-color: red; */
-    width: 100%;
-    /* background-color: whitesmoke; */
-   display: flex;
-   justify-content: center;
-    position: relative;
-    top: 90px;
-    margin-bottom:120px ;
-    z-index: -1;
-}
-.men-boarding .inner-boarding{
-  background-image: linear-gradient(to right, green, white);
-  height: 15rem;
-  width: 80%;
-  border-radius: 12px;
+
+.international-banner{
   display: flex;
-  justify-content: space-between;
-  padding-left: 10%;
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
 }
-.men-banner-text{
-  padding-top: 30px;
-  color: rgb(233, 233, 38);
-  width: 80%;
-  font-size: 20px;
-}
-.men-banner-image{
-  width: 30%;
-  
-}
-@media (max-width: 480px) {
-  .men{
-    width:430px;
-    grid-template-columns: repeat(2 ,minmax(13rem,1fr));
-    grid-gap: 1rem;
-      /* background-color: aqua; */
-      padding: 6%;
-      /* margin: 0px; */
-      align-items: center;
-      justify-content: center;
+
+@media screen and (max-width: 480px) {
+  .international-banner{
+    width: 495px;
+    height: 140px;
+    background-size: contain;
   }
 }
