@@ -4,6 +4,7 @@ import { LOGINRESPONSE, LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } fro
 
 function* login(action){
     try{
+        console.log(action.payload)
         let response = yield call(loginRequest, action.payload);
         console.log(response.data);
 
