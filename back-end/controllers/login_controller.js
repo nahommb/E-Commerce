@@ -1,50 +1,50 @@
 const User = require('../models/user_model');
 const generateToken = require('../helper/generate_token')
+const bcrypt = require('bcrypt');
 
 
 const loginController = (req, res) => {
-  
   const { email, password } = req.body;
- // console.log('check'+req.body.email)
-  
+
   User.findOne({ email })
     .then(async user => {
       if (!user) {
         return res.status(401).json({ message: 'Invalid email or password' });
       }
-      if (user.password !== password) {
+
+      // Compare the provided password with the stored hash
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      if (!passwordMatch) {
         return res.status(401).json({ message: 'Invalid email or password' });
       }
-      else{
-        const token = generateToken(user);
-        
-        await User.findByIdAndUpdate(
-            user._id,
-            { refreshToken: token},
-            { new: true }
-        );
 
-       // Remove the password field
-         const updatedUser = await User.findById(user._id).select('-password');
-        //  console.log(updatedUser)
-         if(updatedUser.role==='admin'){
-          // console.log('admin')
-          res.cookie('adminRefreshToken',token,{
-            httpOnly:true,
-            maxAge: 72 * 60 * 60 * 1000,
-        }) 
-         } 
-         else{
-            res.cookie('refreshToken',token,{
-            httpOnly:true,
-            maxAge: 72 * 60 * 60 * 1000,
-        })
-         }
-      
-       // console.log(updatedUser)
-        res.status(200).json({ message: 'Login successful',updatedUser:updatedUser });
+      // Password is correct; proceed with generating a token
+      const token = generateToken(user);
+
+      // Update the user's refresh token
+      await User.findByIdAndUpdate(
+        user._id,
+        { refreshToken: token },
+        { new: true }
+      );
+
+      // Remove the password field from the user object
+      const updatedUser = await User.findById(user._id).select('-password');
+
+      // Set the appropriate cookie based on user role
+      if (updatedUser.role === 'admin') {
+        res.cookie('adminRefreshToken', token, {
+          httpOnly: true,
+          maxAge: 72 * 60 * 60 * 1000, // 72 hours
+        });
+      } else {
+        res.cookie('refreshToken', token, {
+          httpOnly: true,
+          maxAge: 72 * 60 * 60 * 1000, // 72 hours
+        });
       }
-      
+
+      res.status(200).json({ message: 'Login successful', updatedUser });
     })
     .catch(error => {
       console.error(error);

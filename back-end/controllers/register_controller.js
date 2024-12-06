@@ -1,8 +1,17 @@
 const User = require('../models/user_model');
+const  bcrypt = require('bcrypt');
 
 const registerController =  (req, res) => {
+
   try {
     const { first_name, last_name, email, password } = req.body;
+
+    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Error hashing password' });
+      }    
+    
     console.log(req.body);
     User.findOne({ email }).then(async existingUser => {
       if (existingUser) {
@@ -15,7 +24,7 @@ const registerController =  (req, res) => {
         last_name: last_name, 
         email: email,
         role:req.body.role, 
-         password: password ,
+         password: hashedPassword,
          created_at:Date.now()
         }
          );
@@ -23,7 +32,8 @@ const registerController =  (req, res) => {
         res.status(201).json({ message: 'User registered successfully',registered:true });
       }
     });
-
+    }
+    );
   }
   catch (error) {
     console.error(error);

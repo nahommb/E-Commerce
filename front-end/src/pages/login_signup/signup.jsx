@@ -12,19 +12,30 @@ export const Signup = ()=>{
     const [isChecked,setChecked] = useState(false);
     const dispatch = useDispatch();
 
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [first_name,setFirstName] = useState('');
+    const [last_name,setLastName] = useState('');
+    const [confirmPassword,setConfirmPassword] = useState('');
 
-const signupHandler = () => {
-        //  e.preventDefault();
-          dispatch(register({
-            first_name:'Biruk',
-            last_name:'Elias',
-            email: 'nahop665pl@gmail.com',
-            password: '12097yh56'
+const signupHandler = (e) => {
+         
+          if(confirmPassword === password){
+             dispatch(register({
+            first_name:first_name,
+            last_name:last_name,
+            email: email,
+            password: password
           })) 
          
           console.log(isRegistered);
           setShowPopup(isRegistered);
         }
+        else{
+          alert('password not matched')
+        }
+        }
+        
 
 const isRegistered = useSelector((state) => state.authenticationData.isRegistered);
         useEffect(() => {
@@ -46,15 +57,15 @@ const overlayOnClick = () => {
                 signupHandler();
                }}>
                <label>First Name</label><br/>
-                    <input type='text' required= {true} placeholder='First Name'/><br/>
+                    <input type='text' required= {true} placeholder='First Name' onChange={(e)=>setFirstName(e.target.value)}/><br/>
                 <label>Last Name</label><br/>
-                    <input type='text' placeholder='Last Name'/><br/>
+                    <input type='text' placeholder='Last Name' onChange={(e)=>setLastName(e.target.value)}/><br/>
                <label>Email</label><br/>
-                    <input type='email' required= {true} placeholder='Email'/><br/>
+                    <input type='email' required= {true} placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/><br/>
                 <label>Password</label><br/>
-                    <input type='password' required= {true} placeholder='Password'/><br/>
+                    <input type='password' required= {true} placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/><br/>
                 <label>Confirm Password</label><br/>
-                    <input type='password' required= {true} placeholder='Confirm Password'/><br/>
+                    <input type='password' required= {true} placeholder='Confirm Password' onChange={(e)=>setConfirmPassword(e.target.value)}/><br/>
                     <Button type='submit'>Continue</Button>
                  </form>
                   <p>Already have an account ? <span style={{color:'blue',cursor:'pointer'}} onClick={()=>{window.location.reload();}}>Login here</span></p><br/>
