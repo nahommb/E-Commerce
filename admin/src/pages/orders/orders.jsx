@@ -29,7 +29,7 @@ const dispatch = useDispatch()
    
 
   const orders = useSelector((state)=>state.orderData.orders)
-  console.log(orders.orders)
+  console.log(orders)
 
 const data = [1,2,3,4,5,6]
 

@@ -42,7 +42,7 @@ const isAdminAuth = async (req, res, next) => {
 
    try{
     const token = req.cookies.adminRefreshToken;
-    //  console.log(token)
+   //  console.log(token)
     if (!token) {
       
       return res.status(403).json({ message: 'No token provided' });
@@ -58,7 +58,7 @@ const isAdminAuth = async (req, res, next) => {
         if(user){
             req.user = decoded; 
             if(user.role === 'admin'){
-             // console.log(user)
+             //console.log(user)
                 next();
             }
           else{
@@ -79,8 +79,8 @@ const isAdminAuth = async (req, res, next) => {
 
 
 const isAdmin = async (req, res, next) => {
-  // console.log(req.body)  
-   await User.findOne({email:req.body.email}).then((user)=>{
+  console.log(req.user||req.body)  
+   await User.findOne({email:req.user.email}).then((user)=>{
     if(user){
         if(user.role === 'admin'){
             next();
