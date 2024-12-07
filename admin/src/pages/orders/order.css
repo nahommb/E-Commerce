@@ -4,6 +4,13 @@
     /* height: 400px; */
     border-radius: 8px;
     box-shadow: 3px 3px 8px 0px  purple;
+    /* background-color: red */
+}
+.expanded-content{
+ background-color: whitesmoke;
+ color: blueviolet;
+ padding: 10px;
+ border-radius: 10px;
 }
 ::-webkit-scrollbar {
   /* display: none; */

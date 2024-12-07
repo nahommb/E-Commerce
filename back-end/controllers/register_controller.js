@@ -1,3 +1,4 @@
+
 const User = require('../models/user_model');
 const  bcrypt = require('bcrypt');
 
@@ -6,7 +7,7 @@ const registerController =  (req, res) => {
   try {
     const { first_name, last_name, email, password } = req.body;
 
-    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+    bcrypt.hash(password, 11, async (err, hashedPassword) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: 'Error hashing password' });

@@ -51,34 +51,33 @@ const createOrder = async (req,res)=>{
     } 
 }
 
-const getOrders = async (req,res)=>{
-
-    try{
-
-
-    const page = req.query.page;
-    const limit = req.query.limit;
-    
-   
-
-    const skip = (page - 1) * limit; //0 3
-    const lastIndex = page * limit; //3 6
-
-  const order = await Order.find({}).skip(skip).limit(lastIndex)
- 
-  const total_items = await Order.countDocuments()
-
-  res.json({
-    total_pages:Math.ceil(total_items / limit),
-    orders: order
-  })
+const getOrders = async (req, res) => {
+    try {
+      const page = req.query.page;
+      const limit = req.query.limit;
+  
+      const skip = (page - 1) * limit; // Pagination
+      const lastIndex = page * limit;
+  
+      // Fetch orders with pagination
+      const order = await Order.find({}).skip(skip).limit(lastIndex);
+      const total_items = await Order.countDocuments();
+  
+      // Add `ordered_items_detail` to each order
+      for (let i = 0; i < order.length; i++) {
+        const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+        const products = await Promise.all(productPromises); // Resolve promises
+        order[i]._doc.ordered_items_detail = products; // Add products to the order object
+      }
+  
+      res.json({
+        total_pages: Math.ceil(total_items / limit),
+        orders: order.reverse(),
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
-
-    catch(err){
-     res.status(500).json({error:err.message});
-    }
-
-
-}
+  };
+  
 
 module.exports = {createOrder,getOrders};

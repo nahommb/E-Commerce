@@ -3,7 +3,8 @@ import { LOGINERROR, LOGINRESPONSE, VALIDATETOKENRESPONSE } from "../constants"
 const init = {
     isLoggedIn:false,
     user:null,
-    error:null
+    error:null,
+    isValideToken:false
 }
 
 export const authReducer = (state=init,action)=>{
@@ -11,8 +12,9 @@ export const authReducer = (state=init,action)=>{
         case LOGINRESPONSE:
             console.log(action.payload);
           return {
-            ...state,
+            ...state, 
             user:action.payload,
+            isLoggedIn:true,
           }
         case LOGINERROR:
             console.log(action.payload);
@@ -25,7 +27,7 @@ export const authReducer = (state=init,action)=>{
             return {
                 ...state,
                 user:action.payload.user,
-                isLoggedIn:action.payload.valideToken
+                isValideToken:action.payload.valideToken
             }
         default:
             return state
