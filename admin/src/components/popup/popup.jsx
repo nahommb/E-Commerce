@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import './popup.css'
-import { changePassword } from "../../context/redux/profile/profileAction";
+import { changePassword,changeName } from "../../context/redux/profile/profileAction";
 export const Popup = ({isOpen,onClose,content})=>{
  
 
-  const [currentPassword,setCurrentPassword] = useState('')
-  const [newPassword,setNewPassword] = useState('')
-  const [confirmPassword,setConfirmPassword] = useState('')
+  const [currentPassword,setCurrentPassword] = useState()
+  const [newPassword,setNewPassword] = useState()
+  const [confirmPassword,setConfirmPassword] = useState()
 
   const [first_name,setFirst_name] = useState('')
   const [last_name,setLast_name] = useState('')
@@ -37,7 +37,7 @@ export const Popup = ({isOpen,onClose,content})=>{
  }
  onClose()
  }
-    return <form>        
+    return <form onSubmit={onSave}>        
               {isOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -60,7 +60,7 @@ export const Popup = ({isOpen,onClose,content})=>{
          
             {content.title === 'Change Email' || content.title === 'Change Name' || content.title==='Change Password'?
             <div>
-            <button type="submit" className="mt-3" onClick={onSave}>Save</button>
+            <button type="submit" className="mt-3">Save</button>
             <button onClick ={onClose} className="ml-5">Cancel</button>
             </div>:
             <div>

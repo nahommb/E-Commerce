@@ -38,8 +38,8 @@ export const Login = () => {
     e.preventDefault();
     dispatch(
       loginAction({
-        email: email || 'leeopia11@gmail.com',
-        password: password || '123456',
+        email: email ,
+        password: password,
       })
     );
   };

@@ -1,4 +1,4 @@
-import { ADDPRODUCTS, GETALLPRODUCTS } from "../constants"
+import { ADDPRODUCTS,GETALLPRODUCTS } from "../constants"
 
 export const addProducts = (data)=>{
     // console.log(data)

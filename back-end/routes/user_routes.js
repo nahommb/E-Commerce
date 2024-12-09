@@ -13,6 +13,7 @@ router.post('/validate_token', authMiddleware,validateTokenController);
 router.post('/logout',authMiddleware,logoutController);
 router.post('/isAdmin',isAdmin,loginController);
 router.post('/validate_admin_token',isAdminAuth,validateTokenController);
-router.put('/change_password',isAdminAuth,changePassword);
+router.put('/change_password',isAdminAuth,changePassword); // for admin
+router.put('/change_name',isAdminAuth,changeName);  // for admin 
 
 module.exports = router;

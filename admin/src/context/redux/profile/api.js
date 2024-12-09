@@ -10,3 +10,13 @@ export const changePasswordRequest = async(data)=>{
     return response
    
 }
+
+export const changeNameRequest = async(data)=>{
+    console.log(data)
+    axios.defaults.withCredentials = true;
+    
+    const response = await axios.put(`${baseUrl}user/change_name`,data)
+    
+    return response
+   
+}

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const changeName = async (req, res) => {
   const { first_name, last_name } = req.body;
 
+  console.log(req.body)
   try{
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -22,8 +23,7 @@ const changeName = async (req, res) => {
 
 const changePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
-  console.log(currentPassword,newPassword)
- 
+  
 try{
 
   User.findByIdAndUpdate(req.user.id).then((user)=>{
@@ -41,23 +41,6 @@ try{
     })}
   })}
 })
-
-//   User.findById(req.user.id).then((user) => {
-//     if (!user) {
-//       return res.status(404).json({ message: 'User not found' });
-//     }
-//     if (user.password !== currentPassword) {
-//       return res.status(401).json({ message: 'Current password is incorrect' });
-//     }
-//     user.password = newPassword;
-//     user.save().then(() => {
-//       res.status(200).json({ message: 'Password updated successfully' });
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//       res.status(500).json({ message: 'Internal server error' });
-//     });
-//   })
 }
   catch(error){
     console.error(error);
