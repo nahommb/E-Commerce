@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction, validateToken } from '../../context/redux/auth/authAction';
 import { useEffect, useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
+
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -12,25 +13,34 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPopup, setShowPopup] = useState(false);
-
+  const [loginError, setLoginError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const user = useSelector((state) => state.authReducer);
-
-  
+ 
   useEffect(() => {
+    setIsLoading(true);
     dispatch(validateToken());
+   
   }, [dispatch]);
-
+ 
   
   useEffect(() => {
     if (user?.isLoggedIn) {
       setShowPopup(true);
+      
       // setTimeout(() => setShowPopup(false), 2000); // Auto-hide after 2 seconds
     }
-  }, [user?.isLoggedIn]);
+    if (user?.error) {
+      console.log('leee'+user?.error);
+      setLoginError(true);
+    }
+  }, [user]); //user?.loggedIn
 
   useEffect(() => {
-    if (user?.isValideToken) {
+  
+    if (user?.isValideToken) { 
       navigate('/dashboard');
+      setIsLoading(false);
     }
   }, [user?.isValideToken, navigate]);
 
@@ -46,7 +56,11 @@ export const Login = () => {
 
   return (
     <>
-      <div className="login">
+    {isLoading?<div className="flex justify-center items-center h-screen">
+      <CircularProgress/>
+    </div>:
+    
+        <div className="login">
         <div>
           <h3 style={{ color: 'green' }}>Login</h3>
           <p>Dress up and got your dreams</p>
@@ -56,6 +70,7 @@ export const Login = () => {
             <input
               type="email"
               placeholder="Email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -65,6 +80,7 @@ export const Login = () => {
             <input
               type="password"
               placeholder="Password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -87,7 +103,23 @@ export const Login = () => {
             </Button>
           </div>
         )}
+        {loginError && (
+          <div style={popupStyles}>
+            <p style={{ color: 'red' }}>{user.error.message}</p>
+            <Button
+              style={{ color: '#4caf50', marginTop: '13px' }}
+              onClick={() => {
+                setLoginError(false)
+              }
+              }
+            >
+              OK
+            </Button>
+          </div>
+        )}
       </div>
+    }
+  
     </>
   );
 };

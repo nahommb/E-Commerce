@@ -15,6 +15,7 @@ export const authReducer = (state=init,action)=>{
             ...state, 
             user:action.payload,
             isLoggedIn:true,
+            error:null
           }
         case LOGINERROR:
             console.log(action.payload);

@@ -1,6 +1,6 @@
 import { put, takeLatest,call } from 'redux-saga/effects';
 import { loginRequest,validetTokenRequest } from './api';
-import { LOGINRESPONSE, LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
+import { LOGINRESPONSE, LOGINERROR,LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
 
 function* login(action){
     try{
@@ -10,6 +10,7 @@ function* login(action){
 
         yield put({type:LOGINRESPONSE,payload:action.payload})
     }catch(error){
+        yield put({type:LOGINERROR,payload:error.response.data})
         console.log(error.response.data);
     }
 }
