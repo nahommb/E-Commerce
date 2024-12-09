@@ -24,13 +24,13 @@ export const Login = () => {
   useEffect(() => {
     if (user?.isLoggedIn) {
       setShowPopup(true);
-      setTimeout(() => setShowPopup(false), 2000); // Auto-hide after 2 seconds
+      // setTimeout(() => setShowPopup(false), 2000); // Auto-hide after 2 seconds
     }
   }, [user?.isLoggedIn]);
 
   useEffect(() => {
     if (user?.isValideToken) {
-       navigate('/dashboard');
+      navigate('/dashboard');
     }
   }, [user?.isValideToken, navigate]);
 
@@ -76,7 +76,7 @@ export const Login = () => {
           <div style={popupStyles}>
             <p>Successfully Logged In!</p>
             <Button
-              style={{ color: 'white', marginTop: '13px' }}
+              style={{ color: '#4caf50', marginTop: '13px' }}
               onClick={() => {
                 setShowPopup(false)
                 navigate('/dashboard');
@@ -99,8 +99,9 @@ const popupStyles = {
   top: '20%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  backgroundColor: '#4caf50',
-  color: 'white',
+  backgroundColor: 'white',
+  border:'2px solid #4caf50',
+  color: '#4caf50',
   padding: '20px',
   borderRadius: '8px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',

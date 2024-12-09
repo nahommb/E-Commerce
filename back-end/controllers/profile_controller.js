@@ -1,7 +1,7 @@
 const User = require("../models/user_model");
 const bcrypt = require('bcrypt');
 
-const ChangeName = async (req, res) => {
+const changeName = async (req, res) => {
   const { first_name, last_name } = req.body;
 
   try{
@@ -20,11 +20,27 @@ const ChangeName = async (req, res) => {
   }
 }
 
-const ChangePassword = async (req, res) => {
+const changePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
+  console.log(currentPassword,newPassword)
  
 try{
 
+  User.findByIdAndUpdate(req.user.id).then((user)=>{
+    if(user){
+      bcrypt.compare(user.password,currentPassword).then((err,result)=>{
+        if(err){
+          return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+        else{
+          bcrypt.hash(newPassword,11).then((hash)=>{
+            user.password = hash;
+            user.save().then(()=>{
+              res.status(200).json({message:'password changed'})
+      })
+    })}
+  })}
+})
 
 //   User.findById(req.user.id).then((user) => {
 //     if (!user) {
@@ -50,4 +66,4 @@ try{
 }
 
 
-module.exports = { ChangeName };
+module.exports = { changeName,changePassword };

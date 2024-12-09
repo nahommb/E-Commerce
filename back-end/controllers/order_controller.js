@@ -60,7 +60,7 @@ const getOrders = async (req, res) => {
       const lastIndex = page * limit;
   
       // Fetch orders with pagination
-      const order = await Order.find({}).skip(skip).limit(lastIndex);
+      const order = await Order.find({status:'pending'}).skip(skip).limit(lastIndex);
       const total_items = await Order.countDocuments();
   
       // Add `ordered_items_detail` to each order
