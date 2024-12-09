@@ -28,7 +28,8 @@ export const authReducer = (state=init,action)=>{
             return {
                 ...state,
                 user:action.payload.user,
-                isValideToken:action.payload.valideToken
+                isValideToken:action.payload.valideToken,
+                isLoggedIn:false,
             }
         default:
             return state

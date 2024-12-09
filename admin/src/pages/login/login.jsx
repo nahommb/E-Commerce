@@ -14,13 +14,13 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [loginError, setLoginError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const user = useSelector((state) => state.authReducer);
  
   useEffect(() => {
     setIsLoading(true);
     dispatch(validateToken());
-   
+    setIsLoading(false);
   }, [dispatch]);
  
   
@@ -40,7 +40,6 @@ export const Login = () => {
   
     if (user?.isValideToken) { 
       navigate('/dashboard');
-      setIsLoading(false);
     }
   }, [user?.isValideToken, navigate]);
 
