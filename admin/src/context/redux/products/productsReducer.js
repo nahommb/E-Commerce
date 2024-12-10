@@ -1,8 +1,9 @@
-import { ADDPRODUCTS, ADDPRODUCTSRESPONSE ,GETALLPRODUCTS, GETALLPRODUCTSRESPONSE} from "../constants"
+import { ADDPRODUCTS,DELETEPRODUCTSRESPONSE ,ADDPRODUCTSRESPONSE ,GETALLPRODUCTS, GETALLPRODUCTSRESPONSE} from "../constants"
 
 const initalState = {
     products: [],
     isUploaded: false,
+    deletedResponse:null,
     
 }
 
@@ -20,6 +21,12 @@ export const productsReducer = (state = initalState, action) => {
             return {
                 ...state,
                 products: action.payload
+            }
+        case DELETEPRODUCTSRESPONSE:
+            console.log(action.payload)
+            return {
+                ...state,
+                deletedResponse: action.payload.message
             }
         
         default:

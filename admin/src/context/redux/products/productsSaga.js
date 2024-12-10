@@ -1,6 +1,6 @@
 import { call, put ,takeEvery,takeLatest} from "redux-saga/effects";
-import { addProductRequest, getProductRequest } from "./api";
-import { ADDPRODUCTS, ADDPRODUCTSRESPONSE, GETALLPRODUCTS ,GETALLPRODUCTSRESPONSE } from "../constants";
+import { addProductRequest, getProductRequest,deleteProductRequest } from "./api";
+import { ADDPRODUCTS, ADDPRODUCTSRESPONSE,DELETEPRODUCTS,DELETEPRODUCTSRESPONSE, GETALLPRODUCTS ,GETALLPRODUCTSRESPONSE } from "../constants";
 
 function * addProduct(action){
     try{
@@ -20,7 +20,7 @@ function* getProduct(action){
     try{
         let response = yield call(getProductRequest, action.payload);
 
-        // console.log(response.data);
+         console.log(response.data);
         yield put({type:GETALLPRODUCTSRESPONSE,payload:response.data})
     }
     catch(err){
@@ -29,10 +29,27 @@ function* getProduct(action){
     }
 }
 
+function* deleteProduct(action){
+    try{
+        console.log(action.payload);
+        let response = yield call(deleteProductRequest, action.payload);
+
+        console.log(response.data);
+        yield put({type:DELETEPRODUCTSRESPONSE,payload:response.data})
+    }
+    catch(err){
+      console.log(err)
+    }
+} 
+
 export function* getProductSaga(){
     yield takeEvery(GETALLPRODUCTS,getProduct)
  }
 
 export function* addProductSaga(){
     yield takeLatest(ADDPRODUCTS,addProduct)
+ }
+
+ export function* deleteProductSaga(){
+    yield takeLatest(DELETEPRODUCTS,deleteProduct)
  }

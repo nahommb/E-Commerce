@@ -1,6 +1,7 @@
+const { deleteFile } = require('../helper/delete_image');
 const upload = require('../helper/image_uploader');
 const Product = require('../models/product_model');
-
+const path = require('path');
 
 const addProduct = (req, res) => {
 
@@ -211,18 +212,45 @@ const findRecentProducts = async (req, res) => {
   }
 }
 const deleteProducts = async (req, res) => {
-  const productId = req.body.productId;
-  console.log(productId);
-  try{
-    await Product.deleteOne({_id:productId}).then(()=>{
-      res.status(200).json({message:'Product deleted successfully'})
-    })
+
+  const productId = req.params.id;
+
+  try {
+    // Find the product by ID
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Delete product images
+    const deletePromises = product.product_images.map((image) => {
+      const filename = image.replace('product_image/', '');
+      const filePath = path.join(__dirname, '..', 'uploads', 'product_image', filename);
+
+      // Delete each image file
+      return deleteFile(filePath);
+    });
+
+    // Wait for all image deletions to complete
+    await Promise.all(deletePromises);
+
+    // Delete the product from the database
+    await Product.deleteOne({ _id: productId });
+
+    // Respond with success
+    res.status(200).json({ message: 'Product and images deleted successfully' });
+
+  } catch (err) {
+    console.error(err);
+    // Handle different error cases
+    if (err.message === 'Product not found') {
+      res.status(404).json({ message: err.message });
+    } else {
+      res.status(500).json({ message: 'Internal server error' });
+    }
   }
-  catch(err){
-    console.log(err)
-    res.status(500).json({message:'Internal server error'})
-  }
-}
+};
+
 
 const editProducts = async(req,res)=>{
    
@@ -254,4 +282,5 @@ const editProducts = async(req,res)=>{
     getAllProducts,
     findRecentProducts,
     deleteProducts,
+    editProducts,
   };

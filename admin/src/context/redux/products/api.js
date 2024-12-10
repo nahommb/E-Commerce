@@ -15,3 +15,10 @@ export const getProductRequest = (payload)=>{
 
      return response
   }
+
+  export const deleteProductRequest = (payload) => {
+    axios.defaults.withCredentials = true;
+    const response = axios.delete(`${baseUrl}products/delete_products/${payload.id}`);
+    return response;
+  };
+   

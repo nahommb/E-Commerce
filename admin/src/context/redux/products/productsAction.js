@@ -1,4 +1,4 @@
-import { ADDPRODUCTS,GETALLPRODUCTS } from "../constants"
+import { ADDPRODUCTS,GETALLPRODUCTS,DELETEPRODUCTS } from "../constants"
 
 export const addProducts = (data)=>{
     // console.log(data)
@@ -11,6 +11,13 @@ export const addProducts = (data)=>{
 export const getProducts = (data)=>{
     return {
         type: GETALLPRODUCTS,
+        payload: data
+    }
+}
+
+export const deleteProduct = (data)=>{
+    return {
+        type: DELETEPRODUCTS,
         payload: data
     }
 }
