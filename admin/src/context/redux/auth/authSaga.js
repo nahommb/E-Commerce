@@ -1,6 +1,6 @@
 import { put, takeLatest,call } from 'redux-saga/effects';
-import { loginRequest,validetTokenRequest } from './api';
-import { LOGINRESPONSE, LOGINERROR,LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
+import { loginRequest,logoutRequest,validetTokenRequest } from './api';
+import { LOGINRESPONSE, LOGOUT,LOGINERROR,LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
 
 function* login(action){
     try{
@@ -26,6 +26,16 @@ function* validateToken(action){
     }
 }
 
+function* logout(action){
+    try{
+     let response = yield call(logoutRequest, action.payload);
+     console.log(response.data);
+
+    }
+    catch(error){
+        console.log(error.response.data);
+    }
+}
 export function* loginSaga(){
 
     yield takeLatest(LOGIN_REQUEST,login)
@@ -34,4 +44,8 @@ export function* loginSaga(){
 export function* validateTokenSaga(){
 
     yield takeLatest(VALIDATETOKEN,validateToken)
+}
+
+export function* logoutSaga(){
+    yield takeLatest(LOGOUT,logout)
 }

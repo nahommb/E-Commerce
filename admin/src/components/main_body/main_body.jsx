@@ -10,6 +10,7 @@ import { Profile } from "../../pages/profile/profile";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../../context/redux/products/productsAction";
 import { NavBar } from "../navbar/navbar";
+import { Logout } from "../../pages/logout/logout";
 export const MainBody = ()=>{
 
    const [bodyIndex , setBodyIndex] = useState(0);
@@ -19,7 +20,8 @@ export const MainBody = ()=>{
     <AddProducts/>,
     <EditProducts/>,
     <Analytics/>,
-    <Profile/>
+    <Profile/>,
+    <Logout/>
     ]
  const dispatch = useDispatch()
 

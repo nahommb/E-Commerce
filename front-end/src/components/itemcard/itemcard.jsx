@@ -14,9 +14,7 @@ export const ItemCard = (props) => {
  
   const frontImage = imageUrl+props.items.product_images[0]
   const backImage = imageUrl+props.items.product_images[1]
-  console.log('tesssss')
-  console.log(backImage) 
-
+ 
   const divStyle = {
     backgroundImage: `url(${frontImage})`,
     backgroundSize: 'cover',
@@ -52,11 +50,9 @@ export const ItemCard = (props) => {
       props.items.quantity = 1;
       props.items.total = props.items.price;
       props.items.date = Date.now();
-      // console.log(props.items);
       dispatch(addToCart(props.items))
     }
-    // Prevent navigation when button is clicked
-    console.log('yesss');
+
   };
 
  
@@ -65,7 +61,6 @@ export const ItemCard = (props) => {
       // window.location.reload();
   }
 
-//  console.log(imageUrl+props.items.product_images[0]);
   return (
     <> {showPopup?<OverlayCard  
         title="You Need to login first" 
@@ -102,7 +97,7 @@ export const ItemCard = (props) => {
 
       <div className='item-card-info' style={itemCardInfoInline}>
         <h4>{props.items.product_name} </h4>
-        {/* <p>⭐⭐⭐⭐⭐ 5</p> */}
+       
       </div>
     </motion.div>
     </>

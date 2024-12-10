@@ -8,28 +8,26 @@ import { useState, } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import { logout, valideteToken } from '../../context/redux/authentication-state/authenticationAction';
 import { OverlayCard } from '../overlay_card/overlay_card';
-import Cookies from 'js-cookie';
 
 export const Navbar = ()=>{
 
     const [isLoggedIn,setLoggedIn] = useState(false);
 
-    const accessToken = localStorage.getItem('token');
-    const [showPopup, setShowPopup] = useState(false);
     
+    const [showPopup, setShowPopup] = useState(false);
+    const user = useSelector((state) => state.authenticationData.user);
+    console.log(user)
     
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
     const cart = useSelector((state) => state.cartReducer.cart);
-    // console.log(cart.length)
-    // console.log(valideToken)
+
     const dispatch = useDispatch()
     useEffect(() => { 
-  
-        // if (accessToken) {
+
             console.log('checked correctly');
             dispatch(valideteToken());
-        // }
-    }, [ dispatch]); 
+      
+    }, [dispatch]); 
 
     useEffect(() => {
         setLoggedIn(valideToken);
@@ -47,7 +45,7 @@ export const Navbar = ()=>{
         <MyDrawer/>
         <div className='nav-log' onClick={()=>navigate('/')}>
              Niya
-            {/* <p>LEE</p> */}
+         
         </div>
         {showPopup?<OverlayCard showPopup={showPopup}
          title='Log out' 

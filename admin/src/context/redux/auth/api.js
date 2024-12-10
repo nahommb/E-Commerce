@@ -15,3 +15,10 @@ export const loginRequest = (payload)=>{
   
      return response
   }
+
+  export const logoutRequest = ()=>{
+    axios.defaults.withCredentials = true;
+     const response = axios.post(`${baseUrl}user/logout_admin`)
+
+     return response
+  }

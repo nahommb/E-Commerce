@@ -30,14 +30,14 @@ const [showPopup, setShowPopup] = useState(false);
 
 const overlayOnClick = () => {
   setShowPopup(false);
-    window.location.reload();
+     window.location.reload();
 }
 
 
   useEffect(() => {
     if (user) {     
       navigate('/')
-      window.location.reload();
+       window.location.reload();
     }
   }, [user]);
 
@@ -45,8 +45,8 @@ const overlayOnClick = () => {
     console.log(email,password)
     dispatch(
       login({
-        email :email,
-        password:password
+        email :'ousman@gmail.com',
+        password:'123456'
       }) 
     )
     
@@ -71,9 +71,9 @@ const overlayOnClick = () => {
                   
                  }}>
                   <label>Email</label><br/>
-                    <input type='email' placeholder='Email' required onChange={(e)=>setEmail(e.target.value)}/><br/>
+                    <input type='email' placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/><br/>
                   <label>Password</label><br/>
-                    <input type='password' placeholder='Password' required onChange={(e)=>setPassword(e.target.value)}/><br/>
+                    <input type='password' placeholder='Password'  onChange={(e)=>setPassword(e.target.value)}/><br/>
                     <Button type='submit'>Continue</Button>
                     <Button  style={{backgroundColor:'white',color:'black'}}><Google style={{marginRight:'8px'}}/>Continue with Google</Button>
                  </form>

@@ -69,6 +69,8 @@ console.log(user);
     console.log(formData.getAll('images')); // Log the formData to check if files are being sent
     dispatch(addProducts(formData));
     setProductName('');
+    setPrice('');
+    setSelectedImages([]);
     setIsModalOpen(true);
     // Reset form or provide further feedback as needed
   };

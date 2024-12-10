@@ -1,5 +1,5 @@
 
-const logoutController = (req,res)=>{
+const userlogoutController = (req,res)=>{
     console.log('test')
     res.clearCookie('refreshToken', {
         httpOnly: true,
@@ -7,5 +7,12 @@ const logoutController = (req,res)=>{
     });
    res.json({message:'cleared'})
 }
-
-module.exports = logoutController;
+const adminLogoutController = (req,res)=>{
+    console.log('test')
+    res.clearCookie('adminRefreshToken', {
+        httpOnly: true,
+        path: '/', // make sure this matches the path where the cookie was set
+    });
+   res.json({message:'cleared'})
+}
+module.exports = {userlogoutController,adminLogoutController};

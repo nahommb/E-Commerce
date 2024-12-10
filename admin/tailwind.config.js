@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors:{
-        'light-purple':'#8E05C2'
+        'light-purple':'#8E05C2',
+        'white-smoke':'#F8FAFC'
       }
     },
   },

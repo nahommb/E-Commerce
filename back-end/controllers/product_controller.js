@@ -10,21 +10,19 @@ const addProduct = (req, res) => {
             return res.status(400).json({ error: err.message });
         }
   
-        // Ensure the file and body data are available
         if (!req.files) {
             return res.status(400).json({ error: 'Missing image or description' });
         }
-        // console.log(req.files.length);
+       
         const images = []
         req.files.map((file) => {
-            // console.log(file.filename);
+           
             images.push(`product_image/${file.filename}`)
           });
-        //   console.log(images)
+     
   
-        // Create a new Product instance with the uploaded data
         const newProduct = new Product({
-            product_name: req.body.product_name, // Use filename directly from req.file
+            product_name: req.body.product_name, 
             product_description: req.body.product_description,
             product_images: images.reverse(), 
             // product_size:req.body.product_size,
@@ -125,7 +123,7 @@ catch(err){
 }
 }
 const searchProducts = async (req, res) => {
-  const search = req.query.search;  // Optional chaining to avoid errors if query is undefined
+  const search = req.query.search; 
   console.log("Search query:", search);
 
   if (!search) {
@@ -181,8 +179,8 @@ const findRecentProducts = async (req, res) => {
     twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 10);
 
     const recentProducts = await Product.find({ created_at: { $gte: twoWeeksAgo } })
-    .sort({ created_at: -1 }) // Sort by created_at field in descending order
-    .skip(skip) // Apply pagination (skip)
+    .sort({ created_at: -1 }) 
+    .skip(skip) 
     .limit(limit); 
     
     const totalItems = await Product.countDocuments({created_at:{ $gte: twoWeeksAgo }});
@@ -212,6 +210,42 @@ const findRecentProducts = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 }
+const deleteProducts = async (req, res) => {
+  const productId = req.body.productId;
+  console.log(productId);
+  try{
+    await Product.deleteOne({_id:productId}).then(()=>{
+      res.status(200).json({message:'Product deleted successfully'})
+    })
+  }
+  catch(err){
+    console.log(err)
+    res.status(500).json({message:'Internal server error'})
+  }
+}
+
+const editProducts = async(req,res)=>{
+   
+  const productId = req.body.productId;
+  await Product.findById({_id:productId}).then((product)=>{
+    if(product){
+      product.product_name = req.body.product_name || product.product_name;
+      product.product_category = req.body.product_category || product.product_category;
+      product.product_price = req.body.product_price || product.product_price;
+      product.product_description = req.body.product_description || product.product_description;
+     
+      product.save().then(()=>{
+        res.status(200).json({message:'Product updated successfully'})
+      })
+    
+    }
+    else{
+      res.status(404).json({message:'Product not found'})
+    }
+  })
+}
+
+
   module.exports = {
     addProduct,
     getProducts,
@@ -219,4 +253,5 @@ const findRecentProducts = async (req, res) => {
     searchProducts,
     getAllProducts,
     findRecentProducts,
+    deleteProducts,
   };

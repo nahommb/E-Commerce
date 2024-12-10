@@ -16,7 +16,7 @@ import ProtectedRoute from './components/protected_route/protected_route';
 import { AnimatePresence } from 'framer-motion';
 import { PageTranstion } from './components/transition/page_transition';
 
-// Custom component to handle routing and animations
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 

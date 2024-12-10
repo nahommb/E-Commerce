@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, VALIDATETOKEN } from "../constants"
+import { LOGIN_REQUEST, LOGOUT, VALIDATETOKEN } from "../constants"
 
 export const loginAction = (data)=>{
     console.log(data)
@@ -10,5 +10,11 @@ export const loginAction = (data)=>{
 export const validateToken= ()=>{
     return {
         type: VALIDATETOKEN
+    }
+}
+
+export const logout = ()=>{
+    return {
+        type: LOGOUT
     }
 }

@@ -4,10 +4,11 @@ import { Paginate } from "../../components/paginate/paginate"
 import { useEffect,useState } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import { getProducts } from "../../context/redux/products/productsAction"
-
+import './edit_products.css'
 export const EditProducts = ()=>{
 
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const handleSelect = (productId) => {
     // Toggle selection
@@ -18,9 +19,13 @@ export const EditProducts = ()=>{
     }
 };
 
+const handleDelete = () => {
+  console.log('Delete clicked for product ID:', selectedProductId);
+}
+
  const products = useSelector(state=>state.productsReducer.products)
 
- console.log(products)
+//  console.log(products)
  const dispatch = useDispatch()
 
  
@@ -65,8 +70,21 @@ const onPageChange = (e)=>{
 
     <div className="flex justify-end pr-5">
         <Button style={{color:'purple'}}>Edit</Button>
-        <Button style={{backgroundColor:'red',color:'white',marginLeft:'10px'}}>Delete</Button>
+        <Button style={{backgroundColor:'red',color:'white',marginLeft:'10px'}} onClick={()=>setDeletePopup(true)}>Delete</Button>
     </div>
+    {deletePopup && selectedProductId!==null &&
+    <div className="delete-popup">
+      <div className="delete-popup-content">
+        <p>Are you sure you want to delete this product?</p>
+        <div className="pt-3">
+          <Button onClick={() => setDeletePopup(false)}>Cancel</Button>
+          <Button onClick={handleDelete}>Delete</Button>
+        </div>
+      </div>
+    </div>
+
+    }
   
     </div>
 }
+

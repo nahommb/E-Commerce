@@ -23,10 +23,11 @@ export const authenticationData = (state = initialState,action)=>{
                 user:action.payload.updatedUser
             }
         case VALIDATETOKENRESPONSE:
-            console.log(action.payload.valideToken);
+            console.log(action.payload);
             return {
                 ...state, 
-                 valideToken:action.payload.valideToken
+                 valideToken:action.payload.valideToken,
+                 user:action.payload.user
             }
         case LOGINERROR:
             console.log(action.payload);
