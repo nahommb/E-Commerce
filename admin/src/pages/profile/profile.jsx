@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import './profile.css';
 import { Popup } from "../../components/popup/popup";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 
 export const Profile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,27 +11,36 @@ export const Profile = () => {
     const [showPopup, setShowPopup] = useState(false);
     
     const user = useSelector((state)=>state.authReducer.user)
+  
    const profile = useSelector((state)=>state.profileReducer)
-   console.log(profile.message)
+   console.log(user)
 
- 
+   const dispatch = useDispatch()
+
     const handleOpenModal = (title,data) => {
        
         setModalContent({ title ,data});
         setIsModalOpen(true);
     };
 
+
     const handleCloseModal = () => {
         setIsModalOpen(false);
         console.log('save')
     };
+
+    const handleSave = () => {
+      setShowPopup(false)
+      dispatch({type:'CLEAR_MESSAGE',payload:''})
+       
+    }
 
   useEffect(()=>{
      if(profile.message !==''){
         setShowPopup(true)
      }
 
-  },[profile])
+  },[handleSave])
 
     return (
         <div className="p-8 w-full justify-between items-center">
@@ -65,11 +74,7 @@ export const Profile = () => {
             <p>{profile.message}</p>
             <Button
               style={{ color: '#4caf50', marginTop: '13px' }}
-              onClick={() => {
-                setShowPopup(false)
-                window.location.reload()
-              }
-              }
+              onClick={handleSave}
             >
               OK
             </Button>

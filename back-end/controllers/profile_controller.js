@@ -13,7 +13,7 @@ const changeName = async (req, res) => {
     user.first_name = first_name||user.first_name;
     user.last_name = last_name||user.last_name;
     await user.save();
-    res.status(200).json({ message: 'Name updated successfully' });
+    res.status(200).json({ message: 'Name updated successfully' ,user:user});
   }
   catch(error){
     console.error(error);

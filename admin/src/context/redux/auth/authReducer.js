@@ -1,4 +1,4 @@
-import { LOGINERROR, LOGINRESPONSE, VALIDATETOKENRESPONSE } from "../constants"
+import { CHANGENAMERESPONSE, LOGINERROR, LOGINRESPONSE, VALIDATETOKENRESPONSE } from "../constants"
 
 const init = {
     isLoggedIn:false,
@@ -30,6 +30,12 @@ export const authReducer = (state=init,action)=>{
                 user:action.payload.user,
                 isValideToken:action.payload.valideToken,
                 isLoggedIn:false,
+            }
+        case CHANGENAMERESPONSE:
+            console.log(action.payload);
+            return {
+                ...state,
+                user:action.payload.user
             }
         default:
             return state

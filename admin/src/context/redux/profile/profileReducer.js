@@ -29,6 +29,12 @@ export const profileReducer = (state = initState, action) => {
                 ...state,
                 message: action.payload.message
             }
+        case 'CLEAR_MESSAGE':
+            console.log('clear')
+        return {
+                ...state,
+                message: ''
+            }
         default:
             return state
     }
