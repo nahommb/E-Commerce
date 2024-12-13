@@ -16,3 +16,10 @@ export const assignDeliveryRequest = async (payload)=>{
 
     return response
 }
+export const getReadyOrdersRequest = async (payload)=>{
+    axios.defaults.withCredentials =  true
+
+    const response = await axios.put(`${baseUrl}orders/get_ready_orders/${payload.id}`)
+
+    return response
+}

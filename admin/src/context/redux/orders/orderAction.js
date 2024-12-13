@@ -1,4 +1,4 @@
-import { ASSIGNDELIVERY, GETORDERS } from "../constants";
+import { ASSIGNDELIVERY, GETORDERS ,GETREADYORDERS} from "../constants";
 
 export const getOrders = (data)=>{
     console.log(data)
@@ -12,5 +12,11 @@ export const assignDelivery=(data)=>{
     return {
         type:ASSIGNDELIVERY,
         payload:data,
+    }
+}
+export const getReadyOrders = (data)=>{
+    return {
+        type:GETREADYORDERS,
+        payload:data
     }
 }
