@@ -1,4 +1,4 @@
-import { GETORDERRESPONSE } from "../constants";;
+import { ASSIGNDELIVERYRESPONSE, GETORDERRESPONSE } from "../constants";;
 
 const initialState = {
     orders: [],
@@ -12,9 +12,15 @@ export const orderData = (state = initialState, action) => {
             return {
                 ...state,
                 orders: action.payload,
-                loading: false,
+               
             };
+        // case ASSIGNDELIVERYRESPONSE:
+        //     return {
+        //         ...state,
+                
+        //     }
         default:
             return state;
     }
+
 };

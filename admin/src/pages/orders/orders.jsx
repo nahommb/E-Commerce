@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import { MyDataTable } from "../../components/table/data_table"
 import './order.css'
 import { Paginate } from "../../components/paginate/paginate"
-import { getOrders } from "../../context/redux/orders/orderAction"
+import { assignDelivery, getOrders } from "../../context/redux/orders/orderAction"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect,useState } from "react"
 import { format, parseISO } from 'date-fns';
@@ -12,12 +12,7 @@ export const Orders = ()=>{
 
 const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(getOrders({
-      page: 1,
-      limit: 8
-    }))
-  },[])
+const orders = useSelector((state)=>state.orderData.orders)
 
   const [expandedRow, setExpandedRow] = useState(null);
 
@@ -33,8 +28,23 @@ const dispatch = useDispatch()
     }))
    }
    
+  const assignHandler = (e,id)=>{
+    e.stopPropagation()
+    console.log(id)
+    // dispatch(assignDelivery({
+    //   id:id
+    // }))
+  }
 
-  const orders = useSelector((state)=>state.orderData.orders)
+  useEffect(()=>{
+    dispatch(getOrders({
+      page: 1,
+      limit: 8
+    }))
+    console.log('assign')
+  },[]) 
+
+
  
 const data = [1,2,3,4,5,6]
 
@@ -67,18 +77,9 @@ const data = [1,2,3,4,5,6]
             <p>{data._id}</p>
             <p>{data.ordered_by}</p>
             <p>{data.phone}</p>
+           
             <>{formattedDate}</>
-            <Button
-              style={{
-                border: "1px solid #8E05C2",
-                color: "#8E05C2",
-                borderRadius: "8px",
-                padding: "5px 17px",
-              }}
-            >
-              Assign
-            </Button>
-
+            <p>{data.status}</p>
             {/* Additional Content for Expanded Row */}
            
           </div> 
@@ -93,7 +94,20 @@ const data = [1,2,3,4,5,6]
                   </div>
                 ))}
                 <p>Total: {data.total_price}</p>
-                <p>Address: {data.address}</p>          
+                <p>Address: {data.address}</p>   
+                <Button
+                 
+                  style={{
+                    border: "1px solid #8E05C2",
+                    color: "#8E05C2",
+                    borderRadius: "8px",
+                    padding: "5px 17px",
+                    margin:'15px 5px'
+                  }}
+                  onClick={(e)=>assignHandler(e,data._id)}
+            >
+              Assign
+            </Button>       
               </div>
             )}
          </div>

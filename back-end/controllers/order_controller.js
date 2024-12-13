@@ -79,5 +79,52 @@ const getOrders = async (req, res) => {
     }
   };
   
+ const assignDelivery = async (req, res) => {
+    try {
+      const orderId = req.params.orderId;
 
-module.exports = {createOrder,getOrders};
+      console.log(orderId)
+
+      // Find the order by ID and update the delivery
+      const updatedOrder = await Order.findByIdAndUpdate(
+        orderId,
+        { status: 'ready' },
+      );
+
+      if (!updatedOrder) {
+        return res.status(404).json({ message: 'Order not found' });
+      }
+
+      res.json({ message: 'Delivery assigned successfully', order: updatedOrder });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  };
+const readyOrders = async(req,res)=>{
+  try {
+    const page = req.query.page;
+    const limit = req.query.limit;
+
+    const skip = (page - 1) * limit; // Pagination
+    const lastIndex = page * limit;
+
+    // Fetch orders with pagination
+    const order = await Order.find({status:'ready'}).skip(skip).limit(lastIndex);
+    const total_items = await Order.countDocuments();
+
+    // Add `ordered_items_detail` to each order
+    for (let i = 0; i < order.length; i++) {
+      const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+      const products = await Promise.all(productPromises); // Resolve promises
+      order[i]._doc.ordered_items_detail = products; // Add products to the order object
+    }
+
+    res.json({
+      total_pages: Math.ceil(total_items / limit),
+      orders: order.reverse(),
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+module.exports = {createOrder,getOrders,assignDelivery,readyOrders};

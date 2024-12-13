@@ -1,5 +1,7 @@
 import './boarding.css'
 import bannerGirl from '../../components/assets/shop_banner_girl.png'
+import boardingBackImage  from '../../components/assets/boarding-back-image.png'
+
 
 export const Boarding = ()=>{
    return <div className="boarding">
