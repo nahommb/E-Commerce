@@ -19,7 +19,14 @@ export const assignDeliveryRequest = async (payload)=>{
 export const getReadyOrdersRequest = async (payload)=>{
     axios.defaults.withCredentials =  true
 
-    const response = await axios.put(`${baseUrl}orders/get_ready_orders/${payload.id}`)
+    const response = await axios.get(`${baseUrl}orders/ready_orders/?page=${payload.page}&limit=${payload.limit}`)
+
+    return response
+}
+
+export const deliverdRequest = async(payload)=>{
+    axios.defaults.withCredentials =  true
+    const response = await axios.put(`${baseUrl}orders/deliverd/${payload.id}`)
 
     return response
 }

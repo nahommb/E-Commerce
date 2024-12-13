@@ -38,8 +38,8 @@ console.log(orderSuccess)
  }
 //  console.log(cart)
 
-  const overlayOnClick = () => {
-       const order = cart.map((item) => ({
+  const overlayOnClick = async(input_data) => {
+       const order = await cart.map((item) => ({
         product_name: item.product_name,
         product_id: item._id,
         price: item.price,
@@ -49,10 +49,10 @@ console.log(orderSuccess)
       }));
       console.log(order)
        dispatch(createOrder({
-        ordered_by:"Neymar",
+        ordered_by:input_data.name,
         ordered_items:order,
-        phone:'09787890',
-        address:'Addis Ababa, Saris',
+        phone:input_data.phone,
+        address:input_data.address,
         custome_print:''
        }))
       setShowPopup(false);

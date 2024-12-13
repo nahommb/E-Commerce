@@ -17,4 +17,5 @@ router.post('/validate_admin_token',isAdminAuth,validateTokenController);
 router.put('/change_password',isAdminAuth,changePassword); // for admin
 router.put('/change_name',isAdminAuth,changeName);  // for admin 
 
+
 module.exports = router;

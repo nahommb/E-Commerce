@@ -1,6 +1,6 @@
 import { put, takeLatest,call } from 'redux-saga/effects';
-import { assignDeliveryRequest, getOrdersRequest } from './api';
-import { GETORDERS,GETORDERRESPONSE, ASSIGNDELIVERYRESPONSE, ASSIGNDELIVERY } from '../constants';
+import { assignDeliveryRequest, deliverdRequest, getOrdersRequest, getReadyOrdersRequest } from './api';
+import { GETORDERS,GETORDERRESPONSE, ASSIGNDELIVERYRESPONSE, DELIVERD,ASSIGNDELIVERY, GETREADYORDERSRESPONSE, GETREADYORDERS } from '../constants';
 
 function* getOrders(action) {
   try {
@@ -27,6 +27,28 @@ function* assignDelivery(action){
   }
 }
 
+function* readyOrder(action){
+  try{
+    let response = yield call(getReadyOrdersRequest,action.payload)
+    console.log(response.data)
+    yield put({type:GETREADYORDERSRESPONSE,payload:response.data})
+  }
+  catch(err){ 
+    console.log(err.response.data)
+  }
+}
+
+function* deliverd(action){
+  try{
+    let response = yield call(deliverdRequest,action.payload)
+    console.log(response.data)
+    // yield put({type:GETREADYORDERSRESPONSE,payload:response.data})
+  }
+  catch(err){
+    console.log(err.response.data)
+  }
+}
+
 export function* orderSaga (){
 
   yield takeLatest(GETORDERS, getOrders)
@@ -35,4 +57,10 @@ export function* orderSaga (){
 
 export function* assignDeliverySaga(){
   yield takeLatest(ASSIGNDELIVERY,assignDelivery)
+}
+export function* readyOrderSaga(){
+  yield takeLatest(GETREADYORDERS,readyOrder)
+}
+export function* deliverdSaga(){
+  yield takeLatest(DELIVERD,deliverd)
 }

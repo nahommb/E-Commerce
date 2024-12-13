@@ -4,16 +4,30 @@ import { Button } from '@mui/material';
 export const OverlayCard = (props)=>{
 
 // const [showPopup, setShowPopup] = useState(props.showPopup);
+const [name,setName] = useState('')
+const [phone,setPhone] = useState('')
+const [address,setAddress] = useState('')
+
+ const orderHandler = ()=>{
+  props.onClick({
+    name:name,
+    phone:phone,
+    address:address
+  })
+ }
 
     return <div style={styles.overlay}>
     <div style={styles.popup}>
       {props.title === 'Order'?<>
       <h3 style={{color:'black'}}>{props.title}</h3>
-       <form>
-        <input type='text' required placeholder='Enter your name'/><br/>
-        <input type='text'  required placeholder='Enter your address'/><br/>
-        <input type='text'  required  placeholder='Enter your phone number'/><br/>
-        <Button style={{color:'green'}} type='submit' onClick={props.onClick} >{props.button_text}</Button>
+       <form onSubmit={(e)=>{
+        e.preventDefault()
+        orderHandler()
+        }}>
+        <input type='text' required placeholder='Enter your name' onChange={(e)=>setName(e.target.value)}/><br/>
+        <input type='text'  required placeholder='Enter your address' onChange={(e)=>setAddress(e.target.value)}/><br/>
+        <input type='text'  required  placeholder='Enter your phone number' onChange={(e)=>setPhone(e.target.value)}/><br/>
+        <Button style={{color:'green'}} type='submit'>{props.button_text}</Button>
         <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
        </form>
      

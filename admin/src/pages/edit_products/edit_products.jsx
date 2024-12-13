@@ -9,6 +9,7 @@ import './edit_products.css';
 export const EditProducts = () => {
   const [selectedProductId, setSelectedProductId] = useState(null);
   const [deletePopup, setDeletePopup] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.productsReducer.products);
@@ -28,12 +29,14 @@ export const EditProducts = () => {
        // Close popup
        // Fetch updated products
     }
+    setRefresh((prev) => !prev); 
   };
 
   // Fetch products initially or when page changes
   useEffect(() => {
     dispatch(getProducts({ page: 1, limit: 8 }));
-  }, [handleDelete]);
+  
+  }, [refresh]);
 
   // Handle pagination
   const onPageChange = (e) => {

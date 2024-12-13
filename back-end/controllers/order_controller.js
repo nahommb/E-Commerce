@@ -127,4 +127,22 @@ const readyOrders = async(req,res)=>{
     res.status(500).json({ error: err.message });
   }
 }
-module.exports = {createOrder,getOrders,assignDelivery,readyOrders};
+
+const deliverd = async(req,res)=>{
+ const id = req.params.orderId;
+ console.log(id)
+ try{
+  
+  const order = await Order.findByIdAndUpdate(id,{status:'delivered'})
+  res.status(200).json({message:'Order delivered successfully',order:order})
+
+ }
+ catch(err){
+  console.log(err)
+  res.status(500).json({error:err.message})
+ }
+}
+
+
+
+module.exports = {createOrder,getOrders,assignDelivery,readyOrders,deliverd};
