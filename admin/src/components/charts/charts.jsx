@@ -1,6 +1,8 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { numberOfUsers } from '../../context/redux/analytics/analyticsAction';
+import { useEffect } from 'react';
 export const NewUsersChart = () => {
   const data = [
     { month: 'Sep', users: 120 },
@@ -10,9 +12,17 @@ export const NewUsersChart = () => {
     { month: 'Jan', users: 400 },
   ];
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(numberOfUsers());
+  }, []);
+
+  const userData = useSelector((state)=>state.analyticsReducer.numberOfUsers)
+  
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data}>
+      <LineChart data={userData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="month" />
         <YAxis />
