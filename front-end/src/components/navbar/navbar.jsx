@@ -44,7 +44,7 @@ export const Navbar = ()=>{
     return <div className='navbar'>
         <MyDrawer/>
         <div className='nav-log' onClick={()=>navigate('/')}>
-             Niya
+             NIYA SPORTS WEAR
          
         </div>
         {showPopup?<OverlayCard showPopup={showPopup}

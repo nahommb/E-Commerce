@@ -45,8 +45,8 @@ const overlayOnClick = () => {
     console.log(email,password)
     dispatch(
       login({
-        email :'ousman@gmail.com',
-        password:'123456'
+        email :email,
+        password:password
       }) 
     )
     
