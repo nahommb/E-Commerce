@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user_routes');
 const orderRoutes = require('./routes/order_routes')
+const analyticsRoutes = require('./routes/analytics_routes')
 const authMiddleware = require('./middleware/auth_middleware')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -37,6 +38,9 @@ app.use('/product_image', express.static(path.join(__dirname, 'uploads/product_i
 app.use('/api/user', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders',orderRoutes)
+app.use('/api/analytics',analyticsRoutes);
+
+
 mongoose.connect('mongodb://localhost:27017/sportsWear')
 .then(() => console.log("Connected to MongoDB"))
 .catch((error) => console.error("Could not connect to MongoDB:", error));
