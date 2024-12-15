@@ -37,6 +37,7 @@ export const authReducer = (state=init,action)=>{
                 ...state,
                 user:action.payload.user
             }
+        
         default:
             return state
     }

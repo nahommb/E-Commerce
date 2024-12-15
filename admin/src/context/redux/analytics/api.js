@@ -12,3 +12,9 @@ export const getNumberOfProductsSoldRequest = async ()=>{
     const response = await axios.get(`${baseUrl}analytics/number_of_products_sold`)
     return response
 }
+
+export const getDeliveredAndNotDeliveredRequest = async ()=>{
+    axios.defaults.withCredentials = true
+    const response = await axios.get(`${baseUrl}analytics/number_of_orders_delivered`)
+    return response
+}

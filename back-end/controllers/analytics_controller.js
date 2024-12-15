@@ -1,4 +1,5 @@
 const Order = require("../models/order_model");
+const Product = require("../models/product_model");
 const User = require("../models/user_model");
 
 const numberOfUsers = async(req,res)=>{
@@ -164,8 +165,59 @@ const deliverdAndNotDeliverd = async(req,res)=>{
     }
 }
 
+const mostSoldCatagory = async(req,res)=>{
+    try{
+        const pipeline = [
+            // 1. Lookup products to get category information
+            {
+                $match: {
+                    status: "delivered", // Filter for delivered orders
+                }
+            },
+            {
+              $lookup: {
+                from: "products", // Name of the Products collection
+                localField: "ordered_items", // Field in Orders with product IDs
+                foreignField: "_id", // Field in Products matching product IDs
+                as: "productDetails", // Output field for joined data
+              },
+            },
+            // 2. Unwind the productDetails array
+            {
+              $unwind: "$productDetails",
+            },
+            // 3. Group by product category and count occurrences
+            {
+              $group: {
+                _id: "$productDetails.product_category", // Group by category
+                value: { $sum: 1 }, // Count occurrences
+              },
+            },
+            // 4. Sort by count in descending order
+            {
+              $sort: { value: -1 },
+            },
+            // 5. Format the output
+            {
+              $project: {
+                _id: 0,
+                name: "$_id",
+                value: 1,
+              },
+            },
+          ];
+          const result = await Order.aggregate(pipeline);
+          res.status(200).json(result)
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 module.exports = {
     numberOfUsers,
     numberOfProductsSold,
-    deliverdAndNotDeliverd
+    deliverdAndNotDeliverd,
+    mostSoldCatagory,
 }

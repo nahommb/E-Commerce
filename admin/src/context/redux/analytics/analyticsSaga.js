@@ -1,6 +1,6 @@
 import {call,put,takeLatest} from 'redux-saga/effects'
-import { getNumberOfUsersRequest,getNumberOfProductsSoldRequest } from './api'
-import { NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERS, NUMBEROFUSERSRESPONSE,NUMBEROFPRODUCTSSOLD } from '../constants'
+import { getNumberOfUsersRequest,getNumberOfProductsSoldRequest, getDeliveredAndNotDeliveredRequest } from './api'
+import { NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERS, NUMBEROFUSERSRESPONSE,NUMBEROFPRODUCTSSOLD, DELIVEREDANDNOTDELIVEREDRESPONSE,DELIVEREDANDNOTDELIVERED } from '../constants'
 
 
 function* getNumberOfUsers(){
@@ -27,6 +27,17 @@ function* getNumberOfProductsSold(){
 
 }
 
+function* getDeliveredAndNotDelivered(){
+    try{
+    const response = yield call(getDeliveredAndNotDeliveredRequest)
+    console.log(response.data)
+    yield put({type:DELIVEREDANDNOTDELIVEREDRESPONSE,payload:response.data})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
 export function* getNumberOfUsersSaga(){
 
     yield takeLatest(NUMBEROFUSERS,getNumberOfUsers)
@@ -34,4 +45,8 @@ export function* getNumberOfUsersSaga(){
 
 export function* getNumberOfProductsSoldSaga(){
     yield takeLatest(NUMBEROFPRODUCTSSOLD,getNumberOfProductsSold)
+}
+
+export function* getDeliveredAndNotDeliveredSaga(){
+    yield takeLatest(DELIVEREDANDNOTDELIVERED,getDeliveredAndNotDelivered)
 }

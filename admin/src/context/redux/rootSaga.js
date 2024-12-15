@@ -3,7 +3,7 @@ import { addProductSaga, deleteProductSaga, getProductSaga} from "./products/pro
 import { assignDeliverySaga,orderSaga,readyOrderSaga,deliverdSaga } from "./orders/orderSaga";
 import { loginSaga,logoutSaga,validateTokenSaga} from "./auth/authSaga";
 import { changePasswordSaga,changeNameSaga } from "./profile/profileSaga";
-import { getNumberOfProductsSoldSaga, getNumberOfUsersSaga } from "./analytics/analyticsSaga";
+import { getDeliveredAndNotDeliveredSaga, getNumberOfProductsSoldSaga, getNumberOfUsersSaga } from "./analytics/analyticsSaga";
 export default function* rootSaga() {
     yield all([
      addProductSaga(),
@@ -20,5 +20,6 @@ export default function* rootSaga() {
      deliverdSaga(),
      getNumberOfUsersSaga(),
      getNumberOfProductsSoldSaga(),
+     getDeliveredAndNotDeliveredSaga(),
     ]);
 }
