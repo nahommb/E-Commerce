@@ -5,8 +5,7 @@ const numberOfUsers = async(req,res)=>{
    try {
     const today = new Date();
     const fourMonthsAgo = new Date(today.getFullYear(), today.getMonth() - 3, 1);
-    console.log(fourMonthsAgo);
-
+   
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     
     const pipeline = [

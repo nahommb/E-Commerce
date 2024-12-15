@@ -1,6 +1,6 @@
 import {call,put,takeLatest} from 'redux-saga/effects'
-import { getNumberOfUsersRequest } from './api'
-import { NUMBEROFUSERS, NUMBEROFUSERSRESPONSE } from '../constants'
+import { getNumberOfUsersRequest,getNumberOfProductsSoldRequest } from './api'
+import { NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERS, NUMBEROFUSERSRESPONSE,NUMBEROFPRODUCTSSOLD } from '../constants'
 
 
 function* getNumberOfUsers(){
@@ -15,7 +15,23 @@ function* getNumberOfUsers(){
     
 }
 
+function* getNumberOfProductsSold(){
+    try{
+    const response = yield call(getNumberOfProductsSoldRequest)
+    console.log(response.data)
+    yield put({type:NUMBEROFPRODUCTSSOLDRESPONSE,payload:response.data})
+    }
+    catch(error){
+        console.log(error)
+    }
+
+}
+
 export function* getNumberOfUsersSaga(){
 
     yield takeLatest(NUMBEROFUSERS,getNumberOfUsers)
+}
+
+export function* getNumberOfProductsSoldSaga(){
+    yield takeLatest(NUMBEROFPRODUCTSSOLD,getNumberOfProductsSold)
 }
