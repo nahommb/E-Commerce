@@ -1,2 +1,2 @@
-export const baseUrl = "http://localhost:3000/api/";
-export const imageUrl = 'http://localhost:3000/';
+export const baseUrl = "https://sports-wear.onrender.com/api/";
+export const imageUrl = 'https://sports-wear.onrender.com/';
