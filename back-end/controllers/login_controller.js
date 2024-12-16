@@ -34,12 +34,16 @@ const loginController = async (req, res) => {
           res.cookie('adminRefreshToken',token,{
             httpOnly:true,
             maxAge: 72 * 60 * 60 * 1000,
+            secure: true,
+            sameSite: 'None',
         }) 
          } 
          else{
           res.cookie('refreshToken',token,{
             httpOnly:true,
             maxAge: 72 * 60 * 60 * 1000,
+            secure: true,
+            sameSite: 'None',
         })
          }
       
