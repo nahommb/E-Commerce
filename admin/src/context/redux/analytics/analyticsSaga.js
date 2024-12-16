@@ -1,6 +1,6 @@
 import {call,put,takeLatest} from 'redux-saga/effects'
-import { getNumberOfUsersRequest,getNumberOfProductsSoldRequest, getDeliveredAndNotDeliveredRequest } from './api'
-import { NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERS, NUMBEROFUSERSRESPONSE,NUMBEROFPRODUCTSSOLD, DELIVEREDANDNOTDELIVEREDRESPONSE,DELIVEREDANDNOTDELIVERED } from '../constants'
+import { getNumberOfUsersRequest,getNumberOfProductsSoldRequest, getDeliveredAndNotDeliveredRequest, getMostSoldCategoryRequest } from './api'
+import { NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERS, NUMBEROFUSERSRESPONSE,NUMBEROFPRODUCTSSOLD, DELIVEREDANDNOTDELIVEREDRESPONSE,DELIVEREDANDNOTDELIVERED, MOSTSOLDCATEGORYRESPONSE, MOSTSOLDCATEGORY } from '../constants'
 
 
 function* getNumberOfUsers(){
@@ -38,6 +38,18 @@ function* getDeliveredAndNotDelivered(){
     }
 }
 
+
+function* getMostSoldCategory(){
+    try{
+    const response = yield call(getMostSoldCategoryRequest)
+    console.log(response.data)
+    yield put({type:MOSTSOLDCATEGORYRESPONSE,payload:response.data})
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
 export function* getNumberOfUsersSaga(){
 
     yield takeLatest(NUMBEROFUSERS,getNumberOfUsers)
@@ -49,4 +61,8 @@ export function* getNumberOfProductsSoldSaga(){
 
 export function* getDeliveredAndNotDeliveredSaga(){
     yield takeLatest(DELIVEREDANDNOTDELIVERED,getDeliveredAndNotDelivered)
+}
+
+export function* getMostSoldCategorySaga(){
+    yield takeLatest(MOSTSOLDCATEGORY,getMostSoldCategory)
 }

@@ -5,5 +5,5 @@ const router = express.Router();
 router.get('/number_of_new_users',numberOfUsers);
 router.get('/number_of_products_sold',numberOfProductsSold);
 router.get('/number_of_orders_delivered',deliverdAndNotDeliverd);
-router.get('/most_sold_catagory',mostSoldCatagory);
+router.get('/most_sold_category',mostSoldCatagory);
 module.exports = router;

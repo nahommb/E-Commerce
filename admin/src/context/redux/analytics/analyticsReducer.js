@@ -1,9 +1,10 @@
-import { DELIVEREDANDNOTDELIVEREDRESPONSE, NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERSRESPONSE } from "../constants"
+import { DELIVEREDANDNOTDELIVEREDRESPONSE, MOSTSOLDCATEGORYRESPONSE,NUMBEROFPRODUCTSSOLDRESPONSE, NUMBEROFUSERSRESPONSE } from "../constants"
 
 const initialState = {
     numberOfUsers:[],
     numberOfProductsSold:[],
-    deliveredAndNotDelivered:[]
+    deliveredAndNotDelivered:[],
+    mostSoldCategory:[]
 }
 
 export const analyticsReducer = (state = initialState, action)=>{
@@ -25,6 +26,12 @@ export const analyticsReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 deliveredAndNotDelivered:action.payload
+            }
+        case MOSTSOLDCATEGORYRESPONSE:
+            console.log(action.payload)
+            return {
+                ...state,
+                mostSoldCategory:action.payload
             }
         default:
             return state

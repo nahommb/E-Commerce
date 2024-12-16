@@ -1,4 +1,4 @@
-import { NUMBEROFUSERS,NUMBEROFPRODUCTSSOLD, DELIVEREDANDNOTDELIVERED } from "../constants"
+import { NUMBEROFUSERS,NUMBEROFPRODUCTSSOLD, DELIVEREDANDNOTDELIVERED, MOSTSOLDCATEGORY } from "../constants"
 
 export const numberOfUsers = (action)=>{
     return {
@@ -16,6 +16,13 @@ export const numberOfProductsSold = (action)=>{
 export const deliveredAndNotDelivered = (action)=>{
     return {
         type:DELIVEREDANDNOTDELIVERED,
+        payload:action
+    }
+}
+
+export const mostSoldCategory = (action)=>{
+    return {
+        type:MOSTSOLDCATEGORY,
         payload:action
     }
 }

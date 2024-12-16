@@ -18,3 +18,9 @@ export const getDeliveredAndNotDeliveredRequest = async ()=>{
     const response = await axios.get(`${baseUrl}analytics/number_of_orders_delivered`)
     return response
 }
+
+export const getMostSoldCategoryRequest = async ()=>{
+    axios.defaults.withCredentials = true
+    const response = await axios.get(`${baseUrl}analytics/most_sold_category`)
+    return response
+}
