@@ -9,38 +9,44 @@ import { Button, CircularProgress } from '@mui/material';
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+const user = useSelector((state) => state.authReducer);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [loginError, setLoginError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const user = useSelector((state) => state.authReducer);
- 
+  
+  console.log(user.isLoading) 
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(validateToken());
-    setIsLoading(false);
+    
+   dispatch(validateToken());
+  
   }, [dispatch]);
  
   
   useEffect(() => {
+    
     if (user?.isLoggedIn) {
       setShowPopup(true);
       
+      
       // setTimeout(() => setShowPopup(false), 2000); // Auto-hide after 2 seconds
     }
+
     if (user?.error) {
-      console.log('leee'+user?.error);
+     
       setLoginError(true);
+      
     }
+    
   }, [user]); //user?.loggedIn
 
   useEffect(() => {
-  
+    
     if (user?.isValideToken) { 
       navigate('/dashboard');
-    }
+    } 
+   
+   // setIsLoading(user.isLoading)
   }, [user?.isValideToken, navigate]);
 
   const loginHandler = (e) => {
@@ -49,13 +55,14 @@ export const Login = () => {
       loginAction({
         email: email ,
         password: password,
-      })
-    );
+      })     
+    ); 
+   
   };
 
   return (
     <>
-    {isLoading?<div className="flex justify-center items-center h-screen">
+    {user.isLoading?<div className="flex justify-center items-center h-screen">
       <CircularProgress/>
     </div>:
     

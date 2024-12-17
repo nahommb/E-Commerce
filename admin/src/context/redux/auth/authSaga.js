@@ -1,6 +1,6 @@
 import { put, takeLatest,call } from 'redux-saga/effects';
 import { loginRequest,logoutRequest,validetTokenRequest } from './api';
-import { LOGINRESPONSE, LOGOUT,LOGINERROR,LOGIN_REQUEST, VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
+import { LOGINRESPONSE, LOGOUT,LOGINERROR,LOGIN_REQUEST, VALIDATETOKEERORRNRESPONSE,VALIDATETOKENRESPONSE,VALIDATETOKEN } from '../constants';
 
 function* login(action){
     try{
@@ -22,6 +22,8 @@ function* validateToken(action){
 
         yield put({type:VALIDATETOKENRESPONSE,payload:response.data})
     }catch(error){
+
+        yield put({type:VALIDATETOKEERORRNRESPONSE,payload:error.response.data})
         console.log(error.response.data);
     }
 }
