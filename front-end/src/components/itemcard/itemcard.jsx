@@ -6,14 +6,14 @@ import { useSelector,useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { OverlayCard } from '../overlay_card/overlay_card';
 import { addToCart } from '../../context/redux/cart-state/cart_action';
-import { imageUrl } from '../../context/helper/base_url';
+
 import {motion } from 'framer-motion';
 
 
 export const ItemCard = (props) => {
  
-  const frontImage = imageUrl+props.items.product_images[0]
-  const backImage = imageUrl+props.items.product_images[1]
+  const frontImage = props.items.product_images[0]
+  const backImage = props.items.product_images[1]
  
   const divStyle = {
     backgroundImage: `url(${frontImage})`,

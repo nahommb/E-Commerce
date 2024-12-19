@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { findProduct } from '../../context/redux/product-state/product_action';
-import { imageUrl } from '../../context/helper/base_url';
 import { Footer } from '../../components/footer/footer';
 import './products.css';
 import { addToCart } from '../../context/redux/cart-state/cart_action';
@@ -26,12 +25,12 @@ export const Products = () => {
     // Update mainImage when product is fetched and it has images
     useEffect(() => {
         if (product && product.product_images?.length > 0) {
-            setMainImage(`${imageUrl}${product.product_images[0]}`);
+            setMainImage(`${product.product_images[0]}`);
             setImageList({
-                frontImage: `${imageUrl}${product.product_images[0]}`,
-                backImage: `${imageUrl}${product.product_images[1]}`,
-                rightImage: `${imageUrl}${product.product_images[2]}`,
-                leftImage: `${imageUrl}${product.product_images[3]}`
+                frontImage: `${product.product_images[0]}`,
+                backImage: `${product.product_images[1]}`,
+                rightImage: `${product.product_images[2]}`,
+                leftImage: `${product.product_images[3]}`
             });
         }
     }, [product]);
