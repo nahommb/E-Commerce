@@ -1,7 +1,8 @@
-const { deleteFile } = require('../helper/delete_image');
+
 const upload = require('../helper/image_uploader');
 const Product = require('../models/product_model');
 const path = require('path');
+const { v2: cloudinary } = require('cloudinary');
 
 const addProduct = (req, res) => {
   upload.array('images', 10)(req, res, async (err) => {
@@ -18,7 +19,6 @@ const addProduct = (req, res) => {
       // Extract Cloudinary URLs from uploaded files
       const images = req.files.map((file) => file.path); // Cloudinary returns file URLs in `path`
       
-      console.log(images)
       // Create a new product object
       const newProduct = new Product({
         product_name: req.body.product_name,
@@ -210,43 +210,33 @@ const findRecentProducts = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 }
+
+
 const deleteProducts = async (req, res) => {
-
-  const productId = req.params.id;
-
   try {
-    // Find the product by ID
+    const  productId  = req.params.id;
+
+  
     const product = await Product.findById(productId);
     if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+      return res.status(404).json({ error: 'Product not found' });
     }
 
-    // Delete product images
-    const deletePromises = product.product_images.map((image) => {
-      const filename = image.replace('product_image/', '');
-      const filePath = path.join(__dirname, '..', 'uploads', 'product_image', filename);
+  
+   await Promise.all(
+      product.product_images.map(async (imageUrl) => {
 
-      // Delete each image file
-      return deleteFile(filePath);
-    });
+        const publicId = imageUrl.split('/').pop().split('.')[0]; // e.g., "product_image/imageName"
+        return cloudinary.uploader.destroy(`uploads/${publicId}`);
+      })
+    ); 
 
-    // Wait for all image deletions to complete
-    await Promise.all(deletePromises);
+    await product.deleteOne();
 
-    // Delete the product from the database
-    await Product.deleteOne({ _id: productId });
-
-    // Respond with success
-    res.status(200).json({ message: 'Product and images deleted successfully' });
-
+    return res.status(200).json({ message: 'Product and associated images deleted successfully' });
   } catch (err) {
     console.error(err);
-    // Handle different error cases
-    if (err.message === 'Product not found') {
-      res.status(404).json({ message: err.message });
-    } else {
-      res.status(500).json({ message: 'Internal server error' });
-    }
+    return res.status(500).json({ error: 'Failed to delete product' });
   }
 };
 
