@@ -20,7 +20,7 @@ const user = useSelector((state) => state.authReducer);
     
    dispatch(validateToken());
   
-  }, [dispatch]);
+  }, [dispatch]);     
  
   
   useEffect(() => {

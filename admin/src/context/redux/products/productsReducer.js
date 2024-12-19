@@ -1,20 +1,29 @@
-import { ADDPRODUCTS,DELETEPRODUCTSRESPONSE ,ADDPRODUCTSRESPONSE ,GETALLPRODUCTS, GETALLPRODUCTSRESPONSE} from "../constants"
+import { ADDPRODUCTS,DELETEPRODUCTSRESPONSE ,ADDPRODUCTSRESPONSE ,GETALLPRODUCTS, GETALLPRODUCTSRESPONSE, ADDPRODUCTERROR} from "../constants"
 
 const initalState = {
     products: [],
     isUploaded: false,
     deletedResponse:null,
-    
+    isLoading:false
 }
 
 export const productsReducer = (state = initalState, action) => {
     switch (action.type) {
+        case ADDPRODUCTS:
+            return {
+                isLoading:true
+            }
         case ADDPRODUCTSRESPONSE:
 
             console.log(action.payload)
             return {
                 ...state,
-                isUploaded: action.payload.message === 'Successfully uploaded' ? true : false
+                isUploaded: action.payload.message === 'Successfully uploaded' ? true : false,
+                isLoading:false
+            }
+        case ADDPRODUCTERROR :
+            return {
+                isLoading:false
             }
          case GETALLPRODUCTSRESPONSE:
             console.log(action.payload)

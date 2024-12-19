@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { MdUpload } from 'react-icons/md';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts } from '../../context/redux/products/productsAction';
 import { Popup } from '../../components/popup/popup';
@@ -17,7 +17,7 @@ console.log(user);
   const [modalContent, setModalContent] = useState({ title: 'Successfully uploaded' });
   const [selectedImages, setSelectedImages] = useState([]);
   const isUploaded = useSelector((state) => state.productsReducer.isUploaded);
-  
+  const isLoading =  useSelector((state) => state.productsReducer.isLoading);
   const handleCloseModal = () => {
     setIsModalOpen(false);
     dispatch({
@@ -162,10 +162,12 @@ console.log(user);
         </div>
 
         <div>
-          {isUploaded ? 
-            <Popup isOpen={isModalOpen} onClose={handleCloseModal} content={modalContent} /> 
-            : 
-            <Popup isOpen={isModalOpen} onClose={handleCloseModal} content={{ title: 'Some Error Occurred Please Try Again' }} />
+          {isLoading? 
+            <div className='fixed top-80  flex w-9/12 justify-center'><div><CircularProgress></CircularProgress></div></div>:
+            (isUploaded?<Popup isOpen={isModalOpen} onClose={handleCloseModal} content={modalContent} /> :
+            <Popup isOpen={isModalOpen} onClose={handleCloseModal} content={{title:'Some Error Occured Please Try Again'}} />
+            )
+            
           }
         </div>
     
