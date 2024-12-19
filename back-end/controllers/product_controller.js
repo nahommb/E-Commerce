@@ -4,43 +4,42 @@ const Product = require('../models/product_model');
 const path = require('path');
 
 const addProduct = (req, res) => {
+  upload.array('images', 10)(req, res, async (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(400).json({ error: err.message });
+    }
 
-    upload(req, res, (err) => {
-        if (err) {
-            console.log(err);
-            return res.status(400).json({ error: err.message });
-        }
-  
-        if (!req.files) {
-            return res.status(400).json({ error: 'Missing image or description' });
-        }
-       
-        const images = []
-        req.files.map((file) => {
-           
-            images.push(`product_image/${file.filename}`)
-          });
-     
-  
-        const newProduct = new Product({
-            product_name: req.body.product_name, 
-            product_description: req.body.product_description,
-            product_images: images.reverse(), 
-            // product_size:req.body.product_size,
-            custom_print:req.body.custom_print,
-            product_category:req.body.product_category,
-            price:req.body.price,
-            created_at:Date.now(),
-        });
-  
-        newProduct.save()
-            .then(() => res.json({ message: 'Successfully uploaded' }))
-            .catch((err) => {
-                console.error(err);
-                res.status(500).json({ error: 'Failed to save product' });
-            });
-    });
-  };
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'Missing image(s)' });
+    }
+
+    try {
+      // Extract Cloudinary URLs from uploaded files
+      const images = req.files.map((file) => file.path); // Cloudinary returns file URLs in `path`
+      
+      console.log(images)
+      // Create a new product object
+      const newProduct = new Product({
+        product_name: req.body.product_name,
+        product_description: req.body.product_description,
+        product_images: images.reverse(), // Store URLs (reversed for consistency if needed)
+        custom_print: req.body.custom_print,
+        product_category: req.body.product_category,
+        price: req.body.price,
+        created_at: Date.now(),
+      });
+
+      // Save the product to the database
+      await newProduct.save();
+
+      return res.json({ message: 'Successfully uploaded', product: newProduct });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Failed to save product' });
+    }
+  });
+};
   
 
 const getProducts = async (req, res) => {
