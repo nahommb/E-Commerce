@@ -1,4 +1,4 @@
-import { FINDPRODUCT, GETPRODUCTS,GETRECENTPRODUCTS} from "../constants";
+import { EMPTYPRODUCTS, FINDPRODUCT, GETPRODUCTS,GETRECENTPRODUCTS} from "../constants";
 
 export const getProducts= (data)=>{
     console.log(data);
@@ -21,5 +21,11 @@ export const getRecentProducts = (data)=>{
     return {
         type:GETRECENTPRODUCTS,
         payload:data
+    }
+}
+
+export const emptyProducts = ()=>{
+    return {
+        type:EMPTYPRODUCTS
     }
 }

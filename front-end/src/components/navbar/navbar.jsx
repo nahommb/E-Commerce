@@ -8,6 +8,7 @@ import { useState, } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import { logout, valideteToken } from '../../context/redux/authentication-state/authenticationAction';
 import { OverlayCard } from '../overlay_card/overlay_card';
+import { emptyProducts } from '../../context/redux/product-state/product_action';
 
 export const Navbar = ()=>{
 
@@ -40,6 +41,10 @@ export const Navbar = ()=>{
           window.location.reload();
       }
    
+   const navbarItemsOnClick = ()=>{
+    dispatch(emptyProducts())
+   }
+    
 
     return <div className='navbar'>
         <MyDrawer/>
@@ -55,11 +60,11 @@ export const Navbar = ()=>{
           />
         :<></>}
         <ul className='nav-menu'>
-            <Link to={'/'} className='links'>Shop</Link>
-            <Link to={'/international'} className='links'>International</Link>
-            <Link to={'/others'} className='links'>Others</Link>
-            <Link to={'/kids'} className='links'>Kids</Link>
-            <Link to={'/retro'} className='links'>Retro</Link>
+            <Link to={'/'} onClick={()=>navbarItemsOnClick()} className='links'>Shop</Link>
+            <Link to={'/international'} onClick={()=>navbarItemsOnClick()} className='links'>International</Link>
+            <Link to={'/others'} onClick={()=>navbarItemsOnClick()} className='links'>Others</Link>
+            <Link to={'/kids'} onClick={()=>navbarItemsOnClick()} className='links'>Kids</Link>
+            <Link to={'/retro'} onClick={()=>navbarItemsOnClick()} className='links'>Retro</Link>
         </ul>
         <div className='nav-login-cart'>
             

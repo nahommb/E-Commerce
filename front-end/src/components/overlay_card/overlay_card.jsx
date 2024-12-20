@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 export const OverlayCard = (props)=>{
 
@@ -7,6 +7,16 @@ export const OverlayCard = (props)=>{
 const [name,setName] = useState('')
 const [phone,setPhone] = useState('')
 const [address,setAddress] = useState('')
+const [isLoading,setIsLoading] = useState(false)
+
+
+console.log(props.title)
+
+if(props.title === 'Order response'){
+
+  setIsLoading(false)
+}
+
 
  const orderHandler = ()=>{
   props.onClick({
@@ -14,10 +24,12 @@ const [address,setAddress] = useState('')
     phone:phone,
     address:address
   })
+  setIsLoading(true)
  }
 
     return <div style={styles.overlay}>
     <div style={styles.popup}>
+     {isLoading?<div><CircularProgress/></div>:<div>
       {props.title === 'Order'?<>
       <h3 style={{color:'black'}}>{props.title}</h3>
        <form onSubmit={(e)=>{
@@ -35,7 +47,8 @@ const [address,setAddress] = useState('')
       <><h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
       <Button onClick={props.onClick}>{props.button_text}</Button></>
-      }
+      }</div>}
+ 
      
     </div>
   </div>

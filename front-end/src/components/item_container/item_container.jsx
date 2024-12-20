@@ -35,7 +35,11 @@ export const ItemContainer=(props)=>{
         useEffect(()=>{
           setIsLoading(false)
         },[products])
-
+if(products.length===0){
+  return <Box display="flex" justifyContent="center" alignItems="center" height="20vh">
+  <CircularProgress />
+</Box>
+}
 
 return <>
         <motion.div className="item-container"

@@ -30,8 +30,9 @@ export const Shop =()=>{
 // }
  const products = useSelector((state)=>state.productData.products)
  const recentProducts = useSelector((state)=>state.productData.recentProducts)
-console.log(recentProducts.recentProducts)
+console.log(products)
 
+    
 const [isLoading,setIsLoading] = useState(true)
 
 const dispatch = useDispatch()
@@ -108,12 +109,19 @@ const onRecentProductsPageChange = (e)=>{
            <p>New arrival and the hottest and newest collection of the month</p>
         </div>
          </div>
-         {/* <ItemContainer category='recent'/> */}
-        <div className="new-arival-container">
-          {recentProducts.recentProducts?.map((item)=>{
+        
+        <div className="new-arival-container"> 
+        
+        {recentProducts.length===0?
+        <div className="circular-progress"><CircularProgress/></div>:
+        
+         <>{recentProducts.recentProducts?.map((item)=>{
             return <ItemCard key={item._id} items={item}/>
           })
-          }
+          }</>
+        }
+        
+         
         </div>
         <Paginate pageCount={recentProducts.total_pages} onPageChange={onRecentProductsPageChange} pageNumber = {recentProductsPageNumber}/>
         {/* <Button sx={

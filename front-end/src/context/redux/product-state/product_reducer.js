@@ -1,4 +1,4 @@
-import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE, GETRECENTPRODUCTSRESPONSE } from "../constants";
+import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE, GETRECENTPRODUCTSRESPONSE, EMPTYPRODUCTS } from "../constants";
 
 const initialState = {
     products: [],
@@ -78,6 +78,11 @@ export const productData = (state = initialState, action) => {
             return {
                 ...state,
                 recentProductsPageNumber:action.payload
+            }
+        case EMPTYPRODUCTS:
+            return {
+                ...state,
+                products: [],
             }
         default:
             return state;

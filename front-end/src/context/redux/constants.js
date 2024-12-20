@@ -16,3 +16,4 @@ export const CREATEORDERRESPONSE = 'create_order_response';
 export const GETRECENTPRODUCTS = 'get_recent_products';
 export const GETRECENTPRODUCTSRESPONSE = 'get_recent_products_response';
 export const LOGINERROR = 'login_error';
+export const EMPTYPRODUCTS = 'empty_products';

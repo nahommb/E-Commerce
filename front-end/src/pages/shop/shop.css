@@ -62,7 +62,11 @@ border-radius: 5px;
     /* background-repeat: no-repeat; */
     border-radius: 10px;
 }
-
+.circular-progress{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 @media (max-width: 480px) {
     .featured,.new-arival-container{
     /* display: grid; */
