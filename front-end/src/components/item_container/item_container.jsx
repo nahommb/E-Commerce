@@ -1,6 +1,6 @@
 import { useDispatch,useSelector } from "react-redux";
 import { useState,useEffect } from "react";
-// import { barcaImage,manutdImage, ronaldoBack, ronaldoFront,ronaldoCeneter,ronaldoLeft,ronaldoRight } from "../../comman/helper/images"
+
 import { getProducts, getRecentProducts } from "../../context/redux/product-state/product_action";
 import { Box } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -14,14 +14,10 @@ export const ItemContainer=(props)=>{
 
 
     const dispatch = useDispatch()
-    // const [pageNumber , setPageNumber] = useState()
-    // console.log(props.category)
-    console.log(props.pageNumber)
+ 
     const pageNumber = props.pageNumber
 
        const products = useSelector((state)=>state.productData.products)
-       console.log(products)
-      const [isLoading,setIsLoading] = useState(true)
        
         useEffect(()=>{
         dispatch(getProducts({
@@ -32,9 +28,7 @@ export const ItemContainer=(props)=>{
       
         },[dispatch])
       
-        useEffect(()=>{
-          setIsLoading(false)
-        },[products])
+
 if(products.length===0){
   return <Box display="flex" justifyContent="center" alignItems="center" height="20vh">
   <CircularProgress />
@@ -61,10 +55,7 @@ return <>
         animate = 'show'
         >
       
-
-        {isLoading?<Box display="flex" justifyContent="center" alignItems="center" height="50vh">
-            <CircularProgress />
-        </Box>: <div className="featured" >
+       <div className="featured" >
           {products.products?.map((item)=>{
       
             return <motion.div
@@ -84,8 +75,8 @@ return <>
           })    
           }
         </div>
-        }
+       
         </motion.div>
-        {/* <Paginate pageCount={products.total_pages} onPageChange={onPageChange}/> */}
+      
 </>
 }

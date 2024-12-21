@@ -1,4 +1,4 @@
-import { LOGINERROR, LOGINRESPONSE, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
+import { LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
 
 const initialState = {
     isRegistered:false,
@@ -34,6 +34,12 @@ export const authenticationData = (state = initialState,action)=>{
             return {
                 ...state,
                 loginError:action.payload
+            }
+        case LOGOUT:
+            return {
+                ...state,
+                user:null,
+                valideToken:false
             }
         
         default:

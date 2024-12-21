@@ -22,7 +22,13 @@ export const Navbar = ()=>{
     const valideToken = useSelector((state) => state.authenticationData.valideToken);
     const cart = useSelector((state) => state.cartReducer.cart);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()   
+    
+    const overlayOnClick = () => {
+           dispatch(logout()) 
+           setShowPopup(false)    
+        //   window.location.reload();
+      }
     useEffect(() => { 
 
             console.log('checked correctly');
@@ -36,11 +42,7 @@ export const Navbar = ()=>{
 
     const navigate = useNavigate()
 
-    const overlayOnClick = () => {
-           dispatch(logout()) 
-           setShowPopup(false)    
-        //   window.location.reload();
-      }
+
    
    const navbarItemsOnClick = ()=>{
     dispatch(emptyProducts())
