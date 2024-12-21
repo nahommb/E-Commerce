@@ -28,7 +28,7 @@ export const ItemCard = (props) => {
     // height: '40%',
     borderRadius: '10px',
   };
-  console.log(props.pageNumber)
+  
   const [isLoggedIn,setLoggedIn] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 

@@ -32,13 +32,14 @@ export const Navbar = ()=>{
 
     useEffect(() => {
         setLoggedIn(valideToken);
-    }, [valideToken]); 
+    }, [valideToken,dispatch]); 
 
     const navigate = useNavigate()
 
     const overlayOnClick = () => {
-           dispatch(logout())      
-          window.location.reload();
+           dispatch(logout()) 
+           setShowPopup(false)    
+        //   window.location.reload();
       }
    
    const navbarItemsOnClick = ()=>{
