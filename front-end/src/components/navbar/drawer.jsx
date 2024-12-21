@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemText, Button } from '@mui/material';
-import { BedroomBaby, BedroomChild, Boy, Girl, Menu, Shop } from '@mui/icons-material';
+import { Drawer, List, ListItem, ListItemText, Button, Box } from '@mui/material';
+import { BedroomBaby, BedroomChild, Boy, Girl, Menu, Shop, ShoppingBag } from '@mui/icons-material';
 import './navbar.css'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -19,38 +19,39 @@ export const MyDrawer = ()=>{
   return (
     <div className='mobile-navbar'>
       <Button style={{color:'white'}} onClick={toggleDrawer(true)}><Menu/></Button>
-      <p>Lee Sports Wear</p>
+      <p>NIYA SPORTS WEAR</p>
       <p>{user?.first_name}</p>
+       {user && <Box><ShoppingBag/></Box>}
       <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
         
         <div className='drawer-button-container'>
-        <p style={{marginBottom:'60px'}}>Lee Sports Wear</p>
-         <Link to={'/'} className='links'>
-           <Button>
+        <p style={{marginBottom:'60px'}}>NIYA SPORTS WEAR</p>
+         <Link to={'/'} className='links' onClick={toggleDrawer(false)}>
+           <Button >
             Shop
           </Button>
          </Link>
-          <Link to={'/international'} className='links'>
-            <Button>
+          <Link to={'/international'} className='links' onClick={toggleDrawer(false)}>
+            <Button >
             International
           </Button>
           </Link>
-          <Link to={'/others'} className='links'>
-            <Button>
+          <Link to={'/others'} className='links' onClick={toggleDrawer(false)}>
+            <Button >
            Others
           </Button>
           </Link>
-          <Link to={'/kids'} className='links'>
-           <Button>
+          <Link to={'/kids'} className='links' onClick={toggleDrawer(false)}>
+           <Button >
             Kids
           </Button>
           </Link>
-          <Link to={'/retro'} className='links'>
-           <Button>
+          <Link to={'/retro'} className='links'onClick={toggleDrawer(false)} >
+           <Button >
             Retro
           </Button>
           </Link>
-          <Link to={'/login_signup'} className='links'>
+         {user === []? <Link to={'/login_signup'} className='links' onClick={toggleDrawer(false)}>
           <Button style={{
             backgroundColor:'black',
             color:'white',
@@ -60,7 +61,19 @@ export const MyDrawer = ()=>{
             width:'80%',
             justifyContent:'center',
             }} onClick={()=>navigate('/login_signup')}>Login</Button>
-            </Link>
+            </Link>:<Button
+            style={{
+              backgroundColor:'red',
+              color:'white',
+              borderRadius:'10px',
+              fontSize:'13px',
+              padding:'15px',
+              width:'80%',
+              justifyContent:'center',
+              }}
+            >Log Out</Button>
+            }
+            {/* {user && } */}
         </div>
       </Drawer>
     </div>

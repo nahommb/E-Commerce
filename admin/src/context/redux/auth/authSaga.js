@@ -26,7 +26,7 @@ function* validateToken(action){
         yield put({type:VALIDATETOKEERORRNRESPONSE,payload:error.response.data})
         console.log(error.response.data);
     }
-}  
+}
 
 function* logout(action){
     try{
