@@ -29,7 +29,7 @@ if(props.title === 'Order response'){
 
     return <div style={styles.overlay}>
     <div style={styles.popup}>
-     {isLoading?<div><CircularProgress/></div>:<div>
+     {isLoading?<div style={{}}><CircularProgress/></div>:<div>
       {props.title === 'Order'?<>
       <h3 style={{color:'black'}}>{props.title}</h3>
        <form onSubmit={(e)=>{

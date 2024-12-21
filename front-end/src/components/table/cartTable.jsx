@@ -55,7 +55,7 @@ console.log(orderSuccess)
         address:input_data.address,
         custome_print:''
        }))
-      setShowPopup(false);
+      // setShowPopup(false);
        // window.location.reload();
     }
   const cancelClick = ()=>{
