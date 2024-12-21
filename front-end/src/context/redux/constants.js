@@ -17,3 +17,4 @@ export const GETRECENTPRODUCTS = 'get_recent_products';
 export const GETRECENTPRODUCTSRESPONSE = 'get_recent_products_response';
 export const LOGINERROR = 'login_error';
 export const EMPTYPRODUCTS = 'empty_products';
+export const CLEARCART = 'clear_cart';

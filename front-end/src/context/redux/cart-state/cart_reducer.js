@@ -1,4 +1,4 @@
-import { ADDTOCART,FINDPRODUCT,REMOVEFROMCART } from "../constants";
+import { ADDTOCART,CLEARCART,FINDPRODUCT,REMOVEFROMCART } from "../constants";
 
 const initialState = {
     cart: [],
@@ -23,11 +23,11 @@ export const cartReducer = (state = initialState, action) => {
                 ),
             };
 
-        // case "CLEAR_CART":
-        //     return {
-        //         ...state,
-        //         cart: [],
-        //     };
+        case CLEARCART:
+            return {
+                ...state,
+                cart: [],
+            };
         default:
             return state;
     }

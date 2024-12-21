@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import './cartTable.css' 
 import { useSelector,useDispatch } from 'react-redux';
-import { removeFromCart } from '../../context/redux/cart-state/cart_action';
+import { clearCart, removeFromCart } from '../../context/redux/cart-state/cart_action';
 import { useState } from "react"
 import { OverlayCard } from "../../components/overlay_card/overlay_card"
 import { createOrder } from '../../context/redux/order-state/orderAction';
@@ -64,7 +64,9 @@ console.log(orderSuccess)
   }
  const orderSuccessHandler = ()=>{
    setOrderSuccessPopup(false)
-   window.location.reload();
+   dispatch(clearCart())
+   setShowPopup(false)
+  //  window.location.reload();
  }
   // const data = [
   //   { products: 1, title: 'Barcelon Away kit 2024/25', price: '$10' ,quantitty:2,total:'$40',},

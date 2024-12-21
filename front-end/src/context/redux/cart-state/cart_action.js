@@ -1,4 +1,4 @@
-import { ADDTOCART, REMOVEFROMCART } from "../constants"
+import { ADDTOCART, CLEARCART, REMOVEFROMCART } from "../constants"
 
 export const addToCart = (data)=>{
     console.log(data)
@@ -12,5 +12,12 @@ export const removeFromCart = (data)=>{
     return {
         type:REMOVEFROMCART,
         payload:data
+    }
+}
+
+export const clearCart = ()=>{
+    return {
+        type:CLEARCART,
+     
     }
 }

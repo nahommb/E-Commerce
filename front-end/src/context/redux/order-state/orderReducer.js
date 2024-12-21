@@ -1,4 +1,4 @@
-import{CREATEORDERRESPONSE} from "../constants"
+import{CLEARCART, CREATEORDERRESPONSE} from "../constants"
 
 const initState = {
     order:{},
@@ -13,6 +13,11 @@ export const orderData = (state=initState,action)=>{
                 ...state,
                 order:action.payload,
                 order_success:action.payload.success,
+            }
+        case CLEARCART:
+            return {
+                ...state,
+                order_success:false
             }
         default:
             return {
