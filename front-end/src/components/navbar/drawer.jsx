@@ -3,18 +3,33 @@ import { Drawer, List, ListItem, ListItemText, Button, Box } from '@mui/material
 import { BedroomBaby, BedroomChild, Boy, Girl, Menu, Shop, ShoppingBag } from '@mui/icons-material';
 import './navbar.css'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { logout } from '../../context/redux/authentication-state/authenticationAction';
+import { OverlayCard } from '../overlay_card/overlay_card';
 
 export const MyDrawer = ()=>{
   
   const [isOpen, setIsOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const toggleDrawer = (open) => () => {
     setIsOpen(open);
   };
 
+  const dispatch = useDispatch();
+
+  const logOutHandler = ()=>{
+    setShowPopup(false);
+    dispatch(logout())
+    
+  }
+
+  const onCancelLogout = ()=>{
+    setShowPopup(false);
+  }
+
   const user = useSelector((state) => state.authenticationData.user);
-  console.log(user)
+  
 
   return (
     <div className='mobile-navbar'>
@@ -22,6 +37,15 @@ export const MyDrawer = ()=>{
       <p>NIYA SPORTS WEAR</p>
       <p>{user?.first_name}</p>
        {user && <Box><ShoppingBag/></Box>}
+       {showPopup && (
+        <OverlayCard
+          title='Log out' 
+         message = 'Are You Sure Want To Log out'
+          button_text='Yes'
+         onClick={logOutHandler}
+         onCancel={onCancelLogout}
+        />
+      )}
       <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
         
         <div className='drawer-button-container'>
@@ -51,7 +75,7 @@ export const MyDrawer = ()=>{
             Retro
           </Button>
           </Link>
-         {user === []? <Link to={'/login_signup'} className='links' onClick={toggleDrawer(false)}>
+         {user === null? <Link to={'/login_signup'} className='links' onClick={toggleDrawer(false)}>
           <Button style={{
             backgroundColor:'black',
             color:'white',
@@ -61,7 +85,13 @@ export const MyDrawer = ()=>{
             width:'80%',
             justifyContent:'center',
             }} onClick={()=>navigate('/login_signup')}>Login</Button>
-            </Link>:<Button
+            </Link>:<Box onClick={()=>{
+                setIsOpen(false)
+               setShowPopup(true)
+            }
+            }>
+              <Button
+             
             style={{
               backgroundColor:'red',
               color:'white',
@@ -71,7 +101,7 @@ export const MyDrawer = ()=>{
               width:'80%',
               justifyContent:'center',
               }}
-            >Log Out</Button>
+              >Log Out</Button></Box>
             }
             {/* {user && } */}
         </div>

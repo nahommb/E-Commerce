@@ -46,7 +46,10 @@ if(props.title === 'Order response'){
       </>: 
       <><h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
-      <Button onClick={props.onClick}>{props.button_text}</Button></>
+      <Button onClick={props.onClick}>{props.button_text}</Button>
+      <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
+      </>
+      
       }</div>}
  
      
