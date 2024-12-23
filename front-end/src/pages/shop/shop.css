@@ -46,14 +46,10 @@ border-radius: 5px;
 .new-arival-text div{
     padding: 15px;
 }
-.women-text h2{
-    /* text-decoration: underline; */
 
-    color: green;
-}
 .shop-banner{
     height: 300px;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     margin: 70px;
     background-image: url('../../components/assets/shop-banner.jpg');
     /* background-size: cover; */
@@ -68,16 +64,19 @@ border-radius: 5px;
     justify-content: center;
 }
 @media (max-width: 480px) {
-    .featured,.new-arival-container{
+   .new-arival-container{
     /* display: grid; */
     width: 100%;
-    grid-template-columns: repeat(2 ,minmax(13rem,1fr));
-    grid-gap: 1rem;
+    grid-template-columns: repeat(2 ,minmax(10rem,1fr));
+    grid-gap: 0.5rem;
       /* background-color: aqua; */
-      padding: 6%;
+      padding: 0%;
       margin: 0px;
       align-items: center;
+      justify-content: center;
+      
     }
+
     .shop-banner{
         height: 120px;
         width: 100%;
@@ -88,17 +87,18 @@ border-radius: 5px;
         
     }
     .shop-banner-container{
-        width: 495px;
+        /* width: 495px; */
         /* height: 100px; */
         display: flex;
         justify-content: center;
         /* background-color: aqua; */
+       
     }
     .new-arival-container{
         padding: 0% ;
         margin: 20px 0px;
-        width: 100%;
-        align-items: center;
+        /* width: 100%; */
+        /* align-items: center; */
         /* background-color: black; */
     }
     .new-arival{
@@ -108,9 +108,12 @@ border-radius: 5px;
         padding: 0.1%;
         padding-left: 2%;
         font-size: 0.8rem;
+        /* background-color: black; */
     }
     .new-arival-text{
       font-size: 0.6rem;
-      width: 420px;
+      /* width: 420px; */
+
+      /* background-color: bisque; */
     }
   }

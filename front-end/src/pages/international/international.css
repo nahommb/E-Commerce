@@ -9,8 +9,9 @@
 
 @media screen and (max-width: 480px) {
   .international-banner{
-    width: 495px;
+   
     height: 140px;
     background-size: contain;
+    /* background-color: aquamarine; */
   }
 }

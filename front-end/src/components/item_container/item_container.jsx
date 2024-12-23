@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Paginate } from "../../components/paginate/paginate"
 import { ItemCard } from "../itemcard/itemcard";
 import {motion } from 'framer-motion'
-
+import './item_container.css'
 
 
 export const ItemContainer=(props)=>{
@@ -55,7 +55,7 @@ return <>
         animate = 'show'
         >
       
-       <div className="featured" >
+       {/* <div className="" > */}
           {products.products?.map((item)=>{
       
             return <motion.div
@@ -74,7 +74,7 @@ return <>
             </motion.div> 
           })    
           }
-        </div>
+        {/* </div> */}
        
         </motion.div>
       

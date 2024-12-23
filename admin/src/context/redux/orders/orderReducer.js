@@ -1,9 +1,11 @@
-import { ASSIGNDELIVERYRESPONSE, GETORDERRESPONSE, GETREADYORDERSRESPONSE } from "../constants";;
+import { ASSIGNDELIVERY, ASSIGNDELIVERYRESPONSE, DELIVERD, DELIVERDRESPONSE, GETORDERRESPONSE, GETREADYORDERSRESPONSE } from "../constants";;
 
 const initialState = {
     orders: [],
     order_page: 1,
     readyOrders: [],
+    assignedForDelivery:false,
+    delivered:false,
 };
 
 export const orderData = (state = initialState, action) => {
@@ -21,11 +23,27 @@ export const orderData = (state = initialState, action) => {
                 ...state,
                 readyOrders: action.payload,
             };
-        // case ASSIGNDELIVERYRESPONSE:
-        //     return {
-        //         ...state,
-                
-        //     }
+        case ASSIGNDELIVERY:
+            return {
+                ...state,
+                assignedForDelivery: false,
+            };
+        case ASSIGNDELIVERYRESPONSE:
+            return {
+                ...state,
+                assignedForDelivery: true,
+
+            }
+        case DELIVERD:
+            return {
+                ...state,
+                delivered: false,
+            }
+        case DELIVERDRESPONSE:
+            return {
+                ...state,
+                delivered: true,
+            }
         default:
             return state;
     }

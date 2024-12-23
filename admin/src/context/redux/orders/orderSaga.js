@@ -1,6 +1,6 @@
 import { put, takeLatest,call } from 'redux-saga/effects';
 import { assignDeliveryRequest, deliverdRequest, getOrdersRequest, getReadyOrdersRequest } from './api';
-import { GETORDERS,GETORDERRESPONSE, ASSIGNDELIVERYRESPONSE, DELIVERD,ASSIGNDELIVERY, GETREADYORDERSRESPONSE, GETREADYORDERS } from '../constants';
+import { GETORDERS,GETORDERRESPONSE, ASSIGNDELIVERYRESPONSE, DELIVERD,ASSIGNDELIVERY, GETREADYORDERSRESPONSE, GETREADYORDERS, DELIVERDRESPONSE } from '../constants';
 
 function* getOrders(action) {
   try {
@@ -42,7 +42,7 @@ function* deliverd(action){
   try{
     let response = yield call(deliverdRequest,action.payload)
     console.log(response.data)
-    // yield put({type:GETREADYORDERSRESPONSE,payload:response.data})
+    yield put({type:DELIVERDRESPONSE,payload:response.data})
   }
   catch(err){
     console.log(err.response.data)

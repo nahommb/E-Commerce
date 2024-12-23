@@ -75,7 +75,6 @@ left: -2px;
         display: flex;
         flex-direction: column;
         height: 50px;
-        width: 480px;
         align-items: normal;
     }
     .nav-log{
@@ -96,6 +95,7 @@ left: -2px;
         justify-content: space-between;
         align-items: center;
         padding-right: 30px;
+        /* width: 100%; */
     }
    .drawer-button-container{
     font-size: 30px;

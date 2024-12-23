@@ -27,9 +27,9 @@ if(props.title === 'Order response'){
   setIsLoading(true)
  }
 
-    return <div style={styles.overlay}>
+    return <section style={styles.overlay}>
     <div style={styles.popup}>
-     {isLoading?<div style={{}}><CircularProgress/></div>:<div>
+     {isLoading?<div><CircularProgress/></div>:<div>
       {props.title === 'Order'?<>
       <h3 style={{color:'black'}}>{props.title}</h3>
        <form onSubmit={(e)=>{
@@ -44,7 +44,8 @@ if(props.title === 'Order response'){
        </form>
      
       </>: 
-      <><h3 style={{color:'black'}}>{props.title}</h3>
+      <>
+      <h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
       <Button onClick={props.onClick}>{props.button_text}</Button>
       <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
@@ -54,7 +55,7 @@ if(props.title === 'Order response'){
  
      
     </div>
-  </div>
+  </section>
 }
 
 const styles = {
@@ -64,6 +65,7 @@ const styles = {
       left: '20%',
       right: '10%',
       height:'300px',
+      width: '300px',
       bottom: 0,
       borderRadius:0,
       border:'none',
@@ -77,6 +79,7 @@ const styles = {
     popup: {
       backgroundColor: 'whitesmoke',
       padding: '20px',
+      height: '150px',
       borderRadius: '8px',
       textAlign: 'center',
       width: '300px',

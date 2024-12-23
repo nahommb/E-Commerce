@@ -14,9 +14,13 @@ const dispatch = useDispatch()
 
 const orders = useSelector((state)=>state.orderData.orders)
 const readyOrders = useSelector((state)=>state.orderData.readyOrders)
+const isAssigned = useSelector((state)=>state.orderData.assignedForDelivery)
+const isDeliverd = useSelector((state)=>state.orderData.delivered)
+
+
 
   const [expandedRow, setExpandedRow] = useState(null);
-  const [refresh, setRefresh] = useState(false);
+ 
   const toggleRowExpansion = (id) => {
     setExpandedRow((prev) => (prev === id ? null : id)); // Toggle the row
   };
@@ -44,11 +48,11 @@ const readyOrders = useSelector((state)=>state.orderData.readyOrders)
     dispatch(assignDelivery({
       id:id
     }))
-    setRefresh((prev) => !prev); 
+    // setRefresh((prev) => !prev); 
   }
 const deliveryHandler = (e,id)=>{
   e.stopPropagation()
-  setRefresh((prev) => !prev); 
+  // setRefresh((prev) => !prev); 
   dispatch(deliverd({
     id:id
   }))
@@ -63,8 +67,8 @@ const deliveryHandler = (e,id)=>{
       page:1,
       limit:8
     }))
-    console.log('assign')
-  },[refresh]) 
+  
+  },[isAssigned,isDeliverd]) 
 
 
 

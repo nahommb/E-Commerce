@@ -4,6 +4,7 @@
     margin-top: 40px;
     color: white;
     padding: 20px 0px 40px 10%;
+  
     
 }
 .footer-title{
@@ -29,7 +30,7 @@
 @media (max-width: 480px) {
     .footer {
       padding: 20px 0px 40px 5%;
-      width: 480px;
+      /* width: 100%; */
       
     }
   }

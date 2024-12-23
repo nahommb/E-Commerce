@@ -37,8 +37,8 @@
 }
 @media  (max-width: 480px) {
     .item-card {
-      width: 13rem;
-      height: 16rem;
+      width: 10rem;
+      height: 15rem;
       /* margin-bottom: 20px; */
       background-color: brown;
     }

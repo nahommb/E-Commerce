@@ -1,7 +1,15 @@
 body{
-  margin: 0px; 
+    margin: 0px; 
+    
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 100px;
-   
+    overflow-x: hidden;
+    /* background-color: red; */
+}
+
+@media (max-width: 480px) {
+  body{
+    /* font-size: 10px; */
+  }
 }

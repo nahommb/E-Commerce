@@ -95,7 +95,7 @@ const onRecentProductsPageChange = (e)=>{
          </div>
          
          <ItemContainer category='all' pageNumber={pageNumber}/>
-         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
+         {/* <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/> */}
 
         <div className="shop-banner-container">
           <div className="shop-banner">
@@ -123,7 +123,7 @@ const onRecentProductsPageChange = (e)=>{
         
          
         </div>
-        <Paginate pageCount={recentProducts.total_pages} onPageChange={onRecentProductsPageChange} pageNumber = {recentProductsPageNumber}/>
+        {/* <Paginate pageCount={recentProducts.total_pages} onPageChange={onRecentProductsPageChange} pageNumber = {recentProductsPageNumber}/> */}
         {/* <Button sx={
           {
             backgroundColor:'rgba(213, 67, 242)',
