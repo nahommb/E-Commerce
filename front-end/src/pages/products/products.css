@@ -1,6 +1,6 @@
 .products{
     /* height: 600px; */
-    /* width: 100%; */
+    width: 100%;
     /* background-color: black; */
     display: grid;
     grid-template-columns: repeat(auto-fit ,minmax(30rem,1fr));
@@ -9,15 +9,15 @@
     padding: 100px 100px 50px 100px;
 }
 .product-image{
-    /* padding: 10%;
-    width: 80%; */
+    /* padding: 10%; */
+    /* width: 100%; */
     /* background-color: red; */
     display: flex;
     justify-content: center;
 }
 .big-image{
     height: 525px;
-    min-width: 25rem;
+    /* min-width: 25rem; */
     /* background-color: green; */
     margin-left: 20px;
 }
@@ -38,7 +38,7 @@
 }
 
 .product-info{
-    /* width: 100%; */
+    width: 100vw;
     /* background-color: aqua; */
     padding-left: 2%;
 }
@@ -85,31 +85,44 @@ input{
         padding: 0px;
     }
     .product-image{
+        margin: 0px;
      margin-top: 60px;
-   
+         padding: 0%;
+         /* width: 80%; */
         /* background-color: aquamarine; */
        display: flex;
         flex-direction: column-reverse;
         /* grid-template-columns: repeat(auto-fit ,minmax(1fr,1fr)); */
         align-items: center;
+        justify-content: center;
         /* width: 480px; */
+        width: 100vw;
+       
+       
+        
         
     }
     .small-image div{
-        height: 7rem;
-        width: 7rem;
+        height: 100%;
+        width: 100%;
     }
     .small-image{
+
         margin-top: 10px;
         display: flex;
+        width: 95vw;
        gap: 0.5rem;
+       /* background-color: black; */
         /* grid-template-columns: repeat(auto-fit ,minmax(7rem,1fr)); */
     }
     .big-image{
-       
+        margin: 0px;
         /* background-color: green; */
         margin-top: 1rem;
-        margin-left: 0.5rem;
+        /* margin-left: 0.5rem; */
+       
+       
+        
         
     }
     .big-image img{
@@ -117,6 +130,16 @@ input{
         height: 100%;
     }
     .product-info{
+       
+        width: 100vw;
+        /* background-color: rgb(55, 67, 67); */
+        padding-left: 0%;
+        /* margin: 0px; */
+       
+    }
+    .product-info h1{
+        margin-left: 10px;
+        /* font-size: 30px; */
         /* background-color: blue; */
     }
   }

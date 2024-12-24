@@ -82,7 +82,9 @@ export const Products = () => {
                         {mainImage && <img src={mainImage} alt='Main Image' />}
                     </div>
                 </div>
+                
                 <div className="product-info">
+                  
                     <h1>{product.product_name}</h1>
                     <p className='price-text'>{product.price} ETB</p>
                     <p>Custom printing</p>
