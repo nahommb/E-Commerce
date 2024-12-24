@@ -90,7 +90,8 @@ export const ItemCard = (props) => {
           }}
         > 
           <ShoppingCart />
-          {props.items.price} ETB
+          <p>{props.items.price} ETB</p>
+          
         </Button>
        
       </div>

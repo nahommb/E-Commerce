@@ -5,6 +5,9 @@
     padding: 0;
     justify-content: center;
     margin: 20px 0;
+    
+    
+    
     /* background-color: red; */
   }
   
@@ -43,7 +46,7 @@
   }
   @media (max-width: 480px) {
   .pagination{
-    width: 475px;
+    /* width: 475px; */
     
   }
 }

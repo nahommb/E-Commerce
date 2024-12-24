@@ -18,6 +18,7 @@ export const Paginate = ({ pageCount, onPageChange,pageNumber}) => {
       nextClassName="next"
       disabledClassName="disabled"
       forcePage={pageNumber-1}
+      style={{ width: '100px', margin: '0 auto', }}
     />
   );
 };

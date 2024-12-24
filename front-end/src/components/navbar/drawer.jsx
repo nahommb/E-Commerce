@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Drawer, List, ListItem, ListItemText, Button, Box } from '@mui/material';
 import { BedroomBaby, BedroomChild, Boy, Girl, Menu, Shop, ShoppingBag } from '@mui/icons-material';
 import './navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { logout } from '../../context/redux/authentication-state/authenticationAction';
 import { OverlayCard } from '../overlay_card/overlay_card';
@@ -29,14 +29,15 @@ export const MyDrawer = ()=>{
   }
 
   const user = useSelector((state) => state.authenticationData.user);
-  
+  const navigate = useNavigate()
 
   return (
     <div className='mobile-navbar'>
       <Button style={{color:'white'}} onClick={toggleDrawer(true)}><Menu/></Button>
       <p>NIYA SPORTS WEAR</p>
       <p>{user?.first_name}</p>
-       {user && <Box><ShoppingBag/></Box>}
+       {user && <Box onClick={()=>{navigate('/cart')
+       console.log('lee')}}><ShoppingBag/></Box>}
        {showPopup && (
         <OverlayCard
           title='Log out' 

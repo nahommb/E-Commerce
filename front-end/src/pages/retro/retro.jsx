@@ -36,12 +36,14 @@ export const Retro = ()=>{
       }
 
     return <>
-        {/* <Navbar/> */}
+       
         <DetailBanner/>
 
         <ItemContainer category='Retro' pageNumber = {pageNumber}/>   
-        <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
         
+        <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
+  
+       
         <Footer/>
     </>
 }
