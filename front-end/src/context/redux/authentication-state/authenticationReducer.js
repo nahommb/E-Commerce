@@ -1,15 +1,21 @@
-import { LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
+import { LOGIN, LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
 
 const initialState = {
     isRegistered:false,
     user:null,
     valideToken:false,
-    loginError:null
+    loginError:null,
+    isLoading:false
 }
 
 export const authenticationData = (state = initialState,action)=>{
     // console.log(action.payload);
     switch(action.type){
+        case LOGIN:
+            return {
+                ...state,
+                isLoading:true
+            }
         case REGISTERRESPONSE:
             console.log(action.payload);
             return {
@@ -20,7 +26,8 @@ export const authenticationData = (state = initialState,action)=>{
             
             return {
                 ...state,
-                user:action.payload.updatedUser
+                user:action.payload.updatedUser,
+                isLoading:false
             }
         case VALIDATETOKENRESPONSE:
             console.log(action.payload);
@@ -33,7 +40,8 @@ export const authenticationData = (state = initialState,action)=>{
             console.log(action.payload);
             return {
                 ...state,
-                loginError:action.payload
+                loginError:action.payload,
+                isLoading:false
             }
         case LOGOUT:
             return {

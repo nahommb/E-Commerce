@@ -60,6 +60,7 @@ export const Navbar = ()=>{
          message = 'Are You Sure Want To Log out'
           button_text='Yes'
          onClick={overlayOnClick}
+         onCancel={()=>setShowPopup(false)}
           />
         :<></>}
         <ul className='nav-menu'>

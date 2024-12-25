@@ -26,7 +26,7 @@ const styles = {
     left: isSmallScreen ? '10%' : '40%',
     right: isSmallScreen ? '10%' : '50%',
     height:'300px',
-    width: '300px',
+    width:  isSmallScreen? '300px':'400px',
     bottom: 0,
     borderRadius:0,
     border:'none',
@@ -38,12 +38,13 @@ const styles = {
     zIndex: 9999,
   },
   popup: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: 'transparent',
     padding: '20px',
     // height: '130px',
     borderRadius: '8px',
     textAlign: 'center',
-    width: '300px',
+    width: isSmallScreen? '300px':'400px',
+    boxShadow: 'none',
    
   }
   
@@ -73,13 +74,20 @@ const styles = {
         <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
        </form>
      
-      </>: 
-      <>
+      </>: (
+        props.title !== 'Login Error'?<div style={{backgroundColor:'whiteSmoke',padding:'10px'}}>
       <h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
       <Button onClick={props.onClick}>{props.button_text}</Button>
       {props.onCancel && <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>}
+      </div>:<>
+      <h3 style={{color:'black'}}>{props.title}</h3>
+      <p style={{color:'black'}}>{props.message}</p><br/>
+      <Button onClick={props.onClick}>{props.button_text}</Button>
+      {props.onCancel && <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>} 
       </>
+      )
+    
       
       }</div>}
  

@@ -75,7 +75,10 @@ input[type='checkbox']{
     }
     .login div form input{
         width: 90%;
-        height: 30px;
+        height: 40px;
+    }
+    .login div form button{
+        height: 40px;
     }
 }
 
