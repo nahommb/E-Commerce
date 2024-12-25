@@ -61,7 +61,7 @@ const styles = {
     return <section style={styles.overlay}>
     <div style={styles.popup}>
      {isLoading?<div><CircularProgress/></div>:<div>
-      {props.title === 'Order'?<>
+      {props.title === 'Order'?<div style={{backgroundColor:'whiteSmoke',borderRadius:'10px',padding:'10px',width:'100%'}}>
       <h3 style={{color:'black'}}>{props.title}</h3>
        <form onSubmit={(e)=>{
         e.preventDefault()
@@ -74,18 +74,18 @@ const styles = {
         <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>
        </form>
      
-      </>: (
-        props.title !== 'Login Error'?<div style={{backgroundColor:'whiteSmoke',padding:'10px'}}>
-      <h3 style={{color:'black'}}>{props.title}</h3>
-      <p style={{color:'black'}}>{props.message}</p><br/>
-      <Button onClick={props.onClick}>{props.button_text}</Button>
-      {props.onCancel && <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>}
-      </div>:<>
+      </div>: (
+        props.title === 'Login Error'? <>
       <h3 style={{color:'black'}}>{props.title}</h3>
       <p style={{color:'black'}}>{props.message}</p><br/>
       <Button onClick={props.onClick}>{props.button_text}</Button>
       {props.onCancel && <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>} 
-      </>
+      </>:<div style={{backgroundColor:'whiteSmoke',padding:'10px'}}>
+      <h3 style={{color:'black'}}>{props.title}</h3>
+      <p style={{color:'black'}}>{props.message}</p><br/>
+      <Button onClick={props.onClick}>{props.button_text}</Button>
+      {props.onCancel && <Button style={{color:'red'}} onClick={props.onCancel} >Cancel</Button>}
+      </div>
       )
     
       
