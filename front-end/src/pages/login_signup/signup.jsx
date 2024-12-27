@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../context/redux/authentication-state/authenticationAction';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 export const Signup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -14,7 +14,11 @@ export const Signup = () => {
 
   const dispatch = useDispatch();
   const isRegistered = useSelector((state) => state.authenticationData.isRegistered);
-
+  const isRegisterLoading = useSelector((state)=>state.authenticationData.isRegisterLoading)
+  const registerResponseMessage = useSelector((state)=>state.authenticationData.registerResponseMessage)
+  const isRegisteredResponse = useSelector((state)=>state.authenticationData.isRegisteredResponse)
+ 
+  
   const signupHandler = () => {
     if (confirmPassword === password) {
       dispatch(
@@ -31,14 +35,15 @@ export const Signup = () => {
   };
 
   useEffect(() => {
-    if (isRegistered) {
+    if (isRegisteredResponse) {
       setShowPopup(true);
     }
-  }, [isRegistered]);
-
+  }, [isRegisteredResponse]);
+ 
   const overlayOnClose = () => {
     setShowPopup(false);
-    window.location.reload();
+    dispatch({ type: 'RESET_REGISTER_RESPONSE' });
+    // window.location.reload();
   };
 
   // Inline OverlayCard Component
@@ -57,7 +62,8 @@ export const Signup = () => {
  
   return (
     <>
-      {showPopup && <OverlayCard message="Account Created Successfully!" onClose={overlayOnClose} />}
+      {isRegisterLoading && <section className='signup-progress'><CircularProgress/></section>}
+      {showPopup && <OverlayCard message={registerResponseMessage} onClose={overlayOnClose} />}
       <div>
         <h4 style={{ color: 'green' }}>Signup</h4>
         <form
@@ -133,6 +139,7 @@ export const Signup = () => {
           By continuing I agree to the terms of use and privacy policy.
         </p>
       </div>
+
     </>
   );
 };
@@ -159,17 +166,17 @@ const cardStyles = {
   // boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
   maxWidth: '400px',
   width: '60%',
-  height: '90px',
+  // height: '90px',
 };
 
 const buttonStyles = {
-  backgroundColor: '#007bff',
+  backgroundColor: 'black',
   color: 'white',
   border: 'none',
   borderRadius: '4px',
-  marginTop: '30px',
+  marginTop: '20px',
   padding: '10px 10px',
-  fontSize: '16px',
+  fontSize: '12px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
 };

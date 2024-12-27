@@ -2,10 +2,10 @@
 /* background-image: linear-gradient(to bottom, #87ff93,white); */
 display: flex;
 justify-content: center;
-height: 100vh;
+/* height: 100vh; */
 /* width: 100%; */
 
-align-items: center;
+/* align-items: center; */
 /* background-color: red; */
 }
 .login div{
@@ -24,19 +24,20 @@ box-shadow: 2px 2px 8px 6px rgba(0,0,0,0.1);
     margin-top: 20px;
 }
 .login div form input{
-    height: 55px;
+   
     width: 95%;
     margin-bottom: 10px;
-    border-radius: 15px;
-    border: 3px solid whitesmoke;
-    padding-left: 8px;
+    border-radius: 10px;
+    border: 2px solid whitesmoke;
+    padding-left: 10px;
     background-color: white;
+    text-align: start;
     
 }
 .login div form button{
 background-color: black;
 color: white;
-height: 45px;
+/* height: 45px; */
 border: none;
 border-radius: 8px;
 width: 100%;
@@ -47,7 +48,17 @@ margin-bottom: 10px;
 cursor: pointer;
 
 }
+.signup-progress{
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    top: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 
+}
 
 input[type='checkbox']{
     width: 15px;
@@ -75,7 +86,7 @@ input[type='checkbox']{
     }
     .login div form input{
         width: 90%;
-        height: 40px;
+      
     }
     .login div form button{
         height: 40px;

@@ -1,16 +1,24 @@
-import { LOGIN, LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE } from "../constants";
+import { LOGIN, LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE,REGISTERERROR } from "../constants";
 
 const initialState = {
     isRegistered:false,
     user:null,
     valideToken:false,
     loginError:null,
-    isLoading:false
+    isLoading:false,
+    isRegisterLoading:false,
+    registerResponseMessage:'',
+    isRegisteredResponse:false,
 }
 
 export const authenticationData = (state = initialState,action)=>{
     // console.log(action.payload);
     switch(action.type){
+        case REGISTER:
+            return {
+                ...state,
+                isRegisterLoading:true
+            }
         case LOGIN:
             return {
                 ...state,
@@ -20,7 +28,26 @@ export const authenticationData = (state = initialState,action)=>{
             console.log(action.payload);
             return {
                 ...state,
-                isRegistered:action.payload.registered
+                isRegisteredResponse:true,
+                isRegistered:action.payload.registered,
+                isRegisterLoading:false,
+                registerResponseMessage:action.payload.message
+            }
+        case 'RESET_REGISTER_RESPONSE':
+            return {
+                ...state,
+                isRegisteredResponse:false,
+                isRegistered:false,
+                isRegisterLoading:false,
+                registerResponseMessage:''
+            }
+        case REGISTERERROR:
+            console.log(action.payload);
+            return {
+                ...state,
+                isRegisteredResponse:true,
+                isRegisterLoading:false,
+                registerResponseMessage:action.payload.message
             }
         case LOGINRESPONSE:
             

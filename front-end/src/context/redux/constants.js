@@ -1,5 +1,6 @@
 export const REGISTER = 'register';
 export const REGISTERRESPONSE = 'register_response';
+export const REGISTERERROR = 'register_error';
 export const LOGIN = 'login';
 export const LOGINRESPONSE = 'login_response';
 export const VALIDATETOKEN = 'validate_token';
