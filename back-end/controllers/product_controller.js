@@ -54,7 +54,10 @@ const getProducts = async (req, res) => {
    const lastIndex = page * limit; //3 6
    
    if(category === 'all'){
-    const products = await Product.find().skip(skip).limit(limit);
+    // const products = await Product.find().skip(skip).limit(limit);
+    const products = await Product.aggregate([
+      { $sample: { size: limit } } // Randomly select `limit` documents
+    ]);
     const totalItems = await Product.countDocuments();
     let nextPage = 1;
     let prevPage = totalItems;
