@@ -70,3 +70,23 @@ width: 100%;
     }
 
 }
+@media (max-width: 700px ) and (min-width:480px){
+    .boarding{
+        /* display: flex; */
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        /* width: 480px; */
+        /* background-color: black; */
+        /* align-content: end; */
+        /* height: 100%; */
+    }
+    .boarding-text {
+        /* margin-bottom: 20px; */
+        /* background-color: aqua; */
+        padding: 0%;
+        width: 400px;
+        margin-bottom: 100px;
+    }
+}
