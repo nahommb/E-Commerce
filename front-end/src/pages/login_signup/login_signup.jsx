@@ -59,7 +59,7 @@ export const LoginSignup = () => {
         )}
 
         {isLogin ? (
-          <div>
+          <section className="login-section">
             <h3 style={{ color: 'green' }}>Login</h3>
             <p>Dress up and got your dreams</p>
             <form
@@ -105,7 +105,7 @@ export const LoginSignup = () => {
             ) : (
               <></>
             )}
-          </div>
+          </section>
         ) : (
           <Signup />
         )}

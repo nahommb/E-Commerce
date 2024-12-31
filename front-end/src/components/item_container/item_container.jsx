@@ -58,7 +58,7 @@ return <>
        {/* <div className="" > */}
           {products.products?.map((item)=>{
       
-            return <motion.div
+            return <motion.div key={item._id}
                 variants={{
                     hidden: {
                       opacity: 0,

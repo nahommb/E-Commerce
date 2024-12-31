@@ -83,7 +83,7 @@ export const ItemCard = (props) => {
             backgroundColor: 'white',
             color: 'red',
             borderRadius: '25px',
-            width: '120px',
+            // width: '120px',
             '&:hover': {
               backgroundColor: '#f5f5f5', // Change on hover
             },

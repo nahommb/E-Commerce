@@ -119,3 +119,24 @@ border-radius: 5px;
       /* background-color: bisque; */
     }
   }
+  @media (max-width: 700px ) and (min-width:480px){
+      .new-arival-container{
+    /* display: grid; */
+    width: 100%;
+    grid-template-columns: repeat(2 ,minmax(10rem,1fr));
+    grid-gap: 0.5rem;
+      /* background-color: aqua; */
+      padding: 0%;
+      margin: 0px;
+      align-items: center;
+      justify-content: center;
+      
+    }
+    .new-arival-text{
+        font-size: 0.6rem;
+        /* width: 420px; */
+  
+        /* background-color: bisque; */
+        margin-bottom: 20px;
+      }
+  }

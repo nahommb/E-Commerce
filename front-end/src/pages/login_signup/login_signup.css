@@ -8,7 +8,7 @@ justify-content: center;
 /* align-items: center; */
 /* background-color: red; */
 }
-.login div{
+.login div, .login-section{
   
 background-color: whitesmoke; 
 /* height: 50%; */
@@ -20,10 +20,10 @@ margin-top: 20%;
 margin-bottom: 10%;
 box-shadow: 2px 2px 8px 6px rgba(0,0,0,0.1);
 }
-.login div form{
+.login div form, .login-section form{
     margin-top: 20px;
 }
-.login div form input{
+.login div form input , .login-section form input{
    
     width: 95%;
     margin-bottom: 10px;
@@ -34,7 +34,7 @@ box-shadow: 2px 2px 8px 6px rgba(0,0,0,0.1);
     text-align: start;
     
 }
-.login div form button{
+.login div form button , .login-section form button{
 background-color: black;
 color: white;
 /* height: 45px; */
@@ -66,9 +66,18 @@ input[type='checkbox']{
     margin-right:8px;
 }
 @media (max-width: 480px) {
-    .login div{
+    .login div {
         /* width: 440px; */
         /* height: 470px; */
+        padding: 7%;
+        align-items: center;
+        /* background-color: aquamarine; */
+        /* margin-top: 30%; */
+        /* margin-bottom: 0px; */
+    }
+    .login-section{
+        /* width: 440px; */
+        height: 450px;
         padding: 7%;
         align-items: center;
         /* background-color: aquamarine; */
@@ -84,11 +93,11 @@ input[type='checkbox']{
         
         margin-bottom: 0px;
     }
-    .login div form input{
+    .login div form input, .login-section form input{
         width: 90%;
       
     }
-    .login div form button{
+    .login div form button, .login-section form button{
         height: 40px;
     }
 }

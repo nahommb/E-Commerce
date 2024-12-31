@@ -9,8 +9,5 @@ export const DetailBanner = ()=>{
         <div className="detail-banner">
             
         </div>
-            <div className="banner-text">
-                <h4>Old is Gold Wear the History</h4>
-            </div>
     </div>
 }

@@ -5,7 +5,7 @@ import { loginRequest, registerRequest, validetTokenRequest, logoutRequest} from
 function* register(action){
     try{
         let response = yield call(registerRequest, action.payload);
-        // console.log(action.payload);
+        
         console.log(response.data);
         yield put({type:REGISTERRESPONSE,payload:response.data})
     }catch(error){
@@ -18,12 +18,10 @@ function* register(action){
 function* login(action){
     try{
         let response = yield call(loginRequest, action.payload);
-        console.log(action.payload);
-        console.log(response.data);
+       
         yield put({type:LOGINRESPONSE,payload:response.data})
     }catch(error){
-        console.log(error);
-        console.log(error.response.data.message);
+     
         yield put({type:LOGINERROR,payload:error.response.data})
     }
 }
@@ -31,8 +29,7 @@ function* login(action){
 function* validetToken(action){
     try{
         let response = yield call(validetTokenRequest, action.payload);
-        // console.log(action.payload);
-        console.log(response.data);
+       
         yield put({type:VALIDATETOKENRESPONSE,payload:response.data})
     }catch(error){
         console.log(error);
@@ -42,8 +39,7 @@ function* validetToken(action){
 function* logout(action){
     try{
         let response = yield call(logoutRequest, action.payload);
-         console.log(action.payload);
-        console.log(response.data);
+      
         // yield put({type:'',payload:response.data})
     }catch(error){
         console.log(error);

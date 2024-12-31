@@ -150,9 +150,12 @@ left: -2px;
     }
     .nav-login-cart{
         font-size: 10px;
-        width: 80px;
+        /* width: 70px; */
         padding: 2.2%;
         /* background-color: aqua; */
         
+    }
+    .nav-login-cart .button{
+        display: none;
     }
 }
