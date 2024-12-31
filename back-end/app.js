@@ -14,6 +14,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const productRoutes = require('./routes/product_routes');
 
+const passport = require("passport");
+const session = require("cookie-session");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const clientID = process.env.GOOGLE_CLIENT_ID;
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 app.use(cors({
   origin: [
       'http://localhost:5173',
@@ -48,8 +53,57 @@ mongoose.connect(dbUrl)
 
 
 
+
+app.use(
+  session({
+    secret: 'nahomlee', // Replace with a secure key
+    resave: false, // Prevents saving session if unmodified
+    saveUninitialized: false, // Prevents creating session until something is stored
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+      secure: false, // Set true if using HTTPS
+      httpOnly: true, // Helps prevent XSS attacks
+    },
+  })
+); 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: clientID,
+      clientSecret: clientSecret,
+      callbackURL: "/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // Save user details to your database
+      console.log(profile.emails[0]);
+      return done(null, profile);
+    }
+  )
+);
+
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
  
- 
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
+
+app.get("/", (req, res) => {
+  res.send(req.user ? `Welcome ${req.user.displayName}` : "Please log in.");
+});
 
 app.listen(port, () => {
   console.log('Server is running on port '+port);

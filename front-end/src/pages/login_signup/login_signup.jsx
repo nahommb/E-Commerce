@@ -49,6 +49,11 @@ export const LoginSignup = () => {
     );
   };
 
+  const handleGoogleLogin = () => {
+    console.log('Google login clicked');
+    window.open("http://localhost:3000/auth/google", "_self");
+  };
+
   return (
     <>
       <div className="login">
@@ -82,7 +87,7 @@ export const LoginSignup = () => {
               />
               <br />
               <Button type="submit">Continue</Button>
-              <Button style={{ backgroundColor: 'white', color: 'black' }}>
+              <Button onClick={handleGoogleLogin} style={{ backgroundColor: 'white', color: 'black' }}>
                 <Google style={{ marginRight: '8px' }} />
                 Continue with Google
               </Button>
