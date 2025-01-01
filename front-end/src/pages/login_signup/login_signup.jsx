@@ -51,7 +51,7 @@ export const LoginSignup = () => {
 
   const handleGoogleLogin = () => {
     console.log('Google login clicked');
-    window.open("http://localhost:3000/auth/google", "_self");
+    window.open("https://sports-wear.onrender.com/auth/google", "_self");
   };
 
   return (
