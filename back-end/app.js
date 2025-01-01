@@ -80,7 +80,7 @@ passport.use(
     {
       clientID: clientID,
       clientSecret: clientSecret,
-      callbackURL: "http://sports-wear.onrender.com/auth/google/callback",
+      callbackURL: "https://sports-wear.onrender.com/auth/google/callback",
       passReqToCallback: true, // Enable access to `req` in callback
     },
     async (req, accessToken, refreshToken, profile, done) => {
