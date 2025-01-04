@@ -20,8 +20,9 @@ export const Signup = () => {
  
   
   const signupHandler = () => {
-    if (confirmPassword === password) {
-      dispatch(
+    if (confirmPassword === password ) {
+      if(!isChecked){
+         dispatch(
         register({
           first_name,
           last_name,
@@ -29,6 +30,11 @@ export const Signup = () => {
           password,
         })
       );
+      }
+      else{
+         alert('Please accept the terms and conditions')
+      }
+     
     } else {
       alert('Password does not match');
     }

@@ -30,14 +30,15 @@ export const Kids = ()=>{
     }
     return <div>
         {/* <Navbar/> */}
-        <div className="kids-boarding">
+        {/* <div className="kids-boarding">
           <div className="inner-boarding">
             <div className="kid-banner-text">
             <h1>Every fan deserves <br/> <span style={{marginLeft:'10%'}}>the best jersey.</span></h1>
             </div>
            <img className="kid-banner-image" src={kidBanner}></img>
           </div>
-        </div>
+        </div> */}
+        
         <ItemContainer category = 'Kids' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
         <Footer/>

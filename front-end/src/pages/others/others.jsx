@@ -36,7 +36,7 @@ export const Others=()=>{
 
     return <div>
         {/* <Navbar/> */}
-        <div className="women-boarding">
+        {/* <div className="women-boarding">
         
           <div className="inner-boarding">
            <div  className='women-banner-text'>
@@ -44,7 +44,7 @@ export const Others=()=>{
            </div>
            <img className='women-banner-image' src={womenBanner}></img>
           </div>
-        </div>
+        </div> */}
 
         <ItemContainer category = 'Others' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>

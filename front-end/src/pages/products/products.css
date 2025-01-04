@@ -18,6 +18,7 @@
 .big-image{
     height: 525px;
     /* min-width: 25rem; */
+    /* max-width: 25rem; */
     /* background-color: green; */
     margin-left: 20px;
 }
@@ -83,6 +84,10 @@ input{
 @media (min-width: 800px){
     .products{
         padding: 100px 50px 50px 50px;
+    }
+    .big-image{
+        min-width: 25rem;
+        max-width: 25rem;
     }
 
 }
