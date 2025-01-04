@@ -6,6 +6,9 @@
     /* grid-template-columns: repeat(5, 1fr); */
     padding: 2% 0% 2% 0%;
 }
+.retro-spacer{
+  margin-bottom: 30%;
+}
 @media (max-width: 480px) {
     .retro{
         width:430px;

@@ -2,7 +2,17 @@
     height: 40rem;
     width: 100%;
     /* background-color: whitesmoke; */
-    /* background-image: linear-gradient( to bottom,#87A2FF,white); */
+    /* background-image: linear-gradient( to bottom,rgb(31, 31, 31),white); */
+    
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), 
+                    url('../../components/assets/boarding-back.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+      
+      
+    
     display: flex;
     color: black;
     position: relative;

@@ -35,23 +35,22 @@ export const Others=()=>{
     }
 
     return <div>
-        {/* <Navbar/> */}
-        {/* <div className="women-boarding">
+      
+        <div className="others-boarding">
         
           <div className="inner-boarding">
-           <div  className='women-banner-text'>
+           <div  className='others-banner-text'>
             <h1>Wear your passion, <br/> <span style={{marginLeft:'10%'}}>wear your pride!</span></h1>
            </div>
-           <img className='women-banner-image' src={womenBanner}></img>
+           {/* <img className='women-banner-image' src={womenBanner}></img> */}
           </div>
-        </div> */}
-        <div className='others-banner'>
-             pipopkpok
         </div>
 
         <ItemContainer category = 'Others' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
-
+        {
+          products.length === 0 &&<div className="others-spacer"> </div>
+        }
         <Footer/>
     </div>
 }

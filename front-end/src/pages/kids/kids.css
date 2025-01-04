@@ -4,7 +4,7 @@
     padding: 2% 0% 2% 0%;
 }
 .kids-boarding{
-    height: 15rem;
+    /* height: 15rem; */
     /* background-color: red; */
     width: 100%;
     /* background-color: whitesmoke; */
@@ -17,7 +17,7 @@
 }
 .kids-boarding .inner-boarding{
   background-image: linear-gradient(to right, yellow, white);
-  height: 15rem;
+  /* height: 15rem; */
   width: 80%;
   border-radius: 12px;
   display: flex;
@@ -25,14 +25,18 @@
   padding-left: 10%;
 }
 .kid-banner-text{
-  padding-top: 30px;
+  
   color: rgb(80, 233, 38);
   width: 80%;
-  font-size: 20px;
+  font-size: 15px;
+  
 }
 .kid-banner-image{
 width: 30%;
 
+}
+.kids-spacer{
+  margin-bottom: 30%;
 }
 @media (max-width: 480px) {
   .kids{
@@ -45,4 +49,7 @@ width: 30%;
       align-items: center;
       justify-content: center;
   }
+ .kid-banner-text{
+  font-size: 8px;
+ }
 }

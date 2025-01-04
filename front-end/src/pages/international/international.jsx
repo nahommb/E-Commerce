@@ -45,7 +45,12 @@ import { Brazil_logo,Spain_logo,Germany_logo,Italy_logo,Argentina_logo,Crotia_lo
          </div>
         
         <ItemContainer category='International' pageNumber = {pageNumber}/>
-        {/* <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/> */}
+        <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
+        {
+          products.length === 0 &&<div className="international-spacer"> </div>
+        }
+        
+       
        <Footer/>
     </div>
 }

@@ -43,7 +43,9 @@ export const Retro = ()=>{
         
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
   
-       
+        {
+          products.length === 0 &&<div className="retro-spacer"> </div>
+        }
         <Footer/>
     </>
 }
