@@ -45,6 +45,9 @@ export const Others=()=>{
            <img className='women-banner-image' src={womenBanner}></img>
           </div>
         </div> */}
+        <div className='others-banner'>
+             pipopkpok
+        </div>
 
         <ItemContainer category = 'Others' pageNumber = {pageNumber}/>
         <Paginate pageCount={products.total_pages} onPageChange={onPageChange} pageNumber = {pageNumber}/>
