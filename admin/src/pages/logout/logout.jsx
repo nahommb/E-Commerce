@@ -1,13 +1,18 @@
 import { Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../context/redux/auth/authAction'
+import { useEffect } from 'react'
 export const Logout = ()=>{
 
   const dispatch = useDispatch()
   const handleLogout = ()=>{
    dispatch(logout())
-   window.location.href = '/'
+  //  window.location.href = '/'
   }
+
+  useEffect(()=>{
+
+  },[dispatch])
 
 
     return <div className="flex justify-center items-center h-8/12">
