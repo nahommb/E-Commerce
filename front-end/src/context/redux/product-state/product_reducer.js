@@ -1,4 +1,4 @@
-import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE, GETRECENTPRODUCTSRESPONSE, EMPTYPRODUCTS } from "../constants";
+import { GETPRODUCTS, GETPRODUCTSRESPONSE,FINDPRODUCTRESPONSE, GETRECENTPRODUCTSRESPONSE, EMPTYPRODUCTS, GETSITEDATARESPONSE } from "../constants";
 
 const initialState = {
     products: [],
@@ -13,6 +13,7 @@ const initialState = {
     othersPageNumber:1,
     kidsPageNumber:1,
     recentProductsPageNumber:1,
+    boardingImage:null
 };
 export const productData = (state = initialState, action) => {
     switch (action.type) {
@@ -24,6 +25,7 @@ export const productData = (state = initialState, action) => {
                 products: action.payload,
                 loading: false,
                 error: null,
+               
             };
         case FINDPRODUCTRESPONSE:
             // console.log(action.payload);
@@ -37,6 +39,12 @@ export const productData = (state = initialState, action) => {
             return {
                 ...state,
                 recentProducts: action.payload,
+            };
+        case GETSITEDATARESPONSE:
+            console.log(action.payload);
+            return {
+                ...state,
+                boardingImage: action.payload.boardingImage,
             };
         case 'PAGENUMBER':
             console.log(action.payload)

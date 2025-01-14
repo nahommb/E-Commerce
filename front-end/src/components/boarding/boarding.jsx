@@ -1,9 +1,22 @@
 import './boarding.css'
 import bannerGirl from '../../components/assets/shop_banner_girl.png'
 import boardingBackImage  from '../../components/assets/boarding-back-image.png'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { baseUrl } from '../../context/helper/base_url'
+import { useEffect } from 'react'
+import { siteData } from '../../context/redux/product-state/product_action'
 
 export const Boarding = ()=>{
+
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+   dispatch(siteData())
+  },[])
+
+  const boardingImage = useSelector((state)=>state.productData.boardingImage)
+
+
    return <div className="boarding">
            <div className='boarding-text'>
    

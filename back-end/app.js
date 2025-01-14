@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user_routes');
 const orderRoutes = require('./routes/order_routes')
 const analyticsRoutes = require('./routes/analytics_routes')
+const siteDataRoutes = require('./routes/site_data_routes');
 const googleAuthRoutes = require('./routes/google_auth_routes');
 const authMiddleware = require('./middleware/auth_middleware')
 const cookieParser = require('cookie-parser');
@@ -49,6 +50,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders',orderRoutes)
 app.use('/api/analytics',analyticsRoutes);
+app.use('/api/site_data',siteDataRoutes);
 
 
 mongoose.connect(dbUrl)

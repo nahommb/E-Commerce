@@ -24,3 +24,12 @@ export const getProductRequest = (payload)=>{
 
     return response
   }
+
+  export const getSiteDataRequest = (payload)=>{
+    console.log(payload);
+    axios.defaults.withCredentials = true;
+
+    const response = axios.get(`${baseUrl}site_data/`,)
+
+    return response
+  }

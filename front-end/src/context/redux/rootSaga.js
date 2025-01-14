@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
 import { loginSaga, logoutSaga, registerSaga, validetTokenSaga } from "./authentication-state/authenticationSaga";
-import { findProductSaga, getProductSaga, getRecentProductSaga } from "./product-state/product_saga";
+import { findProductSaga, getProductSaga, getRecentProductSaga, getSiteDataSaga } from "./product-state/product_saga";
 import { orderSaga } from "./order-state/orderSaga";
 
 export default function* rootSaga() {
@@ -13,5 +13,6 @@ export default function* rootSaga() {
         findProductSaga(),
         getRecentProductSaga(),
         orderSaga(),
+        getSiteDataSaga()
     ]);
 }

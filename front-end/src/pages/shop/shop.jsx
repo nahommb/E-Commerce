@@ -85,7 +85,7 @@ const onRecentProductsPageChange = (e)=>{
 
 
     return <div className="shop">
-        {/* <Navbar></Navbar> */}
+       
         <Boarding></Boarding>
         <div className="shop-banner-container">
         <Banner bannerText='Featured Sport Kits' images={logo}></Banner>

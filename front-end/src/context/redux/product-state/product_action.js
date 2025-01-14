@@ -1,4 +1,4 @@
-import { EMPTYPRODUCTS, FINDPRODUCT, GETPRODUCTS,GETRECENTPRODUCTS} from "../constants";
+import { EMPTYPRODUCTS, FINDPRODUCT, GETPRODUCTS,GETRECENTPRODUCTS, GETSITEDATA} from "../constants";
 
 export const getProducts= (data)=>{
     console.log(data);
@@ -27,5 +27,11 @@ export const getRecentProducts = (data)=>{
 export const emptyProducts = ()=>{
     return {
         type:EMPTYPRODUCTS
+    }
+}
+
+export const siteData = ()=>{
+    return {
+        type:GETSITEDATA
     }
 }

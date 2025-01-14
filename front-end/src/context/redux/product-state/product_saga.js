@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { findProductRequest, getProductRequest, getRecentProductRequest } from "./api";
-import { FINDPRODUCTRESPONSE,FINDPRODUCT, GETPRODUCTS, GETPRODUCTSRESPONSE, GETRECENTPRODUCTSRESPONSE ,GETRECENTPRODUCTS} from "../constants";
+import { findProductRequest, getProductRequest, getRecentProductRequest, getSiteDataRequest } from "./api";
+import { FINDPRODUCTRESPONSE,FINDPRODUCT, GETPRODUCTS, GETPRODUCTSRESPONSE, GETRECENTPRODUCTSRESPONSE ,GETRECENTPRODUCTS, GETSITEDATARESPONSE, GETSITEDATA} from "../constants";
 
 function * getProduct(action){
     try{
@@ -38,6 +38,19 @@ function * getRecentProduct(action){
     }
 }
 
+function * getSiteData(action){
+    try{
+        console.log(action.payload);
+        let response = yield call(getSiteDataRequest, action.payload);
+         
+        console.log(response.data);
+        yield put({type:GETSITEDATARESPONSE,payload:response.data})
+    }
+    catch(err){
+      console.log(err)
+    }
+}
+
 export function* getProductSaga(){
     yield takeLatest(GETPRODUCTS,getProduct)
  }
@@ -47,4 +60,7 @@ export function* getProductSaga(){
 
  export function* getRecentProductSaga(){
     yield takeLatest(GETRECENTPRODUCTS,getRecentProduct)
+ }
+ export function* getSiteDataSaga(){
+    yield takeLatest(GETSITEDATA,getSiteData)
  }
