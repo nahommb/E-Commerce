@@ -1,5 +1,5 @@
 
-const upload = require('../helper/image_uploader');
+const {upload} = require('../helper/image_uploader');
 const Product = require('../models/product_model');
 const path = require('path');
 const { v2: cloudinary } = require('cloudinary');

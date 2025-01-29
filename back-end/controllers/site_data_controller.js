@@ -1,5 +1,5 @@
  const SiteDataModel = require('../models/site_model')
- const upload = require('../helper/image_uploader');
+ const {siteDataUpload} = require('../helper/image_uploader');
  const SiteData = async (req,res)=>{
 
     console.log('leeeeeeeeeeee')
@@ -15,37 +15,37 @@
 const addSiteData = async (req, res) => {
     try {
      
-        upload.array('images', 1)(req, res, async (err) => {
+        siteDataUpload.array('images', 1)(req, res, async (err) => {
           if (err) {
             return res.status(400).json({ message: err.message });
           }
 
           const  boardingImage = req.files;
-          console.log(boardingImage);
-
+          console.log(boardingImage[0].path);
+         
           const siteData = new SiteDataModel({
-            boardingImage,
-            logo,
+            siteName:'Niya Sports Wear',
+            boardingImage:boardingImage[0].path,
           });
 
-          await siteData.save();
+           await siteData.save();
 
-          res.status(200).json(siteData);
+          // res.status(200).json(siteData);
         });
 
       // Update or insert new site data test
-      const siteData = await SiteData.findOneAndUpdate(
-        {}, // Empty filter to match any existing document
-        {
-          boardingImage: req.body.boardingImage,
-          logo: req.body.logo,
-        },
-        { upsert: true, new: true } // Create a new document if none exists
-      );
+      // const siteData = await SiteData.findOneAndUpdate(
+      //   {}, // Empty filter to match any existing document
+      //   {
+      //     boardingImage: req.body.boardingImage,
+      //     logo: req.body.logo,
+      //   },
+      //   { upsert: true, new: true } // Create a new document if none exists
+      // );
   
-      res.status(200).json(siteData);
+      res.status(200).json({message:'successfuly uploaded'});
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
   };
-module.exports = {SiteData}
+module.exports = {SiteData, addSiteData}
