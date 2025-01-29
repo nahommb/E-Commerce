@@ -4,9 +4,8 @@
 
     console.log('leeeeeeeeeeee')
     try{
-        const siteData = await SiteData.find({})
-        console.log(siteData);
-        res.status(200).json(siteData)
+        const siteData = await SiteDataModel.find({})
+        res.status(200).json(siteData[0])
     }catch(error){
         res.status(400).json({message:error.message})
     }
@@ -29,20 +28,8 @@ const addSiteData = async (req, res) => {
           });
 
            await siteData.save();
-
-          // res.status(200).json(siteData);
         });
 
-      // Update or insert new site data test
-      // const siteData = await SiteData.findOneAndUpdate(
-      //   {}, // Empty filter to match any existing document
-      //   {
-      //     boardingImage: req.body.boardingImage,
-      //     logo: req.body.logo,
-      //   },
-      //   { upsert: true, new: true } // Create a new document if none exists
-      // );
-  
       res.status(200).json({message:'successfuly uploaded'});
     } catch (error) {
       res.status(400).json({ message: error.message });
