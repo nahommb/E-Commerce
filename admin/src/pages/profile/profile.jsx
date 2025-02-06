@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import './profile.css';
 import { Popup } from "../../components/popup/popup";
 import { useSelector,useDispatch } from "react-redux";
+import { addSiteData } from "../../context/redux/profile/profileAction";
 
 export const Profile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ title: '' });
- 
+    const [imageFile, setImageFile] = useState(null);
+
     const [showPopup, setShowPopup] = useState(false);
     
     const user = useSelector((state)=>state.authReducer.user)
@@ -23,6 +25,30 @@ export const Profile = () => {
         setIsModalOpen(true);
     };
 
+ const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        setImageFile(file);
+        console.log("Selected File:", file);
+    }
+};
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!imageFile) {
+        console.error("No image selected");
+        alert("Please select an image before submitting.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("images", imageFile);
+
+    dispatch(addSiteData(formData)); // Pass formData directly
+
+    console.log("Form submitted successfully.");
+};
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -69,6 +95,13 @@ export const Profile = () => {
                 <p className="text-lg font-bold">Created Date</p>
                 <p className="text-light-purple">12-09-24</p>
             </div>
+            <form onSubmit={handleSubmit}>
+
+            <h1>Change Banner Image</h1>
+            <input type="file" onChange={handleFileChange} />
+            <button type="submit">Submit</button>
+            </form>
+           
             {showPopup && (
           <div style={popupStyles}>
             <p>{profile.message}</p>

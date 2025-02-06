@@ -1,4 +1,4 @@
-import { CHANGEPASSWORD,CHANGENAME,CHANGEEMAIL } from "../constants"
+import { CHANGEPASSWORD,CHANGENAME,CHANGEEMAIL, ADDSITEDATA } from "../constants"
 
 export const changePassword = (payload)=>{
     return {
@@ -18,6 +18,13 @@ export const changeName = (payload)=>{
 export const changeEmail = (payload)=>{
     return {
         type:CHANGEEMAIL,
+        payload
+    }
+}
+export const addSiteData = (payload)=>{
+        console.log(payload)
+    return {
+        type:ADDSITEDATA,
         payload
     }
 }

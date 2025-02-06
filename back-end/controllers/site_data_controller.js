@@ -20,19 +20,20 @@ const addSiteData = async (req, res) => {
           }
 
           const  boardingImage = req.files;
-          console.log(boardingImage[0].path);
+          console.log(boardingImage); 
+          // console.log(boardingImage[0].path); 
          
           const siteData = new SiteDataModel({
-            siteName:'Niya Sports Wear',
+            siteName:'Niya Sports Wear', 
             boardingImage:boardingImage[0].path,
           });
 
            await siteData.save();
+           res.status(200).json({message:'successfuly uploaded'});
         });
-
-      res.status(200).json({message:'successfuly uploaded'});
+ 
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  };
+  }; 
 module.exports = {SiteData, addSiteData}

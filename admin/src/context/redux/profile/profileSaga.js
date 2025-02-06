@@ -1,6 +1,6 @@
 import {takeEvery,call,put} from 'redux-saga/effects'
-import { CHANGEPASSWORD, CHANGEPASSWORDRESPONSE,CHANGENAME,CHANGENAMERESPONSE } from "../constants"
-import { changeNameRequest, changePasswordRequest } from './api'
+import { CHANGEPASSWORD, CHANGEPASSWORDRESPONSE,CHANGENAME,CHANGENAMERESPONSE,ADDSITEDATA } from "../constants"
+import { changeNameRequest, changePasswordRequest,changeSiteDataRequest } from './api'
 
 function* changePassword(action){
     try{
@@ -26,10 +26,25 @@ function* changeName(action){
    }
 }
 
+function* changeSiteData(action){
+    try{
+    const response = yield call(changeSiteDataRequest,action.payload)
+    console.log(response)
+    // yield put({type: ,payload: response.data})
+    }
+   catch(error){
+    console.log(error)
+   }
+}
+
 export function* changePasswordSaga(){
     yield takeEvery(CHANGEPASSWORD,changePassword)
 }
 
 export function* changeNameSaga(){
     yield takeEvery(CHANGENAME,changeName)
+}
+
+export function* changeSiteDataSaga(){
+    yield takeEvery(ADDSITEDATA,changeSiteData)
 }

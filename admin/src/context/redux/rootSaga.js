@@ -2,7 +2,7 @@ import { all } from "redux-saga/effects";
 import { addProductSaga, deleteProductSaga, getProductSaga} from "./products/productsSaga";
 import { assignDeliverySaga,orderSaga,readyOrderSaga,deliverdSaga } from "./orders/orderSaga";
 import { loginSaga,logoutSaga,validateTokenSaga} from "./auth/authSaga";
-import { changePasswordSaga,changeNameSaga } from "./profile/profileSaga";
+import { changePasswordSaga,changeNameSaga,changeSiteDataSaga } from "./profile/profileSaga";
 import { getDeliveredAndNotDeliveredSaga, getMostSoldCategorySaga, getNumberOfProductsSoldSaga, getNumberOfUsersSaga } from "./analytics/analyticsSaga";
 export default function* rootSaga() {
     yield all([
@@ -22,5 +22,6 @@ export default function* rootSaga() {
      getNumberOfProductsSoldSaga(),
      getDeliveredAndNotDeliveredSaga(),
      getMostSoldCategorySaga(),
+     changeSiteDataSaga(),
     ]);
 }
