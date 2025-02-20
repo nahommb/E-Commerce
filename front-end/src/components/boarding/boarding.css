@@ -31,12 +31,19 @@ font-size: 2rem;
 }
 .boarding-image img{
 width: 100%;
-
+padding: 20%;
 /* background-color: blue; */
 }
 .boarding-image{
     /* width: 70%; */
     /* background-color: blue; */
+    
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    /* height: 600px; */
+   
 }
 .boarding-text p{
     font-size: 20px;
@@ -77,6 +84,7 @@ width: 100%;
         padding: 0%;
         /* background-color: aqua; */
         margin: 0px;
+        
     }
 
 }

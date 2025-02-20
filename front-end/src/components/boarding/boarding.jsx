@@ -15,7 +15,7 @@ export const Boarding = ()=>{
   },[])
 
   const boardingImage = useSelector((state)=>state.productData.boardingImage)
-
+  console.log(boardingImage)
 
    return <div className="boarding">
            <div className='boarding-text'>
@@ -24,7 +24,7 @@ export const Boarding = ()=>{
                <p>Dress up and go get your dreams </p>
            </div>
            <div className='boarding-image'>
-             <img src={bannerGirl}></img>
+             <img src={boardingImage}></img>
            </div>
    </div>
 }
