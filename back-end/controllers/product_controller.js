@@ -48,7 +48,6 @@ const getProducts = async (req, res) => {
    const limit =  parseInt(req.query.limit) || 10;
    const category = req.params.category;
   
-   console.log(category);
 
    const skip = (page - 1) * limit; //0 3
    const lastIndex = page * limit; //3 6

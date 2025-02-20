@@ -1,5 +1,6 @@
  const SiteDataModel = require('../models/site_model')
  const {siteDataUpload} = require('../helper/image_uploader');
+ const { v2: cloudinary } = require('cloudinary');
  const SiteData = async (req,res)=>{
 
     console.log('leeeeeeeeeeee')
@@ -30,10 +31,20 @@ const addSiteData = async (req, res) => {
           });
 
            await siteData.save();
+
+           const dataLength = (await SiteDataModel.find({})).length
+
+           if(dataLength>1){
            const oldData = await SiteDataModel.findOne({})
            const publicId = oldData.boardingImage.split('/').pop().split('.')[0];
-           cloudinary.uploader.destroy(`site/${publicId}`);
            
+           await oldData.deleteOne()
+          //  SiteDataModel.findByIdAndDelete(oldData._id)
+           cloudinary.uploader.destroy(`site/${publicId}`);
+           }
+
+ 
+
            res.status(200).json({message:'successfuly uploaded'});
         });
  
