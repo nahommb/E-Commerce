@@ -97,7 +97,7 @@ const handleSubmit = (e) => {
             </div>
             <form onSubmit={handleSubmit}>
 
-            <h1>Change Banner Image</h1>
+            <h1 className="text-lg font-bold">Change Banner Image</h1>
             <input type="file" onChange={handleFileChange} />
             <button type="submit">Submit</button>
             </form>
