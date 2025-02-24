@@ -6,6 +6,7 @@ import { findProduct } from '../../context/redux/product-state/product_action';
 import { Footer } from '../../components/footer/footer';
 import './products.css';
 import { addToCart } from '../../context/redux/cart-state/cart_action';
+import { OverlayCard } from '../../components/overlay_card/overlay_card';
 
 export const Products = () => {
     const { id } = useParams();
@@ -17,7 +18,17 @@ export const Products = () => {
     const [selectedSize, setSelectedSize] = useState(null);
     const [quantity, setQuantity] = useState(1)
     const [customePrint,setCustomePrint] = useState('')
-    // Fetch product when component mounts
+    const [showPopup, setShowPopup] = useState(false);
+
+    const [isLoggedIn,setLoggedIn] = useState(false);
+
+  
+    const valideToken = useSelector((state) => state.authenticationData.valideToken);
+    
+    useEffect(() => {
+      setLoggedIn(valideToken);;
+    }, [valideToken]);
+    
     useEffect(() => {
         dispatch(findProduct({_id: id}));
     }, [dispatch, id]);
@@ -47,8 +58,11 @@ export const Products = () => {
         return <p>Loading...</p>; // Render loading or placeholder
     }
     const handleAddToCart = () => {
-      // Create a new product object to avoid mutation
-      const newProduct = {
+        if(!isLoggedIn){
+            setShowPopup(true)
+        }
+        else{
+         const newProduct = {
           ...product,         // Copy existing product details
           quantity: quantity, // Use the updated quantity
           total: quantity * parseInt(product.price),
@@ -57,11 +71,23 @@ export const Products = () => {
       };
   
       console.log(newProduct); // Log the new product for debugging
-      dispatch(addToCart(newProduct));
+      dispatch(addToCart(newProduct)); 
+        }
+      // Create a new product object to avoid mutation
+
   };
-  
+
+  const overlayOnClick = () => {
+    setShowPopup(false);
+      // window.location.reload();
+  }
     return (
         <>
+        {showPopup?<OverlayCard  
+        title="You Need to login first" 
+        button_text="ok" 
+        onClick={overlayOnClick}
+        />:<></>}
             <div className="products">
                 <div className="product-image">
                     <div className='small-image'>
