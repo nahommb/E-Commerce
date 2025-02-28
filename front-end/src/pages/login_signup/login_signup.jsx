@@ -35,7 +35,7 @@ export const LoginSignup = () => {
   useEffect(() => {
     if (user) {
       navigate('/');
-      window.location.reload();
+     // window.location.reload();   //in test
     }
   }, [user]);
 

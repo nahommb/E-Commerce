@@ -36,15 +36,24 @@ const loginController = async (req, res) => {
             maxAge: 72 * 60 * 60 * 1000,
             secure: true,
             sameSite: 'None',
+            path: "/",
         }) 
          } 
          else{
-          res.cookie('refreshToken',token,{
-            httpOnly:true,
-            maxAge: 72 * 60 * 60 * 1000,
-            secure: true,
-            sameSite: 'None',
-        })
+        //   res.cookie('refreshToken',token,{
+        //     httpOnly:true,
+        //     maxAge: 72 * 60 * 60 * 1000,
+        //     secure: true,
+        //     sameSite: 'None',
+        // })
+        res.cookie('refreshToken', token, {
+          httpOnly: true,
+          secure: true,  // Required for HTTPS
+          sameSite: "None",  // Allows cross-site usage
+          path: "/",  // Ensures the cookie is available for all routes
+          maxAge: 72 * 60 * 60 * 1000, // 72 hours
+        });
+        
          }
       
        // console.log(updatedUser)
