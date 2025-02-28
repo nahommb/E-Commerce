@@ -50,7 +50,7 @@ const loginController = async (req, res) => {
           httpOnly: true,
           secure: true,  // Required for HTTPS
           sameSite: "None",
-          domain: ".niyasportswear.netlify.app",    // Allows cross-site usage
+        // Allows cross-site usage
           path: "/",  // Ensures the cookie is available for all routes
           maxAge: 72 * 60 * 60 * 1000, // 72 hours
         });
