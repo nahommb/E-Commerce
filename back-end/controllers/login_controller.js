@@ -41,11 +41,12 @@ const loginController = async (req, res) => {
          } 
          else{
         res.cookie('refreshToken', token, {
-          // httpOnly: true,
+          httpOnly: true,
           secure: true,  // Required for HTTPS
           sameSite: "None",
           path: "/",  // Ensures the cookie is available for all routes
-          maxAge: 72 * 60 * 60 * 1000, // 72 hours
+          maxAge: 72 * 60 * 60 * 1000,// 72 hours
+          partitioned: true,  
         });
         
          }
