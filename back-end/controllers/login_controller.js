@@ -46,7 +46,7 @@ const loginController = async (req, res) => {
           sameSite: "None",
           path: "/",  // Ensures the cookie is available for all routes
           maxAge: 72 * 60 * 60 * 1000,// 72 hours
-          partitioned: true,  
+         
           domain: "niyasportswear.netlify.app",
         });
         
