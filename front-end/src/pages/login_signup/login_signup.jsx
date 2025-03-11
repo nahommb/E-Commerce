@@ -15,7 +15,7 @@ export const LoginSignup = () => {
   const [isLogin, setLogin] = useState(true);
 
   const user = useSelector((state) => state.authenticationData.user);
-  console.log(user);
+  console.log('llllllllllll'+user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ export const LoginSignup = () => {
   useEffect(() => {
     if (user) {
       navigate('/');
-     // window.location.reload();   //in test
+      window.location.reload();   //in test
     }
   }, [user]);
 
