@@ -162,7 +162,7 @@ const totalDataColumns = [
         data={tottalData}
     />
     <br/>
-    <Button style={{color:'red'}} onClick={orderHandler}>Proceed to order</Button>
+    <Button style={{color:'green'}} onClick={orderHandler}>Proceed to order</Button>
     </div>:<div style={{height:'300px'}}></div>
     }
   
