@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const dbUrl = process.env.DATABASE_URL;
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user_routes');
+const paymentRoutes = require('./routes/payment_routes')
 const orderRoutes = require('./routes/order_routes')
 const analyticsRoutes = require('./routes/analytics_routes')
 const siteDataRoutes = require('./routes/site_data_routes');
@@ -51,6 +52,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders',orderRoutes)
 app.use('/api/analytics',analyticsRoutes);
 app.use('/api/site_data',siteDataRoutes);
+app.use('/api/payment',paymentRoutes)
 
 
 mongoose.connect(dbUrl)
