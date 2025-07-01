@@ -26,12 +26,12 @@ const createOrder = async (req,res)=>{
         for (let i = 0; i < req.body.ordered_items.length; i++) {
             let product = await Product.findById(req.body.ordered_items[i].product_id);
             if (product) {
-                listOfProductIds.push(product._id);
-                // listOfProductIds.push({
-                //   'product_Id':product._id,
-                //   'quantity':req.body.ordered_items[i].quantity,
-                //   'size':req.body.ordered_items[i].size
-                // })
+                //listOfProductIds.push(product._id);
+                listOfProductIds.push({
+                  'product_Id':product._id,
+                  'quantity':req.body.ordered_items[i].quantity,
+                  'size':req.body.ordered_items[i].size
+                })
                 totalPrice += parseFloat(req.body.ordered_items[i].total);
                 
                 // console.log(product) // Only store the ObjectId
@@ -58,36 +58,42 @@ const createOrder = async (req,res)=>{
 
 const getOrders = async (req, res) => {
     try {
-      const page = req.query.page;
-      const limit = req.query.limit;
-  
-      const skip = (page - 1) * limit; // Pagination
-      const lastIndex = page * limit;
-  
-      // Fetch orders with pagination
-      const order = await Order.find({status:'pending'}).skip(skip).limit(lastIndex);
-      const total_items = await Order.countDocuments();
-  
-      // Add `ordered_items_detail` to each order
-      for (let i = 0; i < order.length; i++) {
-         const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+        const page = parseInt(req.query.page);
+        const limit = parseInt(req.query.limit);
+        const skip = (page - 1) * limit; // Pagination
+        const lastIndex = page * limit;
 
-        // const productPromises = order[i].ordered_items.map((item) =>Product.findById(item.product_Id))
-       
-        // console.log(productPromises);
+        // Fetch orders with pagination
+        const orders = await Order.find({ status: 'pending' })
+            .skip(skip)
+            .limit(limit);
 
-        const products = await Promise.all(productPromises); // Resolve promises
-        order[i]._doc.ordered_items_detail = products; // Add products to the order object
-      }
-  
-      res.json({
-        total_pages: Math.ceil(total_items / limit),
-        orders: order.reverse(),
-      });
+        const total_items = await Order.countDocuments({ status: 'pending' });
+
+        // Add `ordered_items_detail` to each order
+        for (let i = 0; i < orders.length; i++) {
+            const productPromises = orders[i].ordered_items.map(async (item) => {
+                const product = await Product.findById(item.product_Id);
+                return {
+                    product,
+                    quantity: item.quantity,
+                    size: item.size
+                };
+            });
+
+            const productsWithDetails = await Promise.all(productPromises); // Resolve promises
+            orders[i]._doc.ordered_items_detail = productsWithDetails; // Add products to the order object
+        }
+
+        res.json({
+            total_pages: Math.ceil(total_items / limit),
+            orders: orders.reverse(),
+        });
     } catch (err) {
-      res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message });
     }
-  };
+};
+
   
  const assignDelivery = async (req, res) => {
     try {
@@ -124,7 +130,7 @@ const readyOrders = async(req,res)=>{
 
     // Add `ordered_items_detail` to each order
     for (let i = 0; i < order.length; i++) {
-      const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+      const productPromises = order[i].ordered_items.map((item) => Product.findById(item.product_Id));
       const products = await Promise.all(productPromises); // Resolve promises
       order[i]._doc.ordered_items_detail = products; // Add products to the order object
     }

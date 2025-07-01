@@ -69,8 +69,8 @@ const deliveryHandler = (e,id)=>{
     }))
   
   },[isAssigned,isDeliverd]) 
-
-  // console.log(data.ordered_items_detail)
+   console.log('lee')
+  // console.log(orders.orders[0].ordered_items[0].quantity)
 
     return <div className="p-8 w-full">
       <div className="custom-table-row mb-4 bg-light-purple text-white ml-10 mr-10 p-3">
@@ -111,10 +111,10 @@ const deliveryHandler = (e,id)=>{
                  {data.ordered_items_detail.map((item, index) => (
                  
                   <div key={index}>
-                    <p>Product: {item.product_name}</p>
+                    <p>Product: {item.product.product_name}</p>
                     <p>Quantity: {item.quantity}</p>
-                    <p>Size:{item.size}</p>
-                    <p>Price: {item.price}</p>
+                    <p>Size: {item.size}</p>
+                    <p>Price: {item.product.price}</p>
                     <hr/>
                   </div>
                 ))}
