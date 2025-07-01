@@ -16,7 +16,8 @@ export const Products = () => {
     const [mainImage, setMainImage] = useState('');
     const [imageList, setImageList] = useState({});
     const [selectedSize, setSelectedSize] = useState(null);
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(1);
+    const [size,setSize] = useState('L');
     const [customePrint,setCustomePrint] = useState('')
     const [showPopup, setShowPopup] = useState(false);
 
@@ -51,6 +52,8 @@ export const Products = () => {
     };
 
     const handleButtonClick = (size) => {
+        setSize(size);
+        
         setSelectedSize(size); // Set the selected size
     };
 
@@ -67,6 +70,7 @@ export const Products = () => {
           quantity: quantity, // Use the updated quantity
           total: quantity * parseInt(product.price),
           custome_print: customePrint,
+          size:size,
           date:Date.now() 
       };
   

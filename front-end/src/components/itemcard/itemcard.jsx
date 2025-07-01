@@ -50,6 +50,7 @@ export const ItemCard = (props) => {
       props.items.quantity = 1;
       props.items.total = props.items.price;
       props.items.date = Date.now();
+      props.items.size = 'L';
       dispatch(addToCart(props.items))
     }
 

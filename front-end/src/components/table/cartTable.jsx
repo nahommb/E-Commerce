@@ -45,7 +45,7 @@ console.log(orderSuccess)
         price: item.price,
         quantity: item.quantity,
         total: item.total,
-        
+        size:item.size,
       }));
       console.log(order)
        dispatch(createOrder({
@@ -92,6 +92,10 @@ console.log(orderSuccess)
     {
         name: 'Quantity',
         selector: row => row.quantity
+      },
+        {
+        name: 'Size',
+        selector: row => row.size
       },
       {
         name: 'Total',

@@ -27,6 +27,11 @@ const createOrder = async (req,res)=>{
             let product = await Product.findById(req.body.ordered_items[i].product_id);
             if (product) {
                 listOfProductIds.push(product._id);
+                // listOfProductIds.push({
+                //   'product_Id':product._id,
+                //   'quantity':req.body.ordered_items[i].quantity,
+                //   'size':req.body.ordered_items[i].size
+                // })
                 totalPrice += parseFloat(req.body.ordered_items[i].total);
                 
                 // console.log(product) // Only store the ObjectId
@@ -65,7 +70,12 @@ const getOrders = async (req, res) => {
   
       // Add `ordered_items_detail` to each order
       for (let i = 0; i < order.length; i++) {
-        const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+         const productPromises = order[i].ordered_items.map((item) => Product.findById(item));
+
+        // const productPromises = order[i].ordered_items.map((item) =>Product.findById(item.product_Id))
+       
+        // console.log(productPromises);
+
         const products = await Promise.all(productPromises); // Resolve promises
         order[i]._doc.ordered_items_detail = products; // Add products to the order object
       }

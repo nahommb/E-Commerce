@@ -23,10 +23,13 @@ const User = require('./models/user_model');
 const generateToken = require('./helper/generate_token');
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const clientID = process.env.GOOGLE_CLIENT_ID;
+
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-app.use(cors({
-  origin: [
-      'http://localhost:5173',
+ 
+  
+app.use(cors({   
+  origin: [ 
+      'http://localhost:5173', 
       'http://localhost:5174',
       'https://niyasportswear.netlify.app',
   ], 
@@ -44,7 +47,7 @@ app.use(cookieParser());
 //   console.log(`Request URL: ${req.url}`);
 //   next();
 // }); 
-
+ 
 app.use('/product_image', express.static(path.join(__dirname, 'uploads/product_image')));
 
 app.use('/api/user', userRoutes);
@@ -55,7 +58,7 @@ app.use('/api/site_data',siteDataRoutes);
 app.use('/api/payment',paymentRoutes)
 
 
-mongoose.connect(dbUrl)
+mongoose.connect(dbUrl) //mongodb://127.0.0.1:27017/ecommerce local database if u want online use dbUrl
 .then(() => console.log("Connected to MongoDB"))
 .catch((error) => console.error("Could not connect to MongoDB:", error));
 
@@ -73,7 +76,7 @@ app.use(
       httpOnly: true, // Helps prevent XSS attacks
     },
   })
-); 
+);  
 
 app.use(passport.initialize());
 app.use(passport.session());
