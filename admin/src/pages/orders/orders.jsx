@@ -69,7 +69,7 @@ const deliveryHandler = (e,id)=>{
     }))
   
   },[isAssigned,isDeliverd]) 
-   console.log('lee')
+   // console.log('lee')
   // console.log(orders.orders[0].ordered_items[0].quantity)
 
     return <div className="p-8 w-full">
@@ -83,8 +83,7 @@ const deliveryHandler = (e,id)=>{
       <div className="table-container">
       {orders.orders?.map((data, index) => {
         const formattedDate = format(parseISO(data.ordered_at), "MMMM d, yyyy h:mm a");
-        return (
-          
+        return (      
          <div>
          <div
             className={`custom-table-row ${expandedRow === data._id ? "expanded" : ""}`}
@@ -111,14 +110,15 @@ const deliveryHandler = (e,id)=>{
                  {data.ordered_items_detail.map((item, index) => (
                  
                   <div key={index}>
-                    <p>Product: {item.product.product_name}</p>
-                    <p>Quantity: {item.quantity}</p>
-                    <p>Size: {item.size}</p>
-                    <p>Price: {item.product.price}</p>
+                    <p><span className="mr-2  text-black">Product :</span>{item.product.product_name}</p>
+                    <p><span className="mr-2  text-black">Quantity :</span> {item.quantity}</p>
+                    <p><span className="mr-2  text-black">Size :</span> {item.size}</p>
+                    <p><span className="mr-2  text-black">Custom Print :</span>{item.custom_print}</p>
+                    <p><span className="mr-2  text-black">Price :</span> Br {item.product.price}</p>
                     <hr/>
                   </div>
                 ))}
-                <p>Total: {data.total_price}</p>
+                <p className="font-bold text-black">Total: Br {data.total_price} </p>
                 <p>Address: {data.address}</p>   
                 <Button
                  

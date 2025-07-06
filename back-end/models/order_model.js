@@ -13,6 +13,9 @@ const orderedItemSchema = new mongoose.Schema({
   size: {
     type: String,
     required: true
+  },
+  custom_print:{
+    type:String
   }
 }, { _id: false }); // Disable _id for each subdocument if not needed
 

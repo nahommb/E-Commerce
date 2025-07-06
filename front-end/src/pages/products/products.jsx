@@ -44,6 +44,7 @@ export const Products = () => {
                 rightImage: `${product.product_images[2]}`,
                 leftImage: `${product.product_images[3]}`
             });
+            console.log(imageList)
         }
     }, [product]);
 
@@ -69,7 +70,7 @@ export const Products = () => {
           ...product,         // Copy existing product details
           quantity: quantity, // Use the updated quantity
           total: quantity * parseInt(product.price),
-          custome_print: customePrint,
+          custom_print: customePrint,
           size:size,
           date:Date.now() 
       };
@@ -98,15 +99,15 @@ export const Products = () => {
                         <div onClick={() => imageChanger(imageList.frontImage)}>
                             <img src={imageList.frontImage} alt='Front Image' />
                         </div>
-                        <div onClick={() => imageChanger(imageList.backImage)}>
+                        {imageList.backImage==='undefined'?<></>:<div onClick={() => imageChanger(imageList.backImage)}>
                             <img src={imageList.backImage} alt='Back Image' />
-                        </div>
-                        <div onClick={() => imageChanger(imageList.rightImage)}>
+                        </div>} 
+                        {imageList.rightImage==='undefined'?<></>:<div onClick={() => imageChanger(imageList.rightImage)}>
                             <img src={imageList.rightImage} alt='Side Image' />
-                        </div>
-                        <div onClick={() => imageChanger(imageList.leftImage)}>
+                        </div>}
+                          {imageList.leftImage==='undefined'?<></>:<div onClick={() => imageChanger(imageList.leftImage)}>
                             <img src={imageList.leftImage} alt='Side Image' />
-                        </div>
+                        </div>}
                     </div>
                     <div className='big-image'>
                         {mainImage && <img src={mainImage} alt='Main Image' />}

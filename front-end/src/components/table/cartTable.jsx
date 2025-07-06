@@ -46,6 +46,7 @@ console.log(orderSuccess)
         quantity: item.quantity,
         total: item.total,
         size:item.size,
+        custom_print:item.custom_print
       }));
       console.log(order)
        dispatch(createOrder({
@@ -53,7 +54,7 @@ console.log(orderSuccess)
         ordered_items:order,
         phone:input_data.phone,
         address:input_data.address,
-        custome_print:''
+        // custome_print:''
        }))
       // setShowPopup(false);
        // window.location.reload();

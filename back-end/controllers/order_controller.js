@@ -30,7 +30,8 @@ const createOrder = async (req,res)=>{
                 listOfProductIds.push({
                   'product_Id':product._id,
                   'quantity':req.body.ordered_items[i].quantity,
-                  'size':req.body.ordered_items[i].size
+                  'size':req.body.ordered_items[i].size,
+                  'custom_print':req.body.ordered_items[i].custom_print
                 })
                 totalPrice += parseFloat(req.body.ordered_items[i].total);
                 
@@ -77,7 +78,8 @@ const getOrders = async (req, res) => {
                 return {
                     product,
                     quantity: item.quantity,
-                    size: item.size
+                    size: item.size,
+                    custom_print:item.custom_print
                 };
             });
 
