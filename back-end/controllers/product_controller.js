@@ -53,7 +53,7 @@ const getProducts = async (req, res) => {
    const lastIndex = page * limit; //3 6
    
    if(category === 'all'){
-    const products = await Product.find({product_category:'club'}).skip(skip).limit(limit);
+    const products = await Product.find({product_category:'Club'}).skip(skip).limit(limit);
     // const products = await Product.aggregate([
     //   { $sample: { size: limit } } // Randomly select `limit` documents
     // ]);
@@ -75,7 +75,7 @@ const getProducts = async (req, res) => {
        next_page: nextPage,
        prev_page: prevPage,
        total_items:totalItems,
-       products,
+       products: products.reverse(),
    });
   }
    else{
