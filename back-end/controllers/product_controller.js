@@ -28,7 +28,7 @@ const addProduct = (req, res) => {
         product_category: req.body.product_category,
         price: req.body.price,
         created_at: Date.now(),
-      });
+      }); 
 
       // Save the product to the database
       await newProduct.save();
@@ -47,13 +47,13 @@ const getProducts = async (req, res) => {
    const page = parseInt(req.query.page) || 1;
    const limit =  parseInt(req.query.limit) || 10;
    const category = req.params.category;
-  
+   
 
    const skip = (page - 1) * limit; //0 3
    const lastIndex = page * limit; //3 6
    
    if(category === 'all'){
-    const products = await Product.find().skip(skip).limit(limit);
+    const products = await Product.find({product_category:'club'}).skip(skip).limit(limit);
     // const products = await Product.aggregate([
     //   { $sample: { size: limit } } // Randomly select `limit` documents
     // ]);
@@ -75,7 +75,7 @@ const getProducts = async (req, res) => {
        next_page: nextPage,
        prev_page: prevPage,
        total_items:totalItems,
-       products,
+       products: products.reverse(),
    });
   }
    else{
