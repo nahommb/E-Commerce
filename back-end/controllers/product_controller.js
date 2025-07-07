@@ -75,7 +75,7 @@ const getProducts = async (req, res) => {
        next_page: nextPage,
        prev_page: prevPage,
        total_items:totalItems,
-       products: products.reverse(),
+       products,
    });
   }
    else{
