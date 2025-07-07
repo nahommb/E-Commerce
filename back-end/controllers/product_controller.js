@@ -57,7 +57,7 @@ const getProducts = async (req, res) => {
     // const products = await Product.aggregate([
     //   { $sample: { size: limit } } // Randomly select `limit` documents
     // ]);
-    const totalItems = await Product.countDocuments();
+    const totalItems = await Product.countDocuments({product_category:'Club'});
     let nextPage = 1;
     let prevPage = totalItems;
 
