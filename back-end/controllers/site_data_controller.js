@@ -1,17 +1,33 @@
  const SiteDataModel = require('../models/site_model')
  const {siteDataUpload} = require('../helper/image_uploader');
  const { v2: cloudinary } = require('cloudinary');
- const SiteData = async (req,res)=>{
+const { findOneAndUpdate } = require('../models/product_model');
 
-    console.log('leeeeeeeeeeee 11')
-    try{
-        const siteData = await SiteDataModel.find({})
-        const recent = siteData.length
-        res.status(200).json(siteData[recent-1])
-    }catch(error){
-        res.status(400).json({message:error.message})
-    }
-}
+const SiteData = async (req, res) => {
+  console.log('leeeeeeeeeeee 11');
+
+  try {
+    const siteData = await SiteDataModel.find({});
+    const recent = siteData.length;
+
+    const lastEntry = siteData[recent - 1];
+
+    console.log(lastEntry.vistors);
+    console.log(lastEntry._id);
+
+    // Correct: Call the static method on the model, not the data
+    const updated = await SiteDataModel.findByIdAndUpdate(
+      lastEntry._id,
+      { $set: { vistors: lastEntry.vistors + 1 } },
+      { new: true } // optional: returns the updated document
+    );
+
+    res.status(200).json(updated); // return the updated version
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 
 const addSiteData = async (req, res) => {
     try {
@@ -22,12 +38,17 @@ const addSiteData = async (req, res) => {
           }
 
           const  boardingImage = req.files;
-          console.log(boardingImage); 
+          console.log(boardingImage);  
           // console.log(boardingImage[0].path); 
-         
+         const oldsiteData = await SiteDataModel.find({})
+          const len = siteData.length
+          const vistors = oldsiteData[len-1].vistors
+
+
           const siteData = new SiteDataModel({
             siteName:'Niya Sports Wear', 
             boardingImage:boardingImage[0].path,
+            vistors:vistors
           });
 
            await siteData.save();
