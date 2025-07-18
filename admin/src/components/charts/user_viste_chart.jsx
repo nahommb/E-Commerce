@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { numberOfUsers } from '../../context/redux/analytics/analyticsAction';
 import { useEffect } from 'react';
 
-export const NewUsersChart = () => {
+export const UserVisitedChart = () => {
   const data = [
     { month: 'Sep', users: 120 },
-    { month: 'Oct', users: 200 },
+    { month: 'Oct', users: 2020 },
     { month: 'Nov', users: 700 },
-    { month: 'Dec', users: 250 },
-    { month: 'Jan', users: 400 },
+    { month: 'Dec', users: 2580 },
+    { month: 'Jan', users: 4000 },
   ];
 
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export const NewUsersChart = () => {
     dispatch(numberOfUsers());
   }, []);
 
-  const userData = useSelector((state)=>state.analyticsReducer.numberOfUsers)
+ const userData =  data ; //useSelector((state)=>state.analyticsReducer.numberOfUsers)
   
   return (
     <ResponsiveContainer width="100%" height={300}>

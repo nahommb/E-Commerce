@@ -2,6 +2,7 @@ import { DeliveryStatusChart } from "../../components/charts/area_chart"
 import { ProductsSoldChart } from "../../components/charts/bar_chart"
 import { NewUsersChart } from "../../components/charts/charts"
 import { MostSoldCategoryPieChart } from "../../components/charts/pie_chart"
+import { UserVisitedChart } from "../../components/charts/user_viste_chart"
 
 
 export const Analytics = ()=>{
@@ -12,6 +13,10 @@ export const Analytics = ()=>{
         <p className="mb-5 text-light-purple">New Users</p>
        <NewUsersChart/> 
         </div>
+       <div className="w-1/2">
+          <p className="mb-5 text-light-purple">Number of users visited site</p>
+       <UserVisitedChart/>
+       </div>
        <div className="w-1/2">
           <p className="mb-5 text-light-purple">Number of Products Sold</p>
        <ProductsSoldChart/>
