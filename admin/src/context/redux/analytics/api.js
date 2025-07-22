@@ -24,3 +24,8 @@ export const getMostSoldCategoryRequest = async ()=>{
     const response = await axios.get(`${baseUrl}analytics/most_sold_category`)
     return response
 }
+export const getNumberOfUserVistedrequest = async ()=>{
+    axios.defaults.withCredentials = true
+    const response = await axios.get(`${baseUrl}site_data/`)
+    return response
+}

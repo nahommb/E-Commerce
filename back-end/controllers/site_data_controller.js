@@ -13,12 +13,18 @@ const SiteData = async (req, res) => {
     const lastEntry = siteData[recent - 1];
 
     console.log(lastEntry.vistors);
-    console.log(lastEntry._id);
-
+    console.log(lastEntry.vistors.thisWeek);
+     
+ 
     // Correct: Call the static method on the model, not the data
     const updated = await SiteDataModel.findByIdAndUpdate(
       lastEntry._id,
-      { $set: { vistors: lastEntry.vistors + 1 } },
+      { $set: { vistors: {
+        thisWeek: lastEntry.vistors.thisWeek + 1,
+        previousWeek: lastEntry.vistors.previousWeek,
+        twoWeeksAgo: lastEntry.vistors.twoWeeksAgo,
+        threeWeeksAgo: lastEntry.vistors.threeWeeksAgo,
+      }} },
       { new: true } // optional: returns the updated document
     );
 
@@ -28,7 +34,7 @@ const SiteData = async (req, res) => {
   }
 };
 
-
+ 
 const addSiteData = async (req, res) => {
     try {
       

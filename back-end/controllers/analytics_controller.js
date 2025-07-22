@@ -128,7 +128,7 @@ const deliverdAndNotDeliverd = async(req,res)=>{
             },
           },
           // 3. Group data by week and calculate delivered/not delivered counts
-          {
+          { 
             $group: {
               _id: "$week",
               delivered: {
@@ -160,7 +160,7 @@ const deliverdAndNotDeliverd = async(req,res)=>{
           
     }
     catch(error){
-        console.error(error);
+        console.error(error); 
         res.status(500).json({ message: 'Internal server error' });
     }
 }
