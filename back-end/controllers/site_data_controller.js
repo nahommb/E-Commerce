@@ -14,12 +14,41 @@ const SiteData = async (req, res) => {
 
     console.log(lastEntry.vistors);
     console.log(lastEntry.vistors.thisWeek);
-     
+
+    const dayOfUpdate = new Date(lastEntry.vistors.updateDate);
+    const afterWeek = new Date(dayOfUpdate);
+    afterWeek.setDate(dayOfUpdate.getDate() + 7);
+    const today = Date.now();
+    const isDayToUpdate = today>afterWeek;
+     console.log(isDayToUpdate);
+    if(isDayToUpdate){
+       
+     const previousWeek = lastEntry.vistors.thisWeek
+      const twoWeeksAgo = lastEntry.vistors.previousWeek
+       const threeWeeksAgo = lastEntry.vistors.twoWeeksAgo
+       const currentDate = new Date(lastEntry.vistors.updateDate);
+       const newDate = new Date(currentDate);
+        newDate.setDate(currentDate.getDate() + 7);
  
-    // Correct: Call the static method on the model, not the data
-    const updated = await SiteDataModel.findByIdAndUpdate(
+       const updated = await SiteDataModel.findByIdAndUpdate(
+      lastEntry._id,
+      { $set: { vistors: {  
+        updateDate: newDate,
+        thisWeek: 1,
+        previousWeek: previousWeek,  
+        twoWeeksAgo:  twoWeeksAgo,
+        threeWeeksAgo: threeWeeksAgo
+      }} },
+      { new: true } // optional: returns the updated document
+    );
+    res.status(200).json(updated);
+    }
+  
+   else{
+       const updated = await SiteDataModel.findByIdAndUpdate(
       lastEntry._id,
       { $set: { vistors: {
+        updateDate: lastEntry.vistors.updateDate,
         thisWeek: lastEntry.vistors.thisWeek + 1,
         previousWeek: lastEntry.vistors.previousWeek,
         twoWeeksAgo: lastEntry.vistors.twoWeeksAgo,
@@ -28,7 +57,9 @@ const SiteData = async (req, res) => {
       { new: true } // optional: returns the updated document
     );
 
-    res.status(200).json(updated); // return the updated version
+    res.status(200).json(updated); 
+   } 
+
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
