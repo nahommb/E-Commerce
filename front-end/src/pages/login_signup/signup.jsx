@@ -5,8 +5,9 @@ import { Button, CircularProgress } from '@mui/material';
 import { VERIFY } from '../../context/redux/constants';
 
 
-const VerificationCard = React.memo(({ code, setCode, onVerify }) => {
+const VerificationCard = React.memo(({register, code, setCode, onVerify }) => {
   const [timeLeft, setTimeLeft] = useState(3 * 60); // 3 minutes = 300 seconds
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (timeLeft <= 0) return; // stop when timer reaches 0
@@ -17,6 +18,13 @@ const VerificationCard = React.memo(({ code, setCode, onVerify }) => {
 
     return () => clearInterval(interval); // cleanup
   }, [timeLeft]);
+
+
+ const handleResend = ()=>{
+   // logic to resend code
+   dispatch(register)
+   setTimeLeft(3*60); // reset timer
+ }
 
   // Convert seconds → mm:ss format
   const formatTime = (seconds) => {
@@ -31,10 +39,10 @@ const VerificationCard = React.memo(({ code, setCode, onVerify }) => {
         <h3>Please Verify Your Account</h3>
         <p>Your verification code is sent to your email address</p>
 
-        <p style={{ color: timeLeft > 0 ? "green" : "red", fontWeight: "bold",marginTop:'30px' }}>
+        <p style={{ color: timeLeft > 0 ? "green" : "red", fontWeight: "bold",margin:'10px' }}>
           {timeLeft > 0 ? `Time left: ${formatTime(timeLeft)}` : "Code expired!"}
         </p>
-
+         {timeLeft > 0?null:<button onClick={handleResend}>Resend</button>}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -145,7 +153,8 @@ export const Signup = () => {
   return (
     <>
       {isRegisterLoading && <section className='signup-progress'><CircularProgress/></section>}
-      {showPopup && <VerificationCard code = {verificationCode} setCode={setVerificationCode} onVerify={handleVerify}/>}
+      {showPopup && <VerificationCard register={register({first_name,last_name,email,password,})} 
+       code = {verificationCode} setCode={setVerificationCode} onVerify={handleVerify}/>}
       {isVerificationResponse&& <OverlayCard message= {verificationMessage} onClose={overlayOnClose} />}
       <div>
         <h4 style={{ color: 'green' }}>Signup</h4>

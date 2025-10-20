@@ -71,8 +71,8 @@ const registerController =  (req, res) => {
       else {
       await sendVerificationEmail(email, verificationCode).catch(console.error);
       const user = User(
-        { 
-        first_name:first_name,
+        {  
+        first_name:first_name, 
         last_name: last_name, 
         email: email,
         role:req.body.role, 

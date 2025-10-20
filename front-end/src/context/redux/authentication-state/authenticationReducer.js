@@ -101,5 +101,5 @@ export const authenticationData = (state = initialState,action)=>{
         
         default:
             return state;
-    }
+    } 
 }
