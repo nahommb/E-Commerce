@@ -1,4 +1,5 @@
-import { LOGIN, LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE,REGISTERERROR } from "../constants";
+import { TrendingUpRounded } from "@mui/icons-material";
+import { LOGIN, LOGINERROR, LOGINRESPONSE, LOGOUT, REGISTER, REGISTERRESPONSE, VALIDATETOKENRESPONSE,REGISTERERROR, VERIFY, VERIFYRESPONSE } from "../constants";
 
 const initialState = {
     isRegistered:false,
@@ -9,6 +10,8 @@ const initialState = {
     isRegisterLoading:false,
     registerResponseMessage:'',
     isRegisteredResponse:false,
+    isVerificationResponse:false,
+    verificationMessage:''
 }
 
 export const authenticationData = (state = initialState,action)=>{
@@ -63,7 +66,7 @@ export const authenticationData = (state = initialState,action)=>{
                  valideToken:action.payload.valideToken,
                  user:action.payload.user
             }
-        case LOGINERROR:
+        case LOGINERROR: 
             console.log(action.payload);
             return {
                 ...state,
@@ -75,6 +78,25 @@ export const authenticationData = (state = initialState,action)=>{
                 ...state,
                 user:null,
                 valideToken:false
+            }
+        case VERIFY:
+            console.log(action.payload)
+            return {
+                ...state,
+               isRegisterLoading:true
+            }
+        case VERIFYRESPONSE:
+            console.log(action.payload)
+            return {
+                ...state,
+                isRegisterLoading:false,
+                isVerificationResponse:true,
+                verificationMessage:action.payload.message
+            }
+        case 'RESET_VERIFY':
+            return {
+                ...state,
+                isVerificationResponse:false
             }
         
         default:

@@ -1,6 +1,7 @@
 import { LOGIN, REGISTER,
      REGISTERRESPONSE ,
-     LOGINRESPONSE,VALIDATETOKEN, LOGOUT, GETPRODUCTS} from "../constants";
+     LOGINRESPONSE,VALIDATETOKEN, LOGOUT, GETPRODUCTS,
+     VERIFY} from "../constants";
 
 export const register = (data)=>{
     console.log(data);
@@ -43,6 +44,13 @@ export const logout= (data)=>{
 
     return {
         type:LOGOUT,
+        payload:data
+    }
+}
+export const verify =(data)=>{
+    console.log(data)
+    return {
+        type:VERIFY,
         payload:data
     }
 }

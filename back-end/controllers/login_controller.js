@@ -2,6 +2,7 @@ const User = require('../models/user_model');
 const generateToken = require('../helper/generate_token')
 const bcrypt = require('bcrypt');
 
+
 const loginController = async (req, res) => {
   
   const { email, password } = req.body;
@@ -25,7 +26,7 @@ const loginController = async (req, res) => {
             user._id,
             { refreshToken: token},
             { new: true }
-        );
+        ); 
 
        // Remove the password field
          const updatedUser = await User.findById(user._id).select('-password');

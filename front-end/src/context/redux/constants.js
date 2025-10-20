@@ -21,3 +21,5 @@ export const EMPTYPRODUCTS = 'empty_products';
 export const CLEARCART = 'clear_cart';
 export const GETSITEDATA = 'get_site_data';
 export const GETSITEDATARESPONSE = 'get_site_data_response';
+export const VERIFY = 'verify';
+export const VERIFYRESPONSE = 'verify_response';

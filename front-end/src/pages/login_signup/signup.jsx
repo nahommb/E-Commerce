@@ -1,7 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../context/redux/authentication-state/authenticationAction';
+import { register,verify } from '../../context/redux/authentication-state/authenticationAction';
 import { Button, CircularProgress } from '@mui/material';
+import { VERIFY } from '../../context/redux/constants';
+
+
+const VerificationCard = React.memo(({ code, setCode, onVerify }) => {
+  const [timeLeft, setTimeLeft] = useState(3 * 60); // 3 minutes = 300 seconds
+
+  useEffect(() => {
+    if (timeLeft <= 0) return; // stop when timer reaches 0
+
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // cleanup
+  }, [timeLeft]);
+
+  // Convert seconds → mm:ss format
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  };
+
+  return (
+    <div style={overlayStyles}>
+      <div style={cardStyles}>
+        <h3>Please Verify Your Account</h3>
+        <p>Your verification code is sent to your email address</p>
+
+        <p style={{ color: timeLeft > 0 ? "green" : "red", fontWeight: "bold",marginTop:'30px' }}>
+          {timeLeft > 0 ? `Time left: ${formatTime(timeLeft)}` : "Code expired!"}
+        </p>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onVerify(code);
+          }}
+          style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        >
+          <input
+            required
+            onChange={(e) => setCode(e.target.value)}
+            style={{
+              width: "120px",
+            }}
+          />
+          <button
+            style={{
+              ...buttonStyles,
+              opacity: timeLeft <= 0 ? 0.5 : 1,
+              pointerEvents: timeLeft <= 0 ? "none" : "auto",
+            }}
+            type="submit"
+          >
+            Verify
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+});
+
+
+
+
 
 export const Signup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -11,17 +77,21 @@ export const Signup = () => {
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [verificationCode,setVerificationCode] = useState('');
+
 
   const dispatch = useDispatch();
   const isRegistered = useSelector((state) => state.authenticationData.isRegistered);
   const isRegisterLoading = useSelector((state)=>state.authenticationData.isRegisterLoading)
   const registerResponseMessage = useSelector((state)=>state.authenticationData.registerResponseMessage)
-  const isRegisteredResponse = useSelector((state)=>state.authenticationData.isRegisteredResponse)
+  const isRegisteredResponse = useSelector((state)=>state.authenticationData.isRegisteredResponse);
+  const isVerificationResponse = useSelector((state)=>state.authenticationData.isVerificationResponse)
  
-  
+  const verificationMessage = useSelector((state)=>state.authenticationData.verificationMessage)
+
   const signupHandler = () => {
     if (confirmPassword === password ) {
-      if(!isChecked){
+      if(isChecked){
          dispatch(
         register({
           first_name,
@@ -45,13 +115,21 @@ export const Signup = () => {
       setShowPopup(true);
     }
   }, [isRegisteredResponse]);
- 
+
   const overlayOnClose = () => {
-    setShowPopup(false);
+    // setShowPopup(false);
+    dispatch({ type: 'RESET_VERIFY', payload: { isVerificationResponse: false } });
     dispatch({ type: 'RESET_REGISTER_RESPONSE' });
     // window.location.reload();
   };
-
+ const handleVerify = (code)=>{
+   setShowPopup(false);
+   dispatch(
+    verify({
+    email,
+    code
+   }));
+ }
   // Inline OverlayCard Component
   const OverlayCard = ({ message, onClose }) => (
     <div style={overlayStyles}>
@@ -63,13 +141,12 @@ export const Signup = () => {
       </div>
     </div>
   );
-
-  // Styles
  
   return (
     <>
       {isRegisterLoading && <section className='signup-progress'><CircularProgress/></section>}
-      {showPopup && <OverlayCard message={registerResponseMessage} onClose={overlayOnClose} />}
+      {showPopup && <VerificationCard code = {verificationCode} setCode={setVerificationCode} onVerify={handleVerify}/>}
+      {isVerificationResponse&& <OverlayCard message= {verificationMessage} onClose={overlayOnClose} />}
       <div>
         <h4 style={{ color: 'green' }}>Signup</h4>
         <form
@@ -185,4 +262,5 @@ const buttonStyles = {
   fontSize: '12px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
+  width:'180px'
 };

@@ -39,8 +39,7 @@ const dispatch = useDispatch()
 
   const pageNumber = useSelector((state)=>state.productData.shopPageNumber)
   const recentProductsPageNumber = useSelector((state)=>state.productData.recentProductsPageNumber)
-  console.log(recentProductsPageNumber)
-  console.log(pageNumber)
+
   
   useEffect(()=>{
     dispatch(getRecentProducts({

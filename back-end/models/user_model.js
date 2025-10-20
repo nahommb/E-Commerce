@@ -1,3 +1,4 @@
+const { verify } = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   first_name: {
@@ -26,6 +27,16 @@ const userSchema = new mongoose.Schema({
   refreshToken: { 
     type: String,
   },
+  verified:{
+    type:Boolean,
+    default:false
+  },
+  verificationCode:{
+    type:String,
+  },
+  codeExpiresAt:{
+    type:Date,
+  }
 
 });
 

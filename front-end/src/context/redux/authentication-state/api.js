@@ -28,3 +28,10 @@ export const registerRequest = (payload)=>{
  
     return response
  }
+ export const verifyRequest = (payload)=>{
+   console.log(payload)
+   axios.defaults.withCredentials = true;
+   const response = axios.post(`${baseUrl}user/verify`,payload)
+
+   return response
+ }

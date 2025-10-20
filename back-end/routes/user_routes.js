@@ -6,6 +6,7 @@ const validateTokenController = require('../controllers/validet_token_controller
 const {authMiddleware,isAdmin, isAdminAuth} = require('../middleware/auth_middleware');
 const {userlogoutController,adminLogoutController} = require('../controllers/logout_controller');
 const { changeName, changePassword } = require('../controllers/profile_controller');
+const verificationController = require('../controllers/verification_controller');
 
 router.post('/register', registerController);
 router.post('/login', loginController);
@@ -16,6 +17,6 @@ router.post('/isAdmin',isAdmin,loginController);
 router.post('/validate_admin_token',isAdminAuth,validateTokenController);
 router.put('/change_password',isAdminAuth,changePassword); // for admin
 router.put('/change_name',isAdminAuth,changeName);  // for admin 
+router.post('/verify',verificationController)
 
-
-module.exports = router;
+module.exports = router; 
