@@ -11,7 +11,8 @@ const initialState = {
     registerResponseMessage:'',
     isRegisteredResponse:false,
     isVerificationResponse:false,
-    verificationMessage:''
+    verificationMessage:'',
+    isVerified:false
 }
 
 export const authenticationData = (state = initialState,action)=>{
@@ -34,7 +35,8 @@ export const authenticationData = (state = initialState,action)=>{
                 isRegisteredResponse:true,
                 isRegistered:action.payload.registered,
                 isRegisterLoading:false,
-                registerResponseMessage:action.payload.message
+                registerResponseMessage:action.payload.message,
+                // isVerified:action.payload.verified
             }
         case 'RESET_REGISTER_RESPONSE':
             return {
@@ -50,7 +52,8 @@ export const authenticationData = (state = initialState,action)=>{
                 ...state,
                 isRegisteredResponse:true,
                 isRegisterLoading:false,
-                registerResponseMessage:action.payload.message
+                registerResponseMessage:action.payload.message,
+                isVerified:action.payload.verified
             }
         case LOGINRESPONSE:
             

@@ -54,7 +54,7 @@ const registerController =  (req, res) => {
     User.findOne({ email }).then(async existingUser => {
       if (existingUser) {  
         if(existingUser.verified){
-        return res.status(400).json({ message: 'Email already exists' });
+        return res.status(400).json({ message: 'Email already exists' ,verified:true});
       }
       else{
         //resend verification code
@@ -66,7 +66,7 @@ const registerController =  (req, res) => {
          await existingUser.save();
          await sendVerificationEmail(email, verificationCode).catch(console.error);
         return res.status(200).json({ message: 'Verification code resent',verified:false });
-      } 
+      }  
     }  
       else {
       await sendVerificationEmail(email, verificationCode).catch(console.error);

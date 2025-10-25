@@ -94,7 +94,7 @@ export const Signup = () => {
   const registerResponseMessage = useSelector((state)=>state.authenticationData.registerResponseMessage)
   const isRegisteredResponse = useSelector((state)=>state.authenticationData.isRegisteredResponse);
   const isVerificationResponse = useSelector((state)=>state.authenticationData.isVerificationResponse)
- 
+  const isVerified = useSelector((state)=>state.authenticationData.isVerified)
   const verificationMessage = useSelector((state)=>state.authenticationData.verificationMessage)
 
   const signupHandler = () => {
@@ -153,9 +153,21 @@ export const Signup = () => {
   return (
     <>
       {isRegisterLoading && <section className='signup-progress'><CircularProgress/></section>}
-      {showPopup && <VerificationCard register={register({first_name,last_name,email,password,})} 
-       code = {verificationCode} setCode={setVerificationCode} onVerify={handleVerify}/>}
-      {isVerificationResponse&& <OverlayCard message= {verificationMessage} onClose={overlayOnClose} />}
+         {showPopup ? (!isVerified ? (
+        <VerificationCard
+          register={register}
+          userData={{ first_name, last_name, email, password }}
+          code={verificationCode}
+          setCode={setVerificationCode}
+          onVerify={handleVerify}
+        />
+      ) : (
+        <OverlayCard
+          message={registerResponseMessage}
+          onClose={overlayOnClose}
+        />
+      )):null}
+      {isVerificationResponse && <OverlayCard message= {verificationMessage} onClose={overlayOnClose} />}
       <div>
         <h4 style={{ color: 'green' }}>Signup</h4>
         <form
