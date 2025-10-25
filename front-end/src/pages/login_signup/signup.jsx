@@ -125,9 +125,9 @@ export const Signup = () => {
   }, [isRegisteredResponse]);
 
   const overlayOnClose = () => {
-    // setShowPopup(false);
+    setShowPopup(false);
     dispatch({ type: 'RESET_VERIFY', payload: { isVerificationResponse: false } });
-    dispatch({ type: 'RESET_REGISTER_RESPONSE' });
+    dispatch({ type: 'RESET_REGISTER_RESPONSE', });
     // window.location.reload();
   };
  const handleVerify = (code)=>{

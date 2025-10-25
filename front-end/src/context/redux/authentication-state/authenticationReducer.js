@@ -44,7 +44,8 @@ export const authenticationData = (state = initialState,action)=>{
                 isRegisteredResponse:false,
                 isRegistered:false,
                 isRegisterLoading:false,
-                registerResponseMessage:''
+                registerResponseMessage:'',
+                isVerified:false
             }
         case REGISTERERROR:
             console.log(action.payload);
