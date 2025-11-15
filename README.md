@@ -45,7 +45,7 @@ Hosting	Netlify
 Assets	Custom images & static assets
 
 📦 Installation & Setup
-# Clone the project
+ Clone the project
 
 # Go to the project folder
 cd client
@@ -71,4 +71,4 @@ This project is licensed under the MIT License — free to use and modify.
 Nahom Jr
 📧 Email: nahomjr17@gmail.com
 
-🌐 Portfolio / nahommb.com
+🌐 Portfolio: https://nahommb.com
